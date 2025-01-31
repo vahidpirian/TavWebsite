@@ -279,8 +279,7 @@
                     </a>
 
 
-                    <form action="{{ route('auth.user.logout') }}" method="POST" class="mt-3">
-                        @csrf
+                    <form action="{{ route('auth.user.logout') }}" class="mt-3">
                         <button type="submit" class="sidebar-link w-100 text-right border-0 bg-transparent">
                             <i class="fas fa-sign-out-alt"></i>
                             خروج از حساب
