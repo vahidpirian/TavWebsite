@@ -101,15 +101,13 @@
                                             <label for="position">موقعیت</label>
                                             <select name="position" id="position" class="form-control form-control-sm">
                                                 <option value="">موقعیت را انتخاب کنید</option>
-                                                <option value="slider" @if(old('position',$video->position) == 'slider') selected @endif>اسلایدر</option>
-                                                <option value="top" @if(old('position',$video->position) == 'top') selected @endif>بالا</option>
-                                                <option value="bottom" @if(old('position',$video->position) == 'bottom') selected @endif>پایین</option>
+                                                <option value="main_page" @if(old('position',$video->position) == 'main_page') selected @endif>صحفه اصلی</option>
                                             </select>
                                         </div>
                                         @error('position')
                                         <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                     <strong>{{ $message }}</strong>
-                                    </span>
+                                </span>
                                         @enderror
                                     </section>
 

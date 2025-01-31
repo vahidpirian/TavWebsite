@@ -12,7 +12,7 @@ class Ticket extends Model
     use HasFactory, SoftDeletes;
 
 
-    protected $fillable = ['subject', 'description', 'status', 'seen', 'reference_id', 'user_id', 'category_id', 'priority_id', 'ticket_id'];
+    protected $fillable = ['subject', 'description', 'status', 'seen', 'reference_id', 'user_id', 'category_id', 'priority_id', 'ticket_id','is_admin'];
 
 
     public function user()
@@ -28,7 +28,7 @@ class Ticket extends Model
 
     public function priority()
     {
-        return $this->belongsTo(TicketPriority::class);
+        return $this->belongsTo(TicketPriority::class, 'priority_id');
     }
 
     public function category()

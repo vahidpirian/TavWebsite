@@ -178,7 +178,6 @@ return [
         'height' => 'ارتفاع',
         'price' => 'قیمت',
         'introduction' => 'توضیحات',
-        'persian_name' => 'نام فارسی',
         'price_increase' => 'افزایش قیمت',
         'color_name' => 'نام رنگ',
         'unit' => 'واحد اندازه گیری',
@@ -195,7 +194,6 @@ return [
         'otp' => 'رمز یکبار مصرف',
         'color' => 'رنگ',
         'national_code' => 'کد ملی',
-        'postal_code' => 'کد پستی',
         'province_id' => 'استان',
         'city_id' => 'شهر',
         'no' => 'پلاک',
@@ -209,5 +207,6 @@ return [
         'company_mobile' => 'شماره موبایل شرکت',
         'start_date' => 'تاریخ شروع',
         'end_date' => 'تاریخ پایان',
+        'message' => 'پیام',
     ],
 ];

@@ -16,6 +16,18 @@ class Video extends Model
        'status'
    ];
 
+    public function isUploadType()
+    {
+        return $this->type === 'upload';
+    }
+
+    public function getPositionPersianAttribute()
+    {
+        return match ($this->position){
+            "main_page" => 'صحفه اصلی',
+        };
+    }
+
     protected function  statusPersian(): Attribute
     {
         return Attribute::make(

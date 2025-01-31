@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin\ticket;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\TicketRequest;
 use App\Models\Ticket\Ticket;
+use App\Models\Ticket\TicketAdmin;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -12,7 +13,10 @@ class TicketController extends Controller
 
     public function newTickets()
     {
-        $tickets = Ticket::where('seen', 0)->get();
+        if (!auth()->user()->ticketAdmin){
+            return back()->with('swal-error', 'شما به بخش تیکت ها دسترسی ندارید');
+        }
+        $tickets = Ticket::where('seen', 0)->whereNull('ticket_id')->latest()->get();
         foreach ($tickets as $newTicket) {
             $newTicket->seen = 1;
             $result = $newTicket->save();
@@ -22,13 +26,19 @@ class TicketController extends Controller
 
     public function openTickets()
     {
-        $tickets = Ticket::where('status', 0)->get();
+        if (!auth()->user()->ticketAdmin){
+            return back()->with('swal-error', 'شما به بخش تیکت ها دسترسی ندارید');
+        }
+        $tickets = Ticket::where('status', 0)->whereNull('ticket_id')->latest()->get();
         return view('admin.ticket.index', compact('tickets'));
     }
 
     public function closeTickets()
     {
-        $tickets = Ticket::where('status', 1)->get();
+        if (!auth()->user()->ticketAdmin){
+            return back()->with('swal-error', 'شما به بخش تیکت ها دسترسی ندارید');
+        }
+        $tickets = Ticket::where('status', 1)->whereNull('ticket_id')->latest()->get();
         return view('admin.ticket.index', compact('tickets'));
     }
     /**
@@ -38,7 +48,10 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::whereNull('ticket_id')->get();
+        if (!auth()->user()->ticketAdmin){
+            return back()->with('swal-error', 'شما به بخش تیکت ها دسترسی ندارید');
+        }
+        $tickets = Ticket::whereNull('ticket_id')->latest()->get();
         return view('admin.ticket.index', compact('tickets'));
     }
 
@@ -71,6 +84,9 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
+        if (!auth()->user()->ticketAdmin){
+            return back()->with('swal-error', 'شما به بخش تیکت ها دسترسی ندارید');
+        }
         return view('admin.ticket.show', compact('ticket'));
     }
 
@@ -110,7 +126,8 @@ class TicketController extends Controller
 
     public function answer(TicketRequest $request, Ticket $ticket)
     {
-        $ticketAdmin = auth()->user()->ticketAdmin;
+        $ticketAdmin = auth()->user()->ticketAdmin ?? TicketAdmin::first();
+
         $inputs = $request->all();
         $inputs['subject'] = $ticket->subject;
         $inputs['description'] = $request->description;
@@ -120,6 +137,8 @@ class TicketController extends Controller
         $inputs['category_id'] = $ticket->category_id;
         $inputs['priority_id'] = $ticket->priority_id;
         $inputs['ticket_id'] = $ticket->id;
+        $inputs['is_admin'] = 1;
+
         $ticket = Ticket::create($inputs);
         return redirect()->route('admin.ticket.index')->with('swal-success', '  پاسخ شما با موفقیت ثبت شد');
     }

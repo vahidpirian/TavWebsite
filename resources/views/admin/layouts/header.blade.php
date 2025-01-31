@@ -54,8 +54,8 @@
                                         <img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="avatar" class="notification-img">
                                         <section class="media-body pr-1">
                                             <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">{{ $unseenComment->user->fullName }}</h5>
-                                                <span>{{ $unseenComment->body }}<i class="fas fa-circle text-success comment-user-status"></i></span>
+                                                <h5 class="comment-user">{{$unseenComment->user ? $unseenComment->user->fullName : $unseenComment->author_name  }}</h5>
+                                                <span>{{ mb_substr($unseenComment->body,0,50).'...' }}<i class="fas fa-circle text-success comment-user-status"></i></span>
                                             </section>
                                         </section>
                                     </section>

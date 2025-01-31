@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Content;
 
 use App\Models\Content\Menu;
+use App\Models\Content\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\MenuRequest;
@@ -28,7 +29,8 @@ class MenuController extends Controller
     public function create()
     {
         $menus = Menu::where('parent_id', null)->get();
-        return view('admin.content.menu.create', compact('menus'));
+        $pages = Page::where('status', 1)->get();
+        return view('admin.content.menu.create', compact('menus','pages'));
     }
 
     /**
@@ -64,7 +66,8 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         $parent_menus = Menu::where('parent_id', null)->get()->except($menu->id);
-        return view('admin.content.menu.edit', compact('menu' ,'parent_menus'));
+        $pages = Page::where('status', 1)->get();
+        return view('admin.content.menu.edit', compact('menu' ,'parent_menus','pages'));
     }
 
     /**

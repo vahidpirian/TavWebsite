@@ -59,7 +59,12 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method' => null,
+    'method' => function($string, $separator = '-') {
+        $string = strip_tags($string);
+        $string = preg_replace('!['.preg_quote($separator).'\s]+!u', $separator, $string);
+
+        return trim($string, $separator);
+    },
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.

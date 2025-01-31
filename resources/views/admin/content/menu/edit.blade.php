@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">منو</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش منو</li>
     </ol>
@@ -74,8 +74,36 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
+                                <label for="">نوع لینک</label>
+                                <select name="url_type" id="urlType" class="form-control form-control-sm">
+                                    <option value="url" @if(old('url_type', $menu->url_type) == 'url') selected @endif>لینک مستقیم</option>
+                                    <option value="page" @if(old('url_type', $menu->url_type) == 'page') selected @endif>انتخاب صفحه</option>
+                                </select>
+                            </div>
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="">آدرس URL</label>
-                                <input type="text" name="url" value="{{ old('url', $menu->url) }}" class="form-control form-control-sm">
+                                <input value="{{ old('url', $menu->url) }}" name="url" class="form-control form-control-sm" id="urlInput"
+                                    @if(old('url_type', $menu->url_type) == 'page') type="hidden" @else type="text" @endif>
+
+                                <select name="page_id" id="pageSelect" class="form-control form-control-sm"
+                                    @if(old('url_type', $menu->url_type) != 'page') disabled @endif
+                                    style="display: @if(old('url_type', $menu->url_type) != 'page') none @endif">
+                                    <option value="">انتخاب صفحه</option>
+                                    <option value="{{route('home')}}" @if(old('page_id', $menu->url) == route('home')) selected @endif>خانه</option>
+                                    <option value="{{route('service.index')}}" @if(old('page_id', $menu->url) == route('service.index')) selected @endif>خدمات ها</option>
+                                    <option value="{{route('project.index')}}" @if(old('page_id', $menu->url) == route('project.index')) selected @endif>پروژه ها</option>
+                                    <option value="{{route('blog.index')}}" @if(old('page_id', $menu->url) == route('blog.index')) selected @endif>وبلاگ</option>
+                                    <option value="{{route('faq')}}" @if(old('page_id', $menu->url) == route('faq')) selected @endif>سوالات متداول</option>
+                                    <option value="{{route('contact.index')}}" @if(old('page_id', $menu->url) == route('contact.index')) selected @endif>تماس باما</option>
+                                    @foreach ($pages as $page)
+                                        <option value="{{ route('page',$page->slug) }}" @if(old('page_id', $menu->url) == route('page',$page->slug)) selected @endif>
+                                            {{ $page->title }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             @error('url')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -83,7 +111,7 @@
                                     {{ $message }}
                                 </strong>
                             </span>
-                        @enderror
+                            @enderror
                         </section>
 
                         <section class="col-12 col-md-6 my-2">
@@ -115,4 +143,27 @@
     </section>
 </section>
 
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#urlType').on('change', function() {
+            let selectedType = $(this).val();
+            if(selectedType === 'url') {
+                $('#urlInput').prop('type', 'text').show();
+                $('#pageSelect').prop('disabled', true).hide();
+            } else {
+                $('#urlInput').prop('type', 'hidden');
+                $('#pageSelect').prop('disabled', false).show();
+            }
+        });
+
+        $('#pageSelect').on('change', function() {
+            let selectedOption = $(this).find('option:selected');
+            let pageUrl = selectedOption.val();
+            $('#urlInput').val(pageUrl);
+        });
+    });
+</script>
 @endsection

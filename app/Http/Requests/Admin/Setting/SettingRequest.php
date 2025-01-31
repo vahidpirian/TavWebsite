@@ -24,9 +24,9 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-            'description' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-            'keywords' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'title' => 'required|max:120|min:2',
+            'description' => 'required|max:120|min:2',
+            'keywords' => 'required|max:120|min:2',
             'logo' => 'image|mimes:png,jpg,jpeg,gif',
             'icon' => 'image|mimes:png,jpg,jpeg,gif',
         ];

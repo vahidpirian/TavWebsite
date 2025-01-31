@@ -93,9 +93,7 @@
                                     <label for="position">موقعیت</label>
                                     <select name="position" id="position" class="form-control form-control-sm">
                                         <option value="">موقعیت را انتخاب کنید</option>
-                                        <option value="slider" @if(old('position') == 'slider') selected @endif>اسلایدر</option>
-                                        <option value="top" @if(old('position') == 'top') selected @endif>بالا</option>
-                                        <option value="bottom" @if(old('position') == 'bottom') selected @endif>پایین</option>
+                                        <option value="main_page" @if(old('position') == 'main_page') selected @endif>صحفه اصلی</option>
                                     </select>
                                 </div>
                                 @error('position')
