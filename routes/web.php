@@ -19,22 +19,31 @@ use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Auth\Admin\AuthAdminLoginController;
+use App\Http\Controllers\Admin\Content\ServiceController;
+use App\Http\Controllers\Admin\Content\CKEditorController;
+use App\Http\Controllers\Admin\Content\ImageController;
+use App\Http\Controllers\Admin\Content\CompanyStatisticController;
+use App\Http\Controllers\Site\SiteCommentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\SiteBlogController;
+use App\Http\Controllers\Site\SiteProjectController;
+use App\Http\Controllers\Site\SiteServiceController;
+use App\Http\Controllers\Site\SiteContactController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Auth\User\AuthUserLoginController;
+use App\Http\Controllers\Auth\User\AuthUserRegisterController;
+use App\Http\Controllers\Site\MyAccount\MyAccountController;
+use App\Http\Controllers\Site\MyAccount\MyAccountTicketController as MyAccountTicketController;
 
 
 
-Route::get('/test',function (){
-   auth('web')->loginUsingId(1);
-
-});
-
-
-Route::prefix('admin')->middleware(['is_admin'])->namespace('Admin')->group(function () {
+Route::prefix('admin')->middleware(['is_admin'])->group(function () {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
 
 
-    Route::prefix('content')->namespace('Content')->group(function () {
+    Route::prefix('content')->group(function () {
 
         // //category
         Route::prefix('category')->group(function (){
@@ -133,6 +142,37 @@ Route::prefix('admin')->middleware(['is_admin'])->namespace('Admin')->group(func
             Route::delete('/destroy/{video}', [VideoController::class,'destroy'])->name('admin.content.video.destroy');
             Route::get('/status/{video}', [VideoController::class,'status'])->name('admin.content.video.status');
         });
+
+        Route::prefix('service')->group(function() {
+            Route::get('/', [ServiceController::class, 'index'])->name('admin.content.service.index');
+            Route::get('/create', [ServiceController::class, 'create'])->name('admin.content.service.create');
+            Route::post('/store', [ServiceController::class, 'store'])->name('admin.content.service.store');
+            Route::get('/edit/{service}', [ServiceController::class, 'edit'])->name('admin.content.service.edit');
+            Route::put('/update/{service}', [ServiceController::class, 'update'])->name('admin.content.service.update');
+            Route::delete('/destroy/{service}', [ServiceController::class, 'destroy'])->name('admin.content.service.destroy');
+            Route::get('/status/{service}', [ServiceController::class, 'status'])->name('admin.content.service.status');
+        });
+
+        Route::prefix('image')->controller(ImageController::class)->group(function() {
+            Route::get('/', 'index')->name('admin.content.image.index');
+            Route::get('/create', 'create')->name('admin.content.image.create');
+            Route::post('/store', 'store')->name('admin.content.image.store');
+            Route::get('/edit/{image}',  'edit')->name('admin.content.image.edit');
+            Route::put('/update/{image}',  'update')->name('admin.content.image.update');
+            Route::delete('/destroy/{image}', 'destroy')->name('admin.content.image.destroy');
+        });
+
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('admin.content.ckeditor.upload');
+
+        Route::prefix('company-statistic')->controller(CompanyStatisticController::class)->group(function() {
+            Route::get('/', 'index')->name('admin.content.company-statistic.index');
+            Route::get('/create', 'create')->name('admin.content.company-statistic.create');
+            Route::post('/store', 'store')->name('admin.content.company-statistic.store');
+            Route::get('/edit/{companyStatistic}', 'edit')->name('admin.content.company-statistic.edit');
+            Route::put('/update/{companyStatistic}', 'update')->name('admin.content.company-statistic.update');
+            Route::delete('/destroy/{companyStatistic}', 'destroy')->name('admin.content.company-statistic.destroy');
+        });
+
     });
 
     Route::prefix('user')->namespace('User')->group(function () {
@@ -226,13 +266,90 @@ Route::prefix('admin')->middleware(['is_admin'])->namespace('Admin')->group(func
         Route::delete('/destroy/{setting}', [SettingController::class, 'destroy'])->name('admin.setting.destroy');
     });
 
+    // contact routes
+    Route::prefix('contact')->controller(ContactController::class)->group(function() {
+        Route::get('/', 'index')->name('admin.contact.index');
+        Route::get('/show/{contact}', 'show')->name('admin.contact.show');
+    });
+
 });
 
-Route::prefix('auth')->group(function () {
+
+
+
+Route::prefix('auth')->name('auth.')->group(function () {
    //admin
     Route::prefix('admin')->group(function () {
-        Route::get('/login', [AuthAdminLoginController::class, 'login'])->name('auth.admin.login')->middleware('guest');
-        Route::post('/check-login', [AuthAdminLoginController::class, 'checkLogin'])->name('auth.admin.check_login')->middleware('guest');
-        Route::get('/logout', [AuthAdminLoginController::class, 'logout'])->name('auth.admin.logout')->middleware('auth');
+        Route::get('/login', [AuthAdminLoginController::class, 'login'])->name('admin.login')->middleware('guest');
+        Route::post('/check-login', [AuthAdminLoginController::class, 'checkLogin'])->name('admin.check_login')->middleware('guest');
+        Route::get('/logout', [AuthAdminLoginController::class, 'logout'])->name('admin.logout')->middleware('auth');
+    });
+
+    Route::name('user.')->group(function() {
+        Route::get('/login', [AuthUserLoginController::class, 'login'])->name('login-form');
+        Route::post('/login', [AuthUserLoginController::class, 'doLogin'])->name('login');
+        Route::get('/register', [AuthUserRegisterController::class, 'register'])->name('register-form');
+        Route::post('/register', [AuthUserRegisterController::class, 'doRegister'])->name('register');
+        Route::get('/logout', [AuthUserLoginController::class, 'logout'])->name('logout');
     });
 });
+
+
+Route::middleware(['auth'])->prefix('account')->name('account.')->group(function() {
+    Route::get('/', [MyAccountController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [MyAccountController::class, 'edit'])->name('profile');
+    Route::put('/profile', [MyAccountController::class, 'update'])->name('profile.update');
+
+    Route::resource('tickets', MyAccountTicketController::class);
+    Route::post('tickets/{ticket}/reply', [MyAccountTicketController::class, 'reply'])->name('tickets.reply');
+    Route::put('tickets/{ticket}/close', [MyAccountTicketController::class, 'close'])->name('tickets.close');
+});
+
+Route::prefix('/')->group(function() {
+
+    // Contact Routes
+    Route::controller(SiteContactController::class)->prefix('contact')->name('contact.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::post('/contact', 'store')->name('store');
+    });
+
+    // Home Routes
+    Route::controller(HomeController::class)->group(function() {
+        Route::get('/', 'index')->name('home');
+        Route::get('/faq', 'faq')->name('faq');
+        Route::get('/{slug}', 'showPage')->name('page');
+    });
+
+
+
+    // Blog Routes
+    Route::controller(SiteBlogController::class)->prefix('blog')->name('blog.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/category/{slug}', 'index')->name('category');
+        Route::get('/{slug}', 'show')->name('show');
+    });
+
+    // Project Routes
+    Route::controller(SiteProjectController::class)->prefix('projects')->name('project.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->name('show');
+    });
+
+    // Service Routes
+    Route::controller(SiteServiceController::class)->prefix('services')->name('service.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->name('show');
+    });
+
+
+    // Comment Routes
+    Route::controller(SiteCommentController::class)->prefix('comment')->name('comment.')->group(function() {
+        Route::post('/store', 'store')->name('store');
+    });
+
+});
+
+
+
+
+

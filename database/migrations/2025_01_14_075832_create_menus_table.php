@@ -17,6 +17,7 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url')->nullable();
+            $table->enum('url_type',['page','url'])->nullable();
             $table->tinyInteger('status')->default(0);
             $table->foreignId('parent_id')->nullable()->constrained('menus');
             $table->timestamps();

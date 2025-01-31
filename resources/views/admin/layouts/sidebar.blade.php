@@ -15,6 +15,11 @@
                 <span>خانه</span>
             </a>
 
+            <a href="{{ route('admin.contact.index') }}" class="sidebar-link">
+                <i class="fas fa-comment"></i>
+                <span>تماس باما</span>
+            </a>
+
 
             <section class="sidebar-part-title">بخش محتوی</section>
 
@@ -48,9 +53,24 @@
                 <i class="fas fa-bars"></i>
                 <span>بنر ها</span>
             </a>
+
+            <a href="{{ route('admin.content.company-statistic.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>آمار ها</span>
+            </a>
+
+            <a href="{{ route('admin.content.service.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>خدمات ها</span>
+            </a>
             <a href="{{ route('admin.content.project.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>پروژه ها</span>
+            </a>
+
+            <a href="{{ route('admin.content.image.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>تصویر ها</span>
             </a>
             <a href="{{ route('admin.content.video.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>

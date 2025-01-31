@@ -162,7 +162,7 @@
                         <section class="col-12">
                             <div class="form-group">
                                 <label for="">خلاصه پست</label>
-                                <textarea name="summary" id="summary"  class="form-control form-control-sm" rows="6">{{ old('summary', $post->summary) }}</textarea>
+                                <textarea name="summary"  class="form-control form-control-sm" rows="6">{{ old('summary', $post->summary) }}</textarea>
                             </div>
                             @error('summary')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -207,7 +207,6 @@
     <script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
     <script>
         CKEDITOR.replace('body');
-        CKEDITOR.replace('summary');
     </script>
 
     <script>

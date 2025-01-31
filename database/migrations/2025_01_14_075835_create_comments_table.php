@@ -17,7 +17,9 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->text('body');
             $table->foreignId('parent_id')->nullable()->constrained('comments');
-            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('author_id')->nullable()->constrained('users');
+            $table->string('author_name')->nullable();
+            $table->string('author_email')->nullable();
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
             $table->tinyInteger('seen')->default(0)->comment('0 => unseen, 1 => seen');

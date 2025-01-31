@@ -129,7 +129,7 @@
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="">تاریخ شروع</label>
-                                    <input type="text" name="start_date" id="start_date" class="form-control form-control-sm d-none">
+                                    <input type="text" name="start_date" id="start_date" class="form-control form-control-sm">
                                 </div>
                                 @error('start_date')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -143,7 +143,7 @@
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="">تاریخ پایان</label>
-                                    <input type="text" name="end_date" id="end_date" class="form-control form-control-sm d-none">
+                                    <input type="text" name="end_date" id="end_date" class="form-control form-control-sm">
                                 </div>
                                 @error('end_date')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">

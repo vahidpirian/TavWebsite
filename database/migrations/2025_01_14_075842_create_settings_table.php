@@ -18,8 +18,16 @@ class CreateSettingsTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->text('keywords')->nullable();
+            $table->string('main_page_subtitle');
+            $table->string('main_page_title');
+            $table->string('main_page_service_summary');
+            $table->string('address')->nullable();
+            $table->bigInteger('mobile')->nullable();
+            $table->string('email')->nullable();
+            $table->json('socials')->nullable();
             $table->text('logo')->nullable();
             $table->text('icon')->nullable();
+
             $table->timestamps();
         });
     }

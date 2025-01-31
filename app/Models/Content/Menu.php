@@ -12,7 +12,7 @@ class Menu extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'url', 'parent_id', 'status'];
+    protected $fillable = ['name','url_type', 'url', 'parent_id', 'status'];
 
     public function parent()
     {
