@@ -14,6 +14,16 @@
         </div>
     </div>
 
+    @if($banner)
+        <div class="container">
+            <a class="w-100" href="{{ $banner->url }}" title="{{ $banner->title }}">
+                <img src="{{ asset($banner->image) }}"
+                     alt="{{ $banner->title }}"
+                     class="banner-image">
+            </a>
+        </div>
+    @endif
+
     <div class="contact-area py-120">
         <div class="container">
             <div class="contact-wrapper">

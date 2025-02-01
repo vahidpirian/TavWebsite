@@ -8,7 +8,7 @@
                 <h2 class="breadcrumb-title">پروژه
                 </h2>
                 <ul class="breadcrumb-menu">
-                    <li><a href="{{route('project.index')}}"><i class="far fa-home"></i> صفحه اصلی
+                    <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
                         </a></li>
                     <li class="active">پروژه
                     </li>
@@ -31,6 +31,15 @@
                         </div>
                     </div>
                 </div>
+                @if($banners && $banners->where('position',4)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',4)->first()->url }}" title="{{ $banners->where('position',4)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',4)->first()->image) }}"
+                                 alt="{{ $banners->where('position',4)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
                 <div class="row filter-box popup-gallery">
                     @foreach($projects as $project)
                     <div class="col-md-6 col-lg-4 filter-item">
@@ -59,6 +68,15 @@
                         {{ $projects->links() }}
                     </div>
                 </div>
+                @if($banners && $banners->where('position',7)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',7)->first()->url }}" title="{{ $banners->where('position',7)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',7)->first()->image) }}"
+                                 alt="{{ $banners->where('position',7)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Banner;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Content\PostCategory;
@@ -13,10 +14,12 @@ class SiteBlogController extends Controller
     {
         $posts = Post::where('status', 1)
             ->latest()
-            ->where('published_at','>',now())
+            ->where('published_at','<',now())
             ->paginate(9);
 
-        return view('site.blog.index', compact('posts'));
+        $banners = Banner::whereIn('position', [5,8])->get();
+
+        return view('site.blog.index', compact('posts','banners'));
     }
 
     public function categoryPosts($slug)
@@ -27,7 +30,9 @@ class SiteBlogController extends Controller
             ->where('published_at','>',now())
             ->latest()->paginate(9);
 
-        return view('site.blog.index', compact('posts'));
+        $banners = Banner::whereIn('position', [5,8])->get();
+
+        return view('site.blog.index', compact('posts','banners'));
     }
 
     public function show($slug)
@@ -52,7 +57,9 @@ class SiteBlogController extends Controller
 
         $comments = $post->comments()->where('approved', 1)->get();
 
-        return view('site.blog.show', compact('post', 'relatedPosts','latestPosts','comments','categories'));
+        $banners = Banner::whereIn('position', [11,14])->get();
+
+        return view('site.blog.show', compact('post', 'relatedPosts','latestPosts','comments','categories','banners'));
     }
 
 

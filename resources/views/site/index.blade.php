@@ -196,8 +196,15 @@
             </div>
         </div>
     </div>
-
-
+    @if($banner)
+    <div class="container">
+                <a class="w-100" href="{{ $banner->url }}" title="{{ $banner->title }}">
+                    <img src="{{ asset($banner->image) }}"
+                         alt="{{ $banner->title }}"
+                         class="banner-image">
+                </a>
+        </div>
+    @endif
     <div class="service-area bg py-120">
     <div class="container">
         <div class="row">

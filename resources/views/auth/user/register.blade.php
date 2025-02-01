@@ -32,6 +32,9 @@
                             <p>حساب tav360 خود را ایجاد کنید
                             </p>
                         </div>
+                        @if(session('error'))
+                            <div class="alert alert-danger text-center">{{session('error')}}</div>
+                        @endif
                         <form action="{{ route('auth.user.register') }}" method="POST">
                             @csrf
                             <div class="form-group">

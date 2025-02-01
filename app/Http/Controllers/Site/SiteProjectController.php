@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Banner;
 use App\Models\Content\Project;
 
 class SiteProjectController extends Controller
@@ -13,7 +14,9 @@ class SiteProjectController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(12);
 
-        return view('site.project.index', compact('projects'));
+        $banners = Banner::whereIn('position', [4,7])->get();
+
+        return view('site.project.index', compact('projects','banners'));
     }
 
     public function show($id)
@@ -28,6 +31,8 @@ class SiteProjectController extends Controller
             ->take(3)
             ->get();
 
-        return view('site.project.show', compact('project', 'similarProjects'));
+        $banners = Banner::whereIn('position', [10,13])->get();
+
+        return view('site.project.show', compact('project', 'similarProjects','banners'));
     }
 }

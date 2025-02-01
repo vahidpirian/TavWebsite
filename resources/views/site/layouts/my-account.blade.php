@@ -238,7 +238,7 @@
                 حساب کاربری
             </h2>
             <ul class="breadcrumb-menu">
-                <li><a href="{{route('project.index')}}"><i class="far fa-home"></i> صفحه اصلی
+                <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
                     </a></li>
                 <li class="active">
                     <a href="{{route('account.dashboard')}}">حساب کاربری</a>

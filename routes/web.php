@@ -313,14 +313,6 @@ Route::prefix('/')->group(function() {
         Route::post('/contact', 'store')->name('store');
     });
 
-    // Home Routes
-    Route::controller(HomeController::class)->group(function() {
-        Route::get('/', 'index')->name('home');
-        Route::get('/faq', 'faq')->name('faq');
-        Route::get('/{slug}', 'showPage')->name('page');
-    });
-
-
 
     // Blog Routes
     Route::controller(SiteBlogController::class)->prefix('blog')->name('blog.')->group(function() {
@@ -346,6 +338,14 @@ Route::prefix('/')->group(function() {
     Route::controller(SiteCommentController::class)->prefix('comment')->name('comment.')->group(function() {
         Route::post('/store', 'store')->name('store');
     });
+
+    // Home Routes
+    Route::controller(HomeController::class)->group(function() {
+        Route::get('/', 'index')->name('home');
+        Route::get('/faq', 'faq')->name('faq');
+        Route::get('/{slug}', 'showPage')->name('page');
+    });
+
 
 });
 

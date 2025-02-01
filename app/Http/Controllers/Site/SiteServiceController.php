@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Banner;
 use App\Models\Content\Service;
 
 class SiteServiceController extends Controller
@@ -13,7 +14,9 @@ class SiteServiceController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('site.service.index', compact('services'));
+        $banners = Banner::whereIn('position', [3,6])->get();
+
+        return view('site.service.index', compact('services','banners'));
     }
 
     public function show($id)
@@ -26,6 +29,8 @@ class SiteServiceController extends Controller
             ->orderBy('created_at', 'desc')->take(8)
             ->get();
 
-        return view('site.service.show', compact('service','services'));
+        $banners = Banner::whereIn('position', [9,12])->get();
+
+        return view('site.service.show', compact('service','services','banners'));
     }
 }
