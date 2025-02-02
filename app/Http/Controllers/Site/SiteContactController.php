@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Content\Banner;
 use App\Models\Setting\Setting;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class SiteContactController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('site.pages.contact',compact('setting'));
+
+        $banner = Banner::where('position',1)->first();
+        return view('site.pages.contact',compact('setting','banner'));
     }
 
     public function store(Request $request)

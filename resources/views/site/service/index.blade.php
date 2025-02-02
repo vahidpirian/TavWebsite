@@ -29,6 +29,15 @@
                 </div>
             </div>
         </div>
+        @if($banners && $banners->where('position',3)->first())
+            <div class="container">
+                <a class="w-100" href="{{ $banners->where('position',3)->first()->url }}" title="{{ $banners->where('position',3)->first()->title }}">
+                    <img src="{{ asset($banners->where('position',3)->first()->image) }}"
+                         alt="{{ $banners->where('position',3)->first()->title }}"
+                         class="banner-image">
+                </a>
+            </div>
+        @endif
         <div class="row">
             @foreach($services as $service)
             <div class="col-md-6 col-lg-3">
@@ -51,6 +60,15 @@
             </div>
             @endforeach
         </div>
+        @if($banners && $banners->where('position',6)->first())
+            <div class="container">
+                <a class="w-100" href="{{ $banners->where('position',6)->first()->url }}" title="{{ $banners->where('position',6)->first()->title }}">
+                    <img src="{{ asset($banners->where('position',6)->first()->image) }}"
+                         alt="{{ $banners->where('position',6)->first()->title }}"
+                         class="banner-image">
+                </a>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

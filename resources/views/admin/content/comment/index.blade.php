@@ -42,7 +42,7 @@
                             <th>نویسنده نظر</th>
                             <th>کد پست</th>
                             <th>پست</th>
-                            <th>وضعیت تایید</th>
+{{--                            <th>وضعیت تایید</th>--}}
                             <th>وضعیت کامنت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -55,17 +55,17 @@
                             <td>{{ Str::limit($comment->body, 10) }}</td>
                             <td>{{ $comment->parent_id ? Str::limit($comment->parent->body, 10) : '' }}</td>
                             <td>{{ $comment->author_id }}</td>
-                            <td>{{ $comment->user->fullName  }}</td>
+                            <td>{{ $comment->user->fullName ?? $comment->author_name }}</td>
                             <td>{{ $comment->commentable_id }}</td>
                             <td>{{ $comment->commentable->title }}</td>
                             <td>{{ $comment->approved == 1 ? 'تایید شده ' : 'تایید نشده'}} </td>
-                            <td>
-                                <label>
-                                    <input id="{{ $comment->id }}" onchange="changeStatus({{ $comment->id }})" data-url="{{ route('admin.content.comment.status', $comment->id) }}" type="checkbox" @if ($comment->status === 1)
-                                    checked
-                                    @endif>
-                                </label>
-                            </td>
+{{--                            <td>--}}
+{{--                                <label>--}}
+{{--                                    <input id="{{ $comment->id }}" onchange="changeStatus({{ $comment->id }})" data-url="{{ route('admin.content.comment.status', $comment->id) }}" type="checkbox" @if ($comment->status === 1)--}}
+{{--                                    checked--}}
+{{--                                    @endif>--}}
+{{--                                </label>--}}
+{{--                            </td>--}}
                             <td class="width-16-rem text-left">
                                 <a href="{{ route('admin.content.comment.show', $comment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> نمایش</a>
 

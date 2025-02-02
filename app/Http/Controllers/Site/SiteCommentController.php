@@ -12,6 +12,8 @@ class SiteCommentController extends Controller
     {
         $validated = $request->validate([
             'body' => 'required|min:5|max:500',
+            'name' => 'nullable|min:5|max:50',
+            'email' => 'nullable|email',
             'commentable_id' => 'required',
             'commentable_type' => 'required'
         ]);
@@ -19,8 +21,8 @@ class SiteCommentController extends Controller
         $comment = Comment::create([
             'body' => $validated['body'],
             'author_id' => auth()->id() ?? null,
-            'author_name' => $validated['name'],
-            'author_email' => $validated['email'],
+            'author_name' => $validated['name'] ?? null,
+            'author_email' => $validated['email'] ?? null,
             'commentable_id' => $validated['commentable_id'],
             'commentable_type' => $validated['commentable_type'],
             'approved' => 0,

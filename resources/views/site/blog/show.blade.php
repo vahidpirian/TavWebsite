@@ -18,6 +18,15 @@
 
 
         <div class="blog-single-area pt-120 pb-120">
+            @if($banners && $banners->where('position',11)->first())
+                <div class="container">
+                    <a class="w-100" href="{{ $banners->where('position',11)->first()->url }}" title="{{ $banners->where('position',11)->first()->title }}">
+                        <img src="{{ asset($banners->where('position',11)->first()->image) }}"
+                             alt="{{ $banners->where('position',11)->first()->title }}"
+                             class="banner-image">
+                    </a>
+                </div>
+            @endif
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -158,5 +167,14 @@
                     </div>
                 </div>
             </div>
+                @if($banners && $banners->where('position',14)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',14)->first()->url }}" title="{{ $banners->where('position',14)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',14)->first()->image) }}"
+                                 alt="{{ $banners->where('position',14)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
         </div>
 @endsection

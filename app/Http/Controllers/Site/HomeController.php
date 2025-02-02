@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Banner;
 use App\Models\Content\Comment;
 use App\Models\Content\CompanyStatistic;
 use App\Models\Content\Faq;
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $latestPosts = Post::where('status', 1)
             ->orderBy('created_at', 'desc')
             ->take(3)
+            ->where('published_at','<',now())
             ->get();
 
         $mainVideo = Video::where('position', 'main_page')
@@ -40,6 +42,8 @@ class HomeController extends Controller
 
         $setting = Setting::first();
 
+        $banner = Banner::where('position', 0)->first();
+
         return view('site.index', compact(
             'images',
             'services',
@@ -47,21 +51,23 @@ class HomeController extends Controller
             'statistics',
             'latestPosts',
             'mainVideo',
-            'setting'
+            'setting',
+            'banner'
         ));
     }
 
     public function faq()
     {
         $faqs = Faq::where('status', 1)->latest()->get();
-
-        return view('site.pages.faq', compact('faqs'));
+        $banner = Banner::where('position',15)->first();
+        return view('site.pages.faq', compact('faqs','banner'));
     }
 
     public function showPage($slug)
     {
         $page = Page::where('slug', $slug)->firstOrFail();
+        $banner = Banner::where('position',2)->first();
 
-        return view('site.pages.page', compact('page'));
+        return view('site.pages.page', compact('page','banner'));
     }
 }

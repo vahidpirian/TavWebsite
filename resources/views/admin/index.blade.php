@@ -378,7 +378,7 @@
                             <div class="flex-grow-1 ms-3">
                                 <p class="mb-1">{{ Str::limit($comment->body, 50) }}</p>
                                 <p class="text-muted small mb-0">
-                                    {{ $comment->user->full_name }} -
+                                    {{ $comment->user->full_name ?? $comment->author_name }} -
                                     {{ \Morilog\Jalali\Jalalian::fromDateTime($comment->created_at)->ago() }}
                                 </p>
                             </div>

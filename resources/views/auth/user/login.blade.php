@@ -29,9 +29,12 @@
                         <div class="login-header">
                             <h3>وارد شوید
                             </h3>
-                            <p>با حساب tab360 خود وارد شوید
+                            <p>با حساب tav360 خود وارد شوید
                             </p>
                         </div>
+                        @if(session('error'))
+                            <div class="alert alert-danger text-center">{{session('error')}}</div>
+                        @endif
                         <form action="{{ route('auth.user.login') }}" method="POST">
                             @csrf
                             <div class="form-group">

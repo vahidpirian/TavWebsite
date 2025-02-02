@@ -29,6 +29,15 @@
                         </div>
                     </div>
                 </div>
+                @if($banners && $banners->where('position',5)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',5)->first()->url }}" title="{{ $banners->where('position',5)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',5)->first()->image) }}"
+                                 alt="{{ $banners->where('position',5)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
                 <div class="row">
                     @foreach($posts as $post)
                     <div class="col-md-6 col-lg-4">
@@ -58,6 +67,15 @@
                         {{ $posts->links() }}
                     </div>
                 </div>
+                @if($banners && $banners->where('position',8)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',8)->first()->url }}" title="{{ $banners->where('position',8)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',8)->first()->image) }}"
+                                 alt="{{ $banners->where('position',5)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
 @endsection

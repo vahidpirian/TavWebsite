@@ -7,7 +7,7 @@
             <div class="container">
                 <h2 class="breadcrumb-title">پرسش و پاسخ</h2>
                 <ul class="breadcrumb-menu">
-                    <li><a href="index.html"><i class="far fa-home"></i> صفحه اصلی
+                    <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
                         </a></li>
                     <li class="active"> پرسش و پاسخ</li>
                 </ul>
@@ -19,6 +19,15 @@
 
 
         <div class="faq-area py-120">
+            @if($banner)
+                <div class="container">
+                    <a class="w-100" href="{{ $banner->url }}" title="{{ $banner->title }}">
+                        <img src="{{ asset($banner->image) }}"
+                             alt="{{ $banner->title }}"
+                             class="banner-image">
+                    </a>
+                </div>
+            @endif
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

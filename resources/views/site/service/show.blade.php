@@ -19,6 +19,16 @@
 
 
         <div class="service-single-area py-120">
+            @if($banners && $banners->where('position',9)->first())
+
+                <div class="container">
+                    <a class="w-100" href="{{$banners->where('position',9)->first()->url}}" title="{{ $banners->where('position',9)->first()->title }}">
+                        <img src="{{ asset($banners->where('position',9)->first()->image) }}"
+                             alt="{{ $banners->where('position',9)->first()->title }}"
+                             class="banner-image">
+                    </a>
+                </div>
+            @endif
             <div class="container">
                 <div class="service-single-wrapper">
                     <div class="row">
@@ -53,5 +63,14 @@
                     </div>
                 </div>
             </div>
+                @if($banners && $banners->where('position',12)->first())
+                    <div class="container">
+                        <a class="w-100" href="{{ $banners->where('position',12)->first()->url}}" title="{{ $banners->where('position',12)->first()->title }}">
+                            <img src="{{ asset($banners->where('position',12)->first()->image) }}"
+                                 alt="{{ $banners->where('position',12)->first()->title }}"
+                                 class="banner-image">
+                        </a>
+                    </div>
+                @endif
         </div>
 @endsection

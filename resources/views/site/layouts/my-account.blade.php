@@ -238,7 +238,7 @@
                 حساب کاربری
             </h2>
             <ul class="breadcrumb-menu">
-                <li><a href="{{route('project.index')}}"><i class="far fa-home"></i> صفحه اصلی
+                <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
                     </a></li>
                 <li class="active">
                     <a href="{{route('account.dashboard')}}">حساب کاربری</a>
@@ -279,8 +279,7 @@
                     </a>
 
 
-                    <form action="{{ route('auth.user.logout') }}" method="POST" class="mt-3">
-                        @csrf
+                    <form action="{{ route('auth.user.logout') }}" class="mt-3">
                         <button type="submit" class="sidebar-link w-100 text-right border-0 bg-transparent">
                             <i class="fas fa-sign-out-alt"></i>
                             خروج از حساب

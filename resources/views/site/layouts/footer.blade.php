@@ -33,12 +33,14 @@
                             </ul>
                         </div>
                         <ul class="footer-social">
-                            @foreach($setting->socials as $social)
-                                @if($social['status'] == '1')
-                                    <li><a href="{{$social['link']}}"><i class="{{$social['icon']}}"></i></a></li>
-                                @endif
+                            @if(!is_null($setting->socials ))
+                                @foreach($setting->socials as $social)
+                                    @if($social['status'] == '1')
+                                        <li><a href="{{$social['link']}}"><i class="{{$social['icon']}}"></i></a></li>
+                                    @endif
 
-                            @endforeach
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -70,7 +72,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <p class="copyright-text">
-                        کپی حق چاپ <span id="date">2025</span> <a href="#"> Tav360 </a> کلیه حقوق محفوظ است.
+                        کلیه حقوق برای <span id="date">2025</span> <a href="#"> Tav360 </a> کلیه حقوق محفوظ است.
                     </p>
                 </div>
             </div>
