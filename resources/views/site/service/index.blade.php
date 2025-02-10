@@ -43,13 +43,13 @@
             <div class="col-md-6 col-lg-3">
                 <div class="service-item h295px">
                     <div class="service-icon">
-                        <i class="flaticon-globe"></i>
+                        <i class="fas fa-briefcase"></i>
                     </div>
                     <h3 class="service-title">
                         <a href="{{ route('service.show', $service->id) }}">{{ $service->title }}</a>
                     </h3>
                     <p class="service-text">
-                        {{ $service->summary }}
+                        {{ mb_substr($service->summary,0,85).'...' }}
                     </p>
                     <div class="service-arrow">
                         <a href="{{ route('service.show', $service->id) }}" class="service-read-btn">
