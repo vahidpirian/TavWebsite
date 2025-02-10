@@ -130,7 +130,9 @@
             uploadUrl: "{{ route('admin.content.ckeditor.upload') }}?_token={{ csrf_token() }}",
             imageUploadUrl: "{{ route('admin.content.ckeditor.upload') }}?_token={{ csrf_token() }}",
             removeDialogTabs: 'image:advanced;link:advanced',
-            removeButtons: 'PasteFromWord'
+            removeButtons: 'PasteFromWord',
         });
+
+
     </script>
 @endsection

@@ -31,7 +31,7 @@ class PostRequest extends FormRequest
                 'image' => 'required|image|mimes:png,jpg,jpeg,gif',
                 'status' => 'required|numeric|in:0,1',
                 'tags' => 'nullable',
-                'body' => 'required|max:600|min:5',
+                'body' => 'required|min:5',
                 'published_at' => 'required|numeric',
 
             ];
