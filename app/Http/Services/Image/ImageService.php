@@ -27,7 +27,7 @@ class ImageService extends ImageToolsService
         $this->provider();
         //save image
         $result = $this->manager->read($image->getRealPath())
-            ->save(path: public_path($this->getImageAddress()), quality: null, format: $this->getImageFormat());
+            ->save(path: public_path($this->getImageAddress()), quality: 85, format: $this->getImageFormat());
         return $result ? $this->getImageAddress() : false;
     }
 
