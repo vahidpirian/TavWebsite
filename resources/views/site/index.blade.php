@@ -231,7 +231,7 @@
                             <a href="#">{{$service->title}}</a>
                         </h3>
                         <p class="service-text">
-                            {{$service->summary}}
+                            {{mb_substr($service->summary,0,85).'...'}}
                         </p>
                         <div class="service-arrow">
                             <a href="{{route('service.show',$service->id)}}" class="service-read-btn">جزئیات بیشتر<i class="far fa-long-arrow-left"></i></a>
@@ -324,7 +324,7 @@
                 </div>
             </div>
 
-            <div class="row filter-box popup-gallery" style="position: relative; height: 895.876px;">
+            <div class="row filter-box popup-gallery">
                 @foreach($projects as $project)
                     <div class="col-md-6 col-lg-4 filter-item cat1 cat2" style="position: absolute; left: 0px; top: 0px;">
                         <div class="case-item">
