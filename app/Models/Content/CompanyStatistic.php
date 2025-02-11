@@ -7,7 +7,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyStatistic extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = ['title', 'number'];
-} 
+}

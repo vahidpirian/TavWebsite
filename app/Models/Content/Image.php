@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = ['image', 'position'];
 
     public function getPositionPersianAttribute()
