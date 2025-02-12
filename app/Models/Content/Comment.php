@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = ['body', 'parent_id', 'author_id','author_name','author_email', 'commentable_id', 'commentable_type', 'approved', 'status'];
 
