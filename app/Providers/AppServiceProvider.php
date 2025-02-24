@@ -7,6 +7,7 @@ use App\Models\Content\Menu;
 use App\Models\Content\Page;
 use App\Models\Content\Service;
 use App\Models\Setting\Setting;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
+
         view()->composer('admin.layouts.header', function ($view) {
             $view->with('unseenComments', Comment::where('seen', 0)->get());
         });
