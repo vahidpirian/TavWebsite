@@ -30,9 +30,14 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
+        if (env('APP_ENV') == 'production') {
+            \URL::forceScheme('https');
+        }
+
         Log::info('getScheme',[
             'url' => request()->getScheme().'://'.request()->getHost(),
             'app_env' => env('APP_ENV'),
+            'is_production' => env('APP_ENV') == 'production',
         ]);
 
         view()->composer('admin.layouts.header', function ($view) {
