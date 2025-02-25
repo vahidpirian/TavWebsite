@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (env('APP_ENV') == 'production') {
-            URL::forceScheme('https');
+        if (request()->secure() && request()->getHost() == 'tav360.com') {
+            \URL::forceScheme('https');
         }
 
         view()->composer('admin.layouts.header', function ($view) {
