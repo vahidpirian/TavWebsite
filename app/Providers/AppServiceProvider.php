@@ -7,6 +7,7 @@ use App\Models\Content\Menu;
 use App\Models\Content\Page;
 use App\Models\Content\Service;
 use App\Models\Setting\Setting;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,9 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (request()->secure() && request()->getHost() == 'tav360.com') {
+        if (request()->getScheme() == 'https') {
             \URL::forceScheme('https');
         }
+
+        Log::info('getScheme',[
+            'url' => request()->getScheme().'://'.request()->getHost(),
+            'app_env' => env('APP_ENV'),
+        ]);
 
         view()->composer('admin.layouts.header', function ($view) {
             $view->with('unseenComments', Comment::where('seen', 0)->get());
