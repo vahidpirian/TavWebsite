@@ -26,26 +26,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (request()->getScheme() == 'https') {
-            \URL::forceScheme('https');
-        }
-
         if (env('APP_ENV') == 'production') {
             \URL::forceScheme('https');
         }
-
-        Log::info('getScheme',[
-            'url' => request()->getScheme().'://'.request()->getHost(),
-            'app_env' => env('APP_ENV'),
-            'is_production' => env('APP_ENV') == 'production',
-        ]);
 
         view()->composer('admin.layouts.header', function ($view) {
             $view->with('unseenComments', Comment::where('seen', 0)->get());
         });
 
         view()->composer('site.layouts.master', function ($view) {
-            $view->with('menus',Menu::where('status', 1)->get());
+            $view->with('menus',Menu::where('status', 1)->orderBy('sort_order')->get());
             $view->with('pages',Page::where('status', 1)->get());
             $view->with('services',Service::where('status', 1)->take(6)->get());
             $view->with('setting', Setting::first());

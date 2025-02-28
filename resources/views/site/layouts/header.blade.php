@@ -42,7 +42,7 @@
                             @auth
                                 <a class="nav-link px-1" href="{{route('account.dashboard')}}">حساب کاربری</a>
                             @else
-                                <a class="nav-link px-1" href="{{ route('auth.user.login-form') }}">ورود به حساب کاربری</a>
+                                <a class="nav-link px-1" href="{{ route('auth.user.login-form') }}">ورود/ثبت نام</a>
                             @endauth
                         </li>
                     </ul>
