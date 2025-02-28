@@ -306,14 +306,13 @@ Route::prefix('auth')->name('auth.')->group(function () {
     });
 
     Route::name('user.')->group(function() {
-        Route::get('/login', [AuthUserLoginController::class, 'login'])->name('login-form');
-        Route::post('/login', [AuthUserLoginController::class, 'doLogin'])->name('login');
+        Route::post('/login', [AuthUserLoginController::class, 'doLogin'])->name('login-form');
         Route::get('/register', [AuthUserRegisterController::class, 'register'])->name('register-form');
         Route::post('/register', [AuthUserRegisterController::class, 'doRegister'])->name('register');
         Route::get('/logout', [AuthUserLoginController::class, 'logout'])->name('logout');
     });
 });
-
+Route::get('/login', [AuthUserLoginController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->prefix('account')->name('account.')->group(function() {
     Route::get('/', [MyAccountController::class, 'index'])->name('dashboard');

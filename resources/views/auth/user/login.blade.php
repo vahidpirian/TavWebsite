@@ -35,7 +35,7 @@
                         @if(session('error'))
                             <div class="alert alert-danger text-center">{{session('error')}}</div>
                         @endif
-                        <form action="{{ route('auth.user.login') }}" method="POST">
+                        <form action="{{ route('auth.user.login-form') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label>شماره موبایل</label>
