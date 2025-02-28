@@ -62,7 +62,7 @@
                         </form>
                         <div class="login-footer">
                             <p>حساب کاربری دارید؟
-                                <a href="{{ route('auth.user.login-form') }}">وارد شوید.</a></p>
+                                <a href="{{ route('login') }}">وارد شوید.</a></p>
                         </div>
                     </div>
                 </div>

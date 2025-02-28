@@ -17,7 +17,7 @@ class AuthUserRegisterController extends Controller
     public function doRegister(RegisterRequest $request)
     {
         $inputs = $request->validated();
-        
+
         $user = User::create([
             'mobile' => $inputs['mobile'],
             'password' => Hash::make($inputs['password']),
@@ -25,6 +25,6 @@ class AuthUserRegisterController extends Controller
             'status' => 1
         ]);
 
-        return redirect()->route('auth.user.login-form')->with('success', 'ثبت نام با موفقیت انجام شد');
+        return redirect()->route('login')->with('success', 'ثبت نام با موفقیت انجام شد');
     }
 }

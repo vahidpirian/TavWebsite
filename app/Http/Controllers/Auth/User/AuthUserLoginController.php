@@ -22,14 +22,14 @@ class AuthUserLoginController extends Controller
             //check active user?
             if (Auth::user()->status == 0 || Auth::user()->activation == 0){
                 Auth::logout();
-                return redirect()->route('auth.user.login-form')->with('error','حساب کاربری شما غیرفعال میباشد');
+                return redirect()->route('login')->with('error','حساب کاربری شما غیرفعال میباشد');
             }
 
 
             return redirect()->route('home');
         }
 
-        return redirect()->route('auth.user.login-form')->with('error','لطفا مجددا تلاش کنید');
+        return redirect()->route('login')->with('error','لطفا مجددا تلاش کنید');
     }
 
     public function logout()
