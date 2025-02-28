@@ -2,8 +2,7 @@
 
 @section('head-tag')
 <title>منو</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.css"/>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="{{asset('admin-assets/js/Sortable.min.js')}}"></script>
 @endsection
 
 @section('content')
