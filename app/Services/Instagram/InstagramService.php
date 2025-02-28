@@ -11,11 +11,15 @@ class InstagramService
     protected string $baseUrl = 'https://graph.facebook.com/v18.0/';
     protected string $accessToken;
     protected string $instagramAccountId;
-
+    protected $http;
     public function __construct()
     {
         $this->accessToken = config('services.instagram.access_token','EAAEEZCs4k7i0BO07qs3Cz16ePL2O6hjPhRTmaP7DS99HltoTHOS1AhKlrLvbOIif1ZAwYotob3ZCxEN30MbaRalD5Ot4MZBNrZCgGH8ZA3UmwIAnK8QJlpKbSmFZA0E8VPsupi7K02u40WVbBx34ZBlyntskOBHsqALzPVo4yFdADMgwtmjVBefKR071');
         $this->instagramAccountId = config('services.instagram.account_id','17841435196633344');
+        $this->http = Http::withOptions([
+            'proxy' => 'http://127.0.0.1:8086',
+            'verify' => false
+        ]);
     }
 
     /**
@@ -143,16 +147,23 @@ class InstagramService
                 $params['video_url'] = $mediaUrl;
                 break;
             default:
+                $params['media_type'] = 'IMAGE';
                 $params['image_url'] = $mediaUrl;
         }
 
-        $response = Http::post($this->baseUrl . $this->instagramAccountId . '/media', $params);
+        $response = $this->http->asForm()->post($this->baseUrl . $this->instagramAccountId . '/media', $params);
 
         if ($response->failed()) {
+            Log::error('Instagram create media container error: ' . $response->body());
             throw new RequestException($response);
         }
 
         $data = $response->json();
+        
+        if (empty($data['id'])) {
+            throw new \Exception('خطا در ایجاد media container: ' . json_encode($data));
+        }
+
         return $data['id'];
     }
 
@@ -161,18 +172,24 @@ class InstagramService
      */
     protected function createCarouselContainer(array $mediaIds, string $caption): string
     {
-        $response = Http::post($this->baseUrl . $this->instagramAccountId . '/media', [
+        $response = $this->http->asForm()->post($this->baseUrl . $this->instagramAccountId . '/media', [
             'media_type' => 'CAROUSEL',
-            'children' => $mediaIds,
+            'children' => implode(',', $mediaIds), // اصلاح: تبدیل آرایه به رشته با کاما
             'caption' => $caption,
             'access_token' => $this->accessToken
         ]);
 
         if ($response->failed()) {
+            Log::error('Instagram create carousel error: ' . $response->body());
             throw new RequestException($response);
         }
 
         $data = $response->json();
+        
+        if (empty($data['id'])) {
+            throw new \Exception('خطا در ایجاد carousel: ' . json_encode($data));
+        }
+
         return $data['id'];
     }
 
@@ -185,12 +202,21 @@ class InstagramService
         $validStatusCodes = ['FINISHED', 'PUBLISHED', 'READY'];
 
         do {
-            $response = Http::get($this->baseUrl . $containerId, [
+            $response = $this->http->asForm()->get($this->baseUrl . $containerId, [
                 'fields' => 'status_code',
                 'access_token' => $this->accessToken
             ]);
 
+            if ($response->failed()) {
+                Log::error('Instagram status check error: ' . $response->body());
+                throw new RequestException($response);
+            }
+
             $data = $response->json();
+
+            if (empty($data['status_code'])) {
+                throw new \Exception('وضعیت نامعتبر: ' . json_encode($data));
+            }
 
             if (in_array($data['status_code'], $validStatusCodes)) {
                 return;
@@ -201,7 +227,7 @@ class InstagramService
             }
 
             $attempts++;
-            sleep(3); // افزایش زمان انتظار برای ویدیوها
+            sleep(3);
 
         } while ($attempts < $maxAttempts);
 
@@ -213,15 +239,22 @@ class InstagramService
      */
     protected function publishMedia(string $containerId): array
     {
-        $response = Http::post($this->baseUrl . $this->instagramAccountId . '/media_publish', [
+        $response = $this->http->asForm()->post($this->baseUrl . $this->instagramAccountId . '/media_publish', [
             'creation_id' => $containerId,
             'access_token' => $this->accessToken
         ]);
 
         if ($response->failed()) {
+            Log::error('Instagram publish error: ' . $response->body());
             throw new RequestException($response);
         }
 
-        return $response->json();
+        $data = $response->json();
+        
+        if (empty($data['id'])) {
+            throw new \Exception('خطا در انتشار محتوا: ' . json_encode($data));
+        }
+
+        return $data;
     }
 }

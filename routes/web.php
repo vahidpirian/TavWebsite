@@ -51,6 +51,12 @@ Route::get('/linkedin', function () {
     dd($result);
 });
 
+Route::get('/instagram', function () {
+    $instagram = new \App\Services\Instagram\InstagramService();
+    $result = $instagram->createPost('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D','posted by laravel');
+    dd($result);
+});
+
 Route::prefix('admin')->middleware(['is_admin'])->group(function () {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
@@ -97,6 +103,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
             Route::get('/edit/{menu}', [MenuController::class, 'edit'])->name('admin.content.menu.edit');
             Route::put('/update/{menu}', [MenuController::class, 'update'])->name('admin.content.menu.update');
             Route::delete('/destroy/{menu}', [MenuController::class, 'destroy'])->name('admin.content.menu.destroy');
+            Route::post('/sort', [MenuController::class, 'sort'])->name('admin.content.menu.sort');
             Route::get('/status/{menu}', [MenuController::class, 'status'])->name('admin.content.menu.status');
         });
 

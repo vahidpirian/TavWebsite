@@ -17,7 +17,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::latest()->simplePaginate(15);
+        $menus = Menu::orderBy('sort_order')->simplePaginate(15);
         return view('admin.content.menu.index', compact('menus'));
     }
 
@@ -94,6 +94,21 @@ class MenuController extends Controller
     {
         $result = $menu->delete();
         return redirect()->route('admin.content.menu.index')->with('swal-success', ' منو شما با موفقیت حذف شد');
+    }
+
+    public function sort(Request $request)
+    {
+        try {
+            $items = $request->input('items', []);
+
+            foreach($items as $item) {
+                Menu::where('id', $item['id'])->update(['sort_order' => $item['sort']]);
+            }
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
 

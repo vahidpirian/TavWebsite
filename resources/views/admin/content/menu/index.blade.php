@@ -2,6 +2,7 @@
 
 @section('head-tag')
 <title>منو</title>
+<script src="{{asset('admin-assets/js/Sortable.min.js')}}"></script>
 @endsection
 
 @section('content')
@@ -43,9 +44,9 @@
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="sortable-table">
                         @foreach ($menus as $key => $menu)
-                        <tr>
+                        <tr data-id="{{ $menu->id }}">
                             <th>{{ $key + 1 }}</th>
                             <td>{{ $menu->name }}</td>
                             <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
@@ -116,5 +117,48 @@
 
 @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var el = document.getElementById('sortable-table');
+    var sortable = Sortable.create(el, {
+        animation: 150,
+        ghostClass: 'bg-light',
+        onEnd: function(evt) {
+            var itemEl = evt.item;
+            var rows = Array.from(el.getElementsByTagName('tr'));
+            var sortData = rows.map((row, index) => {
+                return {
+                    id: row.dataset.id,
+                    sort: index + 1
+                };
+            });
+
+            // ارسال داده‌ها به سرور
+            fetch('{{ route("admin.content.menu.sort") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ items: sortData })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    // نمایش پیام موفقیت‌آمیز
+                    successToast('ترتیب منوها با موفقیت ذخیره شد');
+                } else {
+                    // نمایش پیام خطا
+                    errorToast('خطا در ذخیره‌سازی ترتیب منوها');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('خطا در ذخیره‌سازی ترتیب منوها');
+            });
+        }
+    });
+});
+</script>
 
 @endsection

@@ -15,6 +15,4 @@
             $('.toast').toast('show');
         })
     </script>
-
-
 @endif

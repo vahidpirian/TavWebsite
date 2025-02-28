@@ -10,9 +10,8 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name','url_type', 'url', 'parent_id', 'status'];
+    protected $fillable = ['name','url_type', 'url', 'parent_id', 'sort_order' ,'status'];
 
     public function parent()
     {
