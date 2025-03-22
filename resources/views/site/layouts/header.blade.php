@@ -5,6 +5,35 @@
     </div>
 </div>
 
+<div class="top-header-desktop">
+    <div class="menu-nav-top">
+        <nav>
+            <ul>
+                <li><a href="" class="active">صفحه نخست</a></li>
+                <li><a href="">وبلاگ</a></li>
+                <li><a href="">سوالات متداول</a></li>
+                <li><a href="">درباره ما</a></li>
+                <li><a href="">تماس با ما</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="contact-nav-top">
+        <p class="support-text">
+            <i class="fas fa-headset support-icon"></i>
+            پاسخگوی پرسش‌های شما هستیم...
+        </p>
+        <a href="tel:02188815408" class="phone-number">
+            <i class="fas fa-phone-alt phone-icon"></i>
+            <span class="number">88815408</span>
+            <span class="area-code">021</span>
+        </a>
+
+    </div>
+</div>
+
+
 <header class="header-wrapper">
     <div class="main-header">
         <nav class="navbar navbar-expand-lg">

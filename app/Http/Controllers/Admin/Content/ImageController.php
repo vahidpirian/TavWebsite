@@ -45,7 +45,7 @@ class ImageController extends Controller
 
         Image::create($inputs);
 
-        return redirect()->route('admin.content.images.index')
+        return redirect()->route('admin.content.image.index')
             ->with('swal-success', 'تصویر با موفقیت اضافه شد');
     }
 
@@ -84,7 +84,7 @@ class ImageController extends Controller
 
         $image->update($inputs);
 
-        return redirect()->route('admin.content.images.index')
+        return redirect()->route('admin.content.image.index')
             ->with('swal-success', 'تصویر با موفقیت بروزرسانی شد');
     }
 
@@ -93,7 +93,7 @@ class ImageController extends Controller
         $imageService->deleteImage($image->image);
         $image->delete();
 
-        return redirect()->route('admin.content.images.index')
+        return redirect()->route('admin.content.image.index')
             ->with('swal-success', 'تصویر با موفقیت حذف شد');
     }
 }

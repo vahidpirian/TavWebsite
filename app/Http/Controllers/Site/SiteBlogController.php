@@ -55,7 +55,7 @@ class SiteBlogController extends Controller
 
         $categories = PostCategory::where('status', 1)->take(8)->get();
 
-        $comments = $post->comments()->where('approved', 1)->get();
+        $comments = $post->comments()->whereNull('parent_id')->where('approved', 1)->get();
 
         $banners = Banner::whereIn('position', [11,14])->get();
 

@@ -98,6 +98,60 @@
                                         </div>
                                     </div>
 
+                                    <!-- بخش لوگو و آیکون -->
+                                    <div class="card">
+                                        <div class="card-header" id="headingLogo">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-block text-right collapsed" type="button" data-toggle="collapse" data-target="#collapseLogo">
+                                                    تنظیمات لوگو و آیکون
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseLogo" class="collapse" data-parent="#settingsAccordion">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <section class="col-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="logo">لوگو</label>
+                                                            <input type="file" class="form-control form-control-sm" name="logo" id="logo">
+                                                            <div class="mt-2">
+                                                                @if($setting->logo)
+                                                                    <img src="{{ asset($setting->logo) }}" alt="لوگو" class="img-fluid" style="max-width: 100px">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        @error('logo')
+                                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </span>
+                                                        @enderror
+                                                    </section>
+
+                                                    <section class="col-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="icon">آیکون (favicon)</label>
+                                                            <input type="file" class="form-control form-control-sm" name="icon" id="icon">
+                                                            <div class="mt-2">
+                                                                @if($setting->icon)
+                                                                    <img src="{{ asset($setting->icon) }}" alt="آیکون" class="img-fluid" style="max-width: 32px">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        @error('icon')
+                                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </span>
+                                                        @enderror
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- بخش تنظیمات صفحه اصلی -->
                                     <div class="card">
                                         <div class="card-header" id="headingMainPage">

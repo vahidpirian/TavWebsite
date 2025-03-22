@@ -43,7 +43,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="blog-item">
                             <div class="blog-item-img">
-                                <img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
+                                <img style="width: 100%" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                             </div>
                             <div class="blog-item-info">
                                 <div class="blog-item-meta">
@@ -55,7 +55,7 @@
                                 <h4 class="blog-title">
                                     <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                                 </h4>
-                                <p>{{ mb_substr($post->summary,0,150).'...' }}</p>
+                                <p style="min-height: 86px">{{ mb_substr($post->summary,0,85).'...' }}</p>
                                 <a class="theme-btn" href="{{ route('blog.show', $post->slug) }}">بیشتر بخوانید</a>
                             </div>
                         </div>
