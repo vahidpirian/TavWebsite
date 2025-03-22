@@ -138,9 +138,9 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-shape">
-                <img src="{{asset('app-assets/img/shape-1.png')}}" alt="">
-            </div>
+{{--            <div class="hero-shape">--}}
+{{--                <img src="{{asset('app-assets/img/shape-1.png')}}" alt="">--}}
+{{--            </div>--}}
         </div>
     </div>
 
