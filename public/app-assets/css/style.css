@@ -3481,3 +3481,76 @@ html[dir="rtl"] .me-auto {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin: 12px auto 10px;
 }
+
+/* New Top Header Styles */
+.top-header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.top-header .language-selector .lang-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+}
+
+.top-header .language-selector .lang-item.active {
+    font-weight: 600;
+}
+
+.top-header .top-logo {
+    display: inline-block;
+}
+
+.top-header .slogan {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.top-header .top-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.top-header .top-menu ul li {
+    margin-right: 15px;
+}
+
+.top-header .top-menu ul li:last-child {
+    margin-right: 0;
+}
+
+.top-header .top-menu ul li a {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.top-header .top-menu ul li a:hover {
+    color: #0049d0;
+}
+
+@media (max-width: 991px) {
+    .top-header .top-menu ul {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .top-header .slogan {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .top-header .top-menu ul li {
+        margin-right: 8px;
+        font-size: 12px;
+    }
+}
+/* End New Top Header Styles */

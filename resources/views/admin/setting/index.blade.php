@@ -77,7 +77,7 @@
                                             <label class="font-weight-bold">لوگو سایت:</label>
                                             <div class="mt-2">
                                                 @if(!is_null($setting->logo))
-                                                    <img src="{{ asset($setting->logo) }}" alt="لوگو سایت" class="img-fluid" style="max-height: 100px">
+                                                    <img width="50px" src="{{ asset($setting->logo) }}" alt="لوگو سایت" class="img-fluid" style="max-height: 100px">
                                                 @else
                                                     <span class="badge badge-info">تصویر لوگو موجود نیست</span>
                                                 @endif
@@ -87,7 +87,7 @@
                                             <label class="font-weight-bold">آیکون سایت:</label>
                                             <div class="mt-2">
                                                 @if($setting->icon)
-                                                    <img src="{{ asset($setting->icon) }}" alt="آیکون سایت" class="img-fluid" style="max-height: 100px">
+                                                    <img width="50px" src="{{ asset($setting->icon) }}" alt="آیکون سایت" class="img-fluid" style="max-height: 100px">
                                                 @else
                                                     <span class="badge badge-info">تصویر آیکون موجود نیست</span>
                                                 @endif

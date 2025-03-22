@@ -123,7 +123,7 @@
                                 <div class="contact-info-content">
                                     <h5>شبکه های اجتماعی</h5>
                                     <ul>
-                                        @foreach($setting->socials as $social)
+                                        @foreach($setting->socials ?? [] as $social)
                                             @if($social['status'] == '1')
                                                 <li><a href="{{$social['link']}}"><i class="{{$social['icon']}}"></i></a></li>
                                             @endif
