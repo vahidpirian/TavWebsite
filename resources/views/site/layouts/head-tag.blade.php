@@ -15,14 +15,20 @@
 
 <style>
     .top-header-desktop {
+        background-color: #f8fafc;
+        padding: 10px 0;
+        font-family: Yekan;
+    }
+
+    .top-header-nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 40px;
-        background: #fff;
-        height: 45px;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        margin-bottom: 10px;
+    }
+
+    .top-header-content,
+    .top-header-nav {
+        padding: 0;
     }
 
     .menu-nav-top nav ul {
@@ -146,5 +152,280 @@
     }
 
 
+    .top-header {
+        background-color: #fff;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
 
+    .top-header-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .brand {
+        flex-shrink: 0;
+    }
+
+    .brand a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+    }
+
+    .brand img {
+        height: 35px;
+        width: 130px;
+    }
+
+    .brand span {
+        color: #1e3a8a;
+        font-family: 'yekan', sans-serif;
+        font-size: 18px;
+    }
+
+    .service-menu {
+        flex-grow: 1;
+    }
+
+    .service-menu ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 25px;
+        font-family: Yekan;
+    }
+
+    .service-menu ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #8c919c;
+        font-size: 14px;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .service-menu .icon-box {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8fafc; /* همیشه خاکستری روشن */
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .service-menu .icon-box i {
+        font-size: 20px;
+        color: #8c919c;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover Effects */
+    .service-menu ul li a:hover {
+        color: #0088ff;
+    }
+
+    .service-menu ul li a:hover .icon-box i {
+        color: #0088ff; /* فقط آیکون آبی می‌شود */
+    }
+
+    /* Active state */
+    .service-menu ul li a.active {
+        color: #0088ff;
+    }
+
+    .service-menu ul li a.active .icon-box i {
+        color: #0088ff; /* فقط آیکون آبی می‌شود */
+    }
+
+    /* Desktop/Mobile Visibility */
+    @media (max-width: 992px) {
+        .top-header-desktop,
+        .service-menu {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .mobile-menu,
+        .mobile-menu-toggle {
+            display: none;
+        }
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu-toggle {
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #fff;
+        z-index: 1000;
+        transition: 0.3s ease;
+        font-family: Yekan;
+    }
+
+    .mobile-menu.active {
+        right: 0;
+    }
+
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+    }
+
+    .mobile-menu.active .mobile-menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-container {
+        height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .mobile-menu-close {
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .mobile-menu-logo img {
+        height: 40px;
+    }
+
+    .mobile-nav,
+    .mobile-services {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-nav li a,
+    .mobile-services li a {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        color: #64748b;
+        text-decoration: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .mobile-services li a .icon-box {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px;
+    }
+
+    /* Site Overlay */
+    .site-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 997;
+        display: none;
+    }
+
+    .site-overlay.active {
+        display: block;
+    }
+
+    /* Mobile Header */
+    .mobile-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        background: #fff;
+        z-index: 998;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        height: 60px;
+    }
+
+    .mobile-header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 15px;
+    }
+
+    .mobile-logo {
+        margin-right: 0; /* لوگو سمت راست */
+    }
+
+    .mobile-logo img {
+        height: 35px;
+        width: 130px;
+    }
+
+    .mobile-menu-toggle {
+        margin-left: 0; /* دکمه سمت چپ */
+    }
+
+    .mobile-menu-toggle i {
+        font-size: 24px;
+    }
+
+    /* Desktop/Mobile Visibility */
+    @media (max-width: 992px) {
+        .top-header-desktop,
+        .top-header {
+            display: none;
+        }
+
+        .mobile-header {
+            display: block;
+        }
+
+        body {
+            padding-top: 60px;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .mobile-header,
+        .mobile-menu,
+        .site-overlay {
+            display: none;
+        }
+    }
 </style>
