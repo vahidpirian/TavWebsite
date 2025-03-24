@@ -2,6 +2,28 @@
 
 @section('head-tag')
 <title>منو</title>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .select2-container .select2-selection--single {
+        height: 38px;
+    }
+    .select2-selection__rendered {
+        line-height: 36px !important;
+    }
+    .select2-selection__arrow {
+        height: 36px !important;
+    }
+    .icon-select-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .icon-select-option i {
+        font-size: 16px;
+        width: 20px;
+        text-align: center;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -70,6 +92,46 @@
                                 </strong>
                             </span>
                         @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="">نوع منو</label>
+                                <select name="type" id="menuType" class="form-control form-control-sm">
+                                    <option value="normal" @if(old('type', $menu->type) == 'normal') selected @endif>منو عادی</option>
+                                    <option value="service" @if(old('type', $menu->type) == 'service') selected @endif>منو سرویس</option>
+                                </select>
+                            </div>
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="">آیکون منو</label>
+                                <select name="icon" id="iconSelect" class="form-control form-control-sm">
+                                    <option value="">بدون آیکون</option>
+                                    <optgroup label="آیکون‌های عمومی">
+                                        @foreach($icons['normal'] as $icon)
+                                            <option value="{{ $icon['icon'] }}"
+                                                    data-icon="{{ $icon['icon'] }}"
+                                                    data-type="normal"
+                                                    @if(old('icon', $menu->icon) == $icon['icon']) selected @endif>
+                                                {{ $icon['label'] }}
+                                            </option>
+                                        @endforeach
+                                    </optgroup>
+                                    <optgroup label="آیکون‌های سرویس">
+                                        @foreach($icons['service'] as $icon)
+                                            <option value="{{ $icon['value'] }}"
+                                                    data-icon="{{ $icon['icon'] }}"
+                                                    data-type="service"
+                                                    @if(old('icon', $menu->icon) == $icon['value']) selected @endif>
+                                                {{ $icon['label'] }}
+                                            </option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                            </div>
+                           
                         </section>
 
                         <section class="col-12 col-md-6">
@@ -146,24 +208,99 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#urlType').on('change', function() {
-            let selectedType = $(this).val();
-            if(selectedType === 'url') {
-                $('#urlInput').prop('type', 'text').show();
-                $('#pageSelect').prop('disabled', true).hide();
+$(document).ready(function() {
+    // راه‌اندازی select2
+    $('#iconSelect').select2({
+        placeholder: 'یک آیکون انتخاب کنید...',
+        dir: 'rtl',
+        language: 'fa',
+        templateResult: formatIconOption,
+        templateSelection: formatIconOption
+    });
+
+    // فرمت‌بندی نمایش آیکون‌ها در select2
+    function formatIconOption(option) {
+        if (!option.id) {
+            return option.text;
+        }
+
+        var icon = $(option.element).data('icon');
+        if (!icon) {
+            return option.text;
+        }
+
+        var $option = $(
+            '<span class="icon-select-option">' +
+                '<i class="' + icon + '"></i>' +
+                '<span>' + option.text + '</span>' +
+            '</span>'
+        );
+
+        return $option;
+    }
+
+    // فیلتر آیکون‌ها بر اساس نوع منو
+    $('#menuType').on('change', function() {
+        var menuType = $(this).val();
+        var currentValue = $('#iconSelect').val();
+
+        $('#iconSelect').find('option').each(function() {
+            var iconType = $(this).data('type');
+            if (!iconType || iconType === menuType) {
+                $(this).prop('disabled', false);
             } else {
-                $('#urlInput').prop('type', 'hidden');
-                $('#pageSelect').prop('disabled', false).show();
+                $(this).prop('disabled', true);
             }
         });
 
-        $('#pageSelect').on('change', function() {
-            let selectedOption = $(this).find('option:selected');
-            let pageUrl = selectedOption.val();
-            $('#urlInput').val(pageUrl);
+        var currentOption = $('#iconSelect').find('option:selected');
+        if (currentOption.data('type') && currentOption.data('type') !== menuType) {
+            $('#iconSelect').val('').trigger('change');
+        }
+
+        $('#iconSelect').select2('destroy').select2({
+            placeholder: 'یک آیکون انتخاب کنید...',
+            dir: 'rtl',
+            language: 'fa',
+            templateResult: formatIconOption,
+            templateSelection: formatIconOption
         });
     });
+
+
+
+    // تغییر نمایش فیلدها بر اساس نوع لینک
+    $('#urlType').on('change', function() {
+        var urlType = $(this).val();
+        
+        if (urlType === 'url') {
+            $('#urlInput').attr('type', 'text').show();
+            $('#pageSelect').hide();
+        } else {
+            $('#urlInput').attr('type', 'hidden');
+            $('#pageSelect').show();
+            if ($('#pageSelect').val()) {
+                $('#urlInput').val($('#pageSelect').val());
+            }
+        }
+    });
+
+    // وقتی صفحه‌ای انتخاب می‌شود
+    $('#pageSelect').on('change', function() {
+        var selectedPageUrl = $(this).val();
+        if (selectedPageUrl) {
+            $('#urlInput').val(selectedPageUrl);
+        }
+    });
+
+    // اجرای اولیه برای تنظیم حالت صحیح نمایش
+    if ($('#iconSelect').val()) {
+        $('#iconSelect').trigger('change');
+    }
+    $('#urlType').trigger('change');
+    $('#menuType').trigger('change');
+});
 </script>
 @endsection

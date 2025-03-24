@@ -36,7 +36,6 @@
         }
         .feature-item {
             padding: 30px 25px;
-            background: #f4f5f5;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
@@ -144,7 +143,7 @@
         </div>
     </div>
 
-    <div class="feature-area pt-120">
+    <div class="feature-area">
         <div class="container">
             <div class="feature-area-wrapper">
                 <div class="row">

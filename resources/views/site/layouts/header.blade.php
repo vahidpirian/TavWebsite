@@ -11,7 +11,7 @@
             <div class="menu-nav-top">
                 <nav>
                     <ul>
-                        @foreach($menus as $menu)
+                        @foreach($menus->where('type','normal') as $menu)
                             <li><a href="{{$menu->url}}" class="{{$menu->url == request()->url() ? 'active' : ''}}">{{$menu->name}}</a></li>
                         @endforeach
 
@@ -53,38 +53,16 @@
             </div>
             <div class="service-menu">
                 <ul>
-                    <li>
-                        <a href="#">
-                            <div class="icon-box">
-                                <i class="fas fa-box"></i>
-                            </div>
-                            ارسال سمپل
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon-box">
-                                <i class="fas fa-plane"></i>
-                            </div>
-                            حمل و نقل هوایی
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon-box">
-                                <i class="fas fa-ship"></i>
-                            </div>
-                            حمل و نقل دریایی
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon-box">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            صفر تا صد واردات از چین
-                        </a>
-                    </li>
+                    @foreach($menus->where('type','service') as $menu)
+                        <li>
+                            <a href="{{$menu['url']}}">
+                                <div class="icon-box">
+                                    <i class="{{$menu['icon']}}"></i>
+                                </div>
+                                {{$menu['name']}}
+                            </a>
+                        </li>
+                    @endforeach
                     <li>
                         <a href="{{ route('service.index') }}">
                             <div class="icon-box">
@@ -131,7 +109,7 @@
         </div>
         <div class="mobile-menu-body">
             <ul class="mobile-nav">
-                @foreach($menus as $menu)
+                @foreach($menus->where('type','normal') as $menu)
                     <li><a href="{{$menu->url}}" class="{{$menu->url == request()->url() ? 'active' : ''}}">{{$menu->name}}</a></li>
                 @endforeach
                 <li><a href="{{route('login')}}">ورود/ثبت نام</a></li>
