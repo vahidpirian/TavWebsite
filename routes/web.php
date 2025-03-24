@@ -36,26 +36,6 @@ use App\Http\Controllers\Auth\User\AuthUserRegisterController;
 use App\Http\Controllers\Site\MyAccount\MyAccountController;
 use App\Http\Controllers\Site\MyAccount\MyAccountTicketController as MyAccountTicketController;
 
-// routes/web.php
-Route::get('/callback/linkedin', function (\Illuminate\Http\Request $request) {
-    $code = $request->query('code');
-    if ($code) {
-        return "کد دریافت شد: " . $code;
-    }
-    return "خطا: کدی دریافت نشد!";
-});
-
-Route::get('/linkedin', function () {
-    $linkedinService = new App\Services\LinkedIn\LinkedInService();
-    $result = $linkedinService->createImagePost('تست پست با عکس!', asset('logo.png'));
-    dd($result);
-});
-
-Route::get('/instagram', function () {
-    $instagram = new \App\Services\Instagram\InstagramService();
-    $result = $instagram->createPost('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D','posted by laravel');
-    dd($result);
-});
 
 Route::prefix('admin')->middleware(['is_admin'])->group(function () {
 
