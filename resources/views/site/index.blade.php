@@ -36,7 +36,7 @@
         }
         .feature-item {
             padding: 30px 25px;
-            background: #fff;
+            background: #f4f5f5;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;

@@ -15,9 +15,9 @@
 
 <style>
     .top-header-desktop {
-        background-color: #f8fafc;
         padding: 10px 0;
         font-family: Yekan;
+        border-bottom: 1px solid #eee9e9;
     }
 
     .top-header-nav {
@@ -63,6 +63,84 @@
             display: none;
         }
     }
+
+    /* استایل اصلی منو بدون تغییر */
+    .menu-nav-top nav > ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 25px;
+    }
+
+    .menu-nav-top nav ul li.has-dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 0; /* حذف padding اضافی */
+        margin: 0; /* حذف margin اضافی */
+        height: 100%; /* اطمینان از یکسان بودن ارتفاع */
+    }
+
+    .menu-nav-top nav ul li.has-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: 3px;
+    }
+
+    .menu-nav-top nav ul li.has-dropdown > a i {
+        font-size: 12px;
+        margin-right: 3px;
+        margin-top: 2px; /* تنظیم موقعیت آیکون */
+    }
+
+    /* استایل زیرمنو */
+    .menu-nav-top nav ul li.has-dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #fff;
+        min-width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: block !important;
+    }
+
+    /* نمایش زیرمنو در هنگام هاور */
+    .menu-nav-top nav ul li.has-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+    }
+
+    /* استایل آیتم‌های زیرمنو */
+    .menu-nav-top nav ul li.has-dropdown .dropdown-menu li {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-nav-top nav ul li.has-dropdown .dropdown-menu li a {
+        display: block;
+        padding: 8px 20px;
+        color: #64748b;
+        font-size: 13px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-nav-top nav ul li.has-dropdown .dropdown-menu li a:hover {
+        background-color: #f8fafc;
+        color: #0088ff;
+        padding-right: 25px;
+    }
+
     .contact-nav-top {
         display: flex;
         align-items: center;
@@ -155,7 +233,7 @@
     .top-header {
         background-color: #fff;
         padding: 15px 0;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #f0dede;
     }
 
     .top-header-content {
@@ -177,7 +255,7 @@
 
     .brand img {
         height: 35px;
-        width: 130px;
+        width: 145px;
     }
 
     .brand span {
@@ -265,10 +343,7 @@
 
     /* Mobile Menu Styles */
     .mobile-menu-toggle {
-        background: #fff;
-        border-radius: 5px;
         cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .mobile-menu {
@@ -427,5 +502,15 @@
         .site-overlay {
             display: none;
         }
+    }
+
+    /* فقط این دو استایل را اضافه/اصلاح کنید */
+    .dropdown-menu {
+        display: block !important; /* مهم: برای اطمینان از عمودی بودن */
+    }
+
+    .dropdown-menu li {
+        display: block !important;
+        width: 100%;
     }
 </style>

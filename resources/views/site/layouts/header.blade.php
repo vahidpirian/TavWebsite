@@ -11,11 +11,19 @@
             <div class="menu-nav-top">
                 <nav>
                     <ul>
-                        <li><a href="" class="active">صفحه نخست</a></li>
-                        <li><a href="">وبلاگ</a></li>
-                        <li><a href="">سوالات متداول</a></li>
-                        <li><a href="">درباره ما</a></li>
-                        <li><a href="">تماس با ما</a></li>
+                        @foreach($menus as $menu)
+                            <li><a href="{{$menu->url}}" class="{{$menu->url == request()->url() ? 'active' : ''}}">{{$menu->name}}</a></li>
+                        @endforeach
+
+                        <li class="has-dropdown">
+                            <a href="#">صفحه‌ها <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                @foreach($pages as $page)
+                                    <li><a href="{{route('service.show',$page->id)}}">{{$page->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="{{route('login')}}">ورود/ثبت نام</a></li>
                     </ul>
                 </nav>
             </div>
@@ -27,8 +35,7 @@
                 </p>
                 <a href="tel:02188815408" class="phone-number">
                     <i class="fas fa-phone-alt phone-icon"></i>
-                    <span class="number">88815408</span>
-                    <span class="area-code">021</span>
+                    <span class="number">{{$setting->mobile}}</span>
                 </a>
             </div>
         </div>
@@ -46,14 +53,6 @@
             </div>
             <div class="service-menu">
                 <ul>
-                    <li>
-                        <a href="{{ route('home') }}">
-                            <div class="icon-box">
-                                <i class="fas fa-th"></i>
-                            </div>
-                            سایر خدمات
-                        </a>
-                    </li>
                     <li>
                         <a href="#">
                             <div class="icon-box">
@@ -84,6 +83,14 @@
                                 <i class="fas fa-building"></i>
                             </div>
                             صفر تا صد واردات از چین
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('service.index') }}">
+                            <div class="icon-box">
+                                <i class="fas fa-th"></i>
+                            </div>
+                            سایر خدمات
                         </a>
                     </li>
                 </ul>
@@ -124,22 +131,10 @@
         </div>
         <div class="mobile-menu-body">
             <ul class="mobile-nav">
-                <li><a href="" class="active">صفحه نخست</a></li>
-                <li><a href="">وبلاگ</a></li>
-                <li><a href="">سوالات متداول</a></li>
-                <li><a href="">درباره ما</a></li>
-                <li><a href="">تماس با ما</a></li>
-            </ul>
-            <ul class="mobile-services">
-                <li>
-                    <a href="#">
-                        <div class="icon-box">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        ارسال سمپل
-                    </a>
-                </li>
-                <!-- سایر آیتم‌های منو -->
+                @foreach($menus as $menu)
+                    <li><a href="{{$menu->url}}" class="{{$menu->url == request()->url() ? 'active' : ''}}">{{$menu->name}}</a></li>
+                @endforeach
+                <li><a href="{{route('login')}}">ورود/ثبت نام</a></li>
             </ul>
         </div>
     </div>
