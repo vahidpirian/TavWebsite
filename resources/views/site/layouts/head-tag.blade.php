@@ -420,6 +420,14 @@
         border-bottom: 1px solid #eee;
     }
 
+    .mobile-nav li a:hover{
+        color: #0088ff;
+    }
+
+    .mobile-nav li a.active{
+        color: #0088ff;
+    }
+
     .mobile-services li a .icon-box {
         width: 35px;
         height: 35px;

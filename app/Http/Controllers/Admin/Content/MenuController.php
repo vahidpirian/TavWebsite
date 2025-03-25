@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Content;
 
 use App\Models\Content\Menu;
 use App\Models\Content\Page;
+use App\Models\Content\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\MenuRequest;
@@ -30,7 +31,10 @@ class MenuController extends Controller
     {
         $menus = Menu::where('parent_id', null)->get();
         $pages = Page::where('status', 1)->get();
-        return view('admin.content.menu.create', compact('menus','pages'));
+        $services = Service::where('status', 1)->get();
+        $icons = config('icons');
+
+        return view('admin.content.menu.create', compact('menus','pages','services','icons'));
     }
 
     /**
@@ -67,7 +71,9 @@ class MenuController extends Controller
     {
         $parent_menus = Menu::where('parent_id', null)->get()->except($menu->id);
         $pages = Page::where('status', 1)->get();
-        return view('admin.content.menu.edit', compact('menu' ,'parent_menus','pages'));
+        $services = Service::where('status', 1)->get();
+        $icons = config('icons');
+        return view('admin.content.menu.edit', compact('menu' ,'services','icons','pages','parent_menus','pages'));
     }
 
     /**

@@ -38,6 +38,7 @@
                         <tr>
                             <th>#</th>
                             <th>نام منو</th>
+                            <th>نوع منو</th>
                             <th>منوی والد</th>
                             <th> لینک منو</th>
                             <th>وضعیت</th>
@@ -49,6 +50,7 @@
                         <tr data-id="{{ $menu->id }}">
                             <th>{{ $key + 1 }}</th>
                             <td>{{ $menu->name }}</td>
+                            <td>{{ $menu->type == 'normal' ? 'عادی' : 'سرویس'}}</td>
                             <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
                             <td>{{ $menu->url }}</td>
                             <td>
