@@ -131,7 +131,7 @@
                                     </optgroup>
                                 </select>
                             </div>
-                           
+
                         </section>
 
                         <section class="col-12 col-md-6">
@@ -154,17 +154,28 @@
                                     @if(old('url_type', $menu->url_type) != 'page') disabled @endif
                                     style="display: @if(old('url_type', $menu->url_type) != 'page') none @endif">
                                     <option value="">انتخاب صفحه</option>
+                                    <optgroup label="ثابت ها">
                                     <option value="{{route('home')}}" @if(old('page_id', $menu->url) == route('home')) selected @endif>خانه</option>
                                     <option value="{{route('service.index')}}" @if(old('page_id', $menu->url) == route('service.index')) selected @endif>خدمات ها</option>
                                     <option value="{{route('project.index')}}" @if(old('page_id', $menu->url) == route('project.index')) selected @endif>پروژه ها</option>
                                     <option value="{{route('blog.index')}}" @if(old('page_id', $menu->url) == route('blog.index')) selected @endif>وبلاگ</option>
                                     <option value="{{route('faq')}}" @if(old('page_id', $menu->url) == route('faq')) selected @endif>سوالات متداول</option>
                                     <option value="{{route('contact.index')}}" @if(old('page_id', $menu->url) == route('contact.index')) selected @endif>تماس باما</option>
+                                    </optgroup>
+                                    <optgroup label="صحف ها">
                                     @foreach ($pages as $page)
                                         <option value="{{ route('page',$page->slug) }}" @if(old('page_id', $menu->url) == route('page',$page->slug)) selected @endif>
                                             {{ $page->title }}
                                         </option>
                                     @endforeach
+                                    </optgroup>
+                                    <optgroup label="سرویس ها">
+                                        @foreach ($services as $service)
+                                            <option value="{{ route('service.show',$service->id) }}" @if(old('page_id', $menu->url) == route('service.show',$service->id)) selected @endif>
+                                                {{ $service->title }}
+                                            </option>
+                                        @endforeach
+                                    </optgroup>
                                 </select>
                             </div>
                             @error('url')
@@ -274,7 +285,7 @@ $(document).ready(function() {
     // تغییر نمایش فیلدها بر اساس نوع لینک
     $('#urlType').on('change', function() {
         var urlType = $(this).val();
-        
+
         if (urlType === 'url') {
             $('#urlInput').attr('type', 'text').show();
             $('#pageSelect').hide();
