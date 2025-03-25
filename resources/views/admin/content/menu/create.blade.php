@@ -168,7 +168,7 @@
                                     </optgroup>
                                     <optgroup label="سرویس ها">
                                         @foreach ($services as $service)
-                                            <option value="{{ route('service.show',$service->slug) }}" @if(old('page_id') == route('service.show',$service->slug)) selected @endif>
+                                            <option value="{{ route('service.show',$service->id) }}" @if(old('page_id') == route('service.show',$service->id)) selected @endif>
                                                 {{ $service->title }}
                                             </option>
                                         @endforeach
