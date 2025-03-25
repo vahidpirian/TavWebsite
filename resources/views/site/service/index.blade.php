@@ -3,19 +3,18 @@
     <title>خدمات ها</title>
 @endsection
 @section('content')
-    <div class="site-breadcrumb">
-        <div class="container">
-            <h2 class="breadcrumb-title">خدمات ها</h2>
-            <ul class="breadcrumb-menu">
-                <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
-                    </a></li>
-                <li class="active">خدمات ها</li>
-            </ul>
-        </div>
-        <div class="breadcrumb-shape">
-            <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">
-        </div>
-    </div>
+{{--    <div class="site-breadcrumb">--}}
+{{--        <div class="container">--}}
+{{--            <ul class="breadcrumb-menu">--}}
+{{--                <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی--}}
+{{--                    </a></li>--}}
+{{--                <li class="active">خدمات ها</li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--        <div class="breadcrumb-shape">--}}
+{{--            <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
     <div class="service-area bg py-120">
@@ -59,6 +58,11 @@
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ $services->links() }}
+            </div>
         </div>
         @if($banners && $banners->where('position',6)->first())
             <div class="container">

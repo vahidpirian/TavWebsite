@@ -3,21 +3,19 @@
     <title>پروژه ها</title>
 @endsection
 @section('content')
-        <div class="site-breadcrumb">
-            <div class="container">
-                <h2 class="breadcrumb-title">پروژه
-                </h2>
-                <ul class="breadcrumb-menu">
-                    <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی
-                        </a></li>
-                    <li class="active">پروژه
-                    </li>
-                </ul>
-            </div>
-            <div class="breadcrumb-shape">
-                <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">
-            </div>
-        </div>
+{{--        <div class="site-breadcrumb">--}}
+{{--            <div class="container">--}}
+{{--                <ul class="breadcrumb-menu">--}}
+{{--                    <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی--}}
+{{--                        </a></li>--}}
+{{--                    <li class="active">پروژه--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--            <div class="breadcrumb-shape">--}}
+{{--                <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
         <div class="case-area py-120">

@@ -3761,12 +3761,13 @@ html[dir="rtl"] .me-auto {
     animation: fadeInDown 0.5s ease-out;
 }
 .bd-bt{
-    border-bottom: 1px solid #eee9e9
+    border-bottom: 1px solid #eee9e9;
+    padding-bottom: 4px;
 }
 
 .top-header {
     background-color: #fff;
-    padding: 15px 0;
+    padding: 8px 0;
 }
 
 .top-header-content {
