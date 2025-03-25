@@ -21,6 +21,7 @@ class Setting extends Model
         'email',
         'socials',
         'logo',
+        'logo_footer',
         'icon'
     ];
 

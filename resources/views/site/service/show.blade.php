@@ -38,9 +38,9 @@
                                     <h4 class="widget-title">کلیه خدمات
                                     </h4>
                                     <div class="category-list">
-                                        @foreach($services as $service)
-                                            <a href="{{route('service.show',$service->id)}}"><i class="far fa-angle-double-left"></i>
-                                                {{strlen($service->title) > 35 ? mb_substr($service->title,0,35).'...' : $service->title}}
+                                        @foreach($services as $item)
+                                            <a href="{{route('service.show',$item->id)}}"><i class="far fa-angle-double-left"></i>
+                                                {{strlen($item->title) > 35 ? mb_substr($item->title,0,35).'...' : $item->title}}
                                             </a>
                                         @endforeach
                                     </div>

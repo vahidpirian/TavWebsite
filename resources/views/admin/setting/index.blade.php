@@ -83,6 +83,18 @@
                                                 @endif
                                             </div>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="font-weight-bold">لوگو فوتر:</label>
+                                            <div class="mt-2">
+                                                @if(!is_null($setting->logo_footer))
+                                                    <img width="50px" src="{{ asset($setting->logo_footer) }}" alt="لوگو سایت" class="img-fluid" style="max-height: 100px">
+                                                @else
+                                                    <span class="badge badge-info">تصویر لوگو موجود نیست</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        
                                         <div class="mb-2">
                                             <label class="font-weight-bold">آیکون سایت:</label>
                                             <div class="mt-2">

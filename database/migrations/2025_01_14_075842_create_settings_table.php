@@ -22,10 +22,11 @@ class CreateSettingsTable extends Migration
             $table->string('main_page_title');
             $table->string('main_page_service_summary');
             $table->string('address')->nullable();
-            $table->bigInteger('mobile')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->json('socials')->nullable();
             $table->text('logo')->nullable();
+            $table->text('logo_footer')->nullable();
             $table->text('icon')->nullable();
 
             $table->timestamps();

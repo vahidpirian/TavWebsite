@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="recent-post-bio">
                                         <h6><a href="{{route('blog.show',$item->slug)}}">{{$item->title}}</a></h6>
-                                        <span><i class="far fa-clock"></i>12{{ jdate($item->created_at)->format('%d %B %Y') }}</span>
+                                        <span><i class="far fa-clock"></i>{{ jdate($item->created_at)->format('%d %B %Y') }}</span>
                                     </div>
                                 </div>
                             @endforeach

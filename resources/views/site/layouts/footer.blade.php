@@ -20,7 +20,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="footer-widget-box about-us">
                         <a href="#" class="footer-logo">
-                            <img src="{{asset($setting->logo)}}" alt="{{$setting->title}}">
+                            <img src="{{asset($setting->logo_footer)}}" alt="{{$setting->title}}">
                         </a>
                         <p class="mb-20">
                             راه های ارتباطی

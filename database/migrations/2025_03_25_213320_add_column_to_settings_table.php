@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('menus', function (Blueprint $table) {
-            $table->bigInteger('sort_order')->after('parent_id')->default(0);
+        Schema::table('settings', function (Blueprint $table) {
+            $table->text('logo_footer')->nullable()->after('logo');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('menus', function (Blueprint $table) {
+        Schema::table('settings', function (Blueprint $table) {
             //
         });
     }
