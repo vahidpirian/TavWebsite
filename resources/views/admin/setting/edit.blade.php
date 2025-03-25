@@ -131,6 +131,25 @@
 
                                                     <section class="col-12 col-md-6">
                                                         <div class="form-group">
+                                                            <label for="logo_footer">لوگو فوتر</label>
+                                                            <input type="file" class="form-control form-control-sm" name="logo_footer" id="logo_footer">
+                                                            <div class="mt-2">
+                                                                @if($setting->logo_footer)
+                                                                    <img src="{{ asset($setting->logo_footer) }}" alt="لوگو" class="img-fluid" style="max-width: 100px">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        @error('logo_footer')
+                                                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </span>
+                                                        @enderror
+                                                    </section>
+
+                                                    <section class="col-12 col-md-6">
+                                                        <div class="form-group">
                                                             <label for="icon">آیکون (favicon)</label>
                                                             <input type="file" class="form-control form-control-sm" name="icon" id="icon">
                                                             <div class="mt-2">

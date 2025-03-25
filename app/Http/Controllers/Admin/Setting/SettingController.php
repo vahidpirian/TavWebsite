@@ -96,6 +96,24 @@ class SettingController extends Controller
             }
             $inputs['logo'] = $result;
         }
+
+
+        if($request->hasFile('logo_footer'))
+        {
+            if(!empty($setting->logo_footer))
+            {
+                $imageService->deleteImage($setting->logo_footer);
+            }
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
+            $imageService->setImageName('logo_footer');
+            $result = $imageService->save($request->file('logo_footer'));
+            if($result === false)
+            {
+                return redirect()->route('admin.content.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            }
+            $inputs['logo_footer'] = $result;
+        }
+
         if($request->hasFile('icon'))
         {
             if(!empty($setting->icon))

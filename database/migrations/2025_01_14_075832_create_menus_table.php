@@ -18,8 +18,11 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->string('url')->nullable();
             $table->enum('url_type',['page','url'])->nullable();
+            $table->enum('type',['normal','service'])->default('normal');
+            $table->string('icon')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->foreignId('parent_id')->nullable()->constrained('menus');
+            $table->bigInteger('sort_order')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

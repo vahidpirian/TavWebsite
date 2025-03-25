@@ -6,7 +6,7 @@
 </div>
 
 <div class="top-header-desktop">
-    <div class="container">
+    <div class="container bd-bt">
         <div class="top-header-nav">
             <div class="menu-nav-top">
                 <nav>
@@ -15,14 +15,14 @@
                             <li><a href="{{$menu->url}}" class="{{$menu->url == request()->url() ? 'active' : ''}}">{{$menu->name}}</a></li>
                         @endforeach
 
-                        <li class="has-dropdown">
-                            <a href="#">صفحه‌ها <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                @foreach($pages as $page)
-                                    <li><a href="{{route('service.show',$page->id)}}">{{$page->title}}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
+{{--                        <li class="has-dropdown">--}}
+{{--                            <a href="#">صفحه‌ها <i class="fas fa-chevron-down"></i></a>--}}
+{{--                            <ul class="dropdown-menu">--}}
+{{--                                @foreach($pages as $page)--}}
+{{--                                    <li><a href="{{route('service.show',$page->id)}}">{{$page->title}}</a></li>--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
                         <li><a href="{{route('login')}}">ورود/ثبت نام</a></li>
                     </ul>
                 </nav>
@@ -33,9 +33,9 @@
                     <i class="fas fa-headset support-icon"></i>
                     پاسخگوی پرسش‌های شما هستیم...
                 </p>
-                <a href="tel:02188815408" class="phone-number">
+                <a href="tel:{{$setting->mobile}}" class="phone-number">
                     <i class="fas fa-phone-alt phone-icon"></i>
-                    <span class="number">{{$setting->mobile}}</span>
+                    <span class="number IRANSans">{{$setting->mobile}}</span>
                 </a>
             </div>
         </div>
@@ -44,7 +44,7 @@
 
 
 <div class="top-header">
-    <div class="container">
+    <div class="container bd-bt">
         <div class="top-header-content">
             <div class="brand">
                 <a href="{{ route('home') }}">
