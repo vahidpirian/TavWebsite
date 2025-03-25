@@ -1,18 +1,17 @@
 @extends('site.layouts.master')
 
 @section('content')
-    <div class="site-breadcrumb">
-        <div class="container">
-            <h2 class="breadcrumb-title">تماس با ما</h2>
-            <ul class="breadcrumb-menu">
-                <li><a href="{{ route('home') }}"><i class="far fa-home"></i> صفحه اصلی</a></li>
-                <li class="active">تماس با ما</li>
-            </ul>
-        </div>
-        <div class="breadcrumb-shape">
-            <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">
-        </div>
-    </div>
+{{--    <div class="site-breadcrumb">--}}
+{{--        <div class="container">--}}
+{{--            <ul class="breadcrumb-menu">--}}
+{{--                <li><a href="{{ route('home') }}"><i class="far fa-home"></i> صفحه اصلی</a></li>--}}
+{{--                <li class="active">تماس با ما</li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--        <div class="breadcrumb-shape">--}}
+{{--            <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="contact-area py-120">
         @if($banner)

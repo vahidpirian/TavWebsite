@@ -12,7 +12,7 @@ class SiteServiceController extends Controller
     {
         $services = Service::where('status', 1)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(12);
 
         $banners = Banner::whereIn('position', [3,6])->get();
 
