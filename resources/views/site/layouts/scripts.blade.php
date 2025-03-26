@@ -32,3 +32,69 @@
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        let searchTimeout;
+        const searchInput = $('#liveSearch');
+        const searchResults = $('#searchResults');
+        const searchLoading = $('#searchLoading');
+
+        searchInput.on('input', function() {
+            clearTimeout(searchTimeout);
+            const query = $(this).val();
+
+            if (query.length < 2) {
+                searchResults.hide();
+                return;
+            }
+
+            // نمایش لودینگ
+            searchResults.show();
+            searchLoading.show();
+
+            searchTimeout = setTimeout(() => {
+                $.ajax({
+                    url: '{{ route("site.search") }}',
+                    method: 'GET',
+                    data: { query: query },
+                    success: function(response) {
+                        searchLoading.hide();
+                        displayResults(response.data);
+                    },
+                    error: function() {
+                        searchLoading.hide();
+                        searchResults.html('<div class="p-3 text-center">خطا در جستجو</div>');
+                    }
+                });
+            }, 300);
+        });
+
+        function displayResults(results) {
+            searchResults.empty();
+
+            if (results.length === 0) {
+                searchResults.html('<div class="p-3 text-center">نتیجه‌ای یافت نشد</div>');
+            } else {
+                results.forEach(item => {
+                    const resultHtml = `
+                <div class="search-result-item" onclick="window.location.href='${item.url}'">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="result-title">${item.title}</div>
+                        <span class="search-badge ${item.type_class}">${item.type}</span>
+                    </div>
+                    <div class="result-description text-muted">${item.description}</div>
+                </div>
+            `;
+                    searchResults.append(resultHtml);
+                });
+            }
+        }
+
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-container').length) {
+                searchResults.hide();
+            }
+        });
+    });
+</script>

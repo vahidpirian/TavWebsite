@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="hero-img">
-                            <img width="500px" height="500px" src="{{ asset($images->image) }}" alt="">
+                            <img height="500px" src="{{ asset($images->image) }}" alt="">
                         </div>
                     </div>
                 </div>

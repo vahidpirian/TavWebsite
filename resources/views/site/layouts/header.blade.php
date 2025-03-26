@@ -73,6 +73,21 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="text" id="liveSearch" placeholder="جستجو..." autocomplete="off">
+                    <button type="button"><i class="fas fa-search"></i></button>
+
+                    {{-- نتایج جستجو --}}
+                    <div class="search-results" id="searchResults">
+                        <div class="search-loading" id="searchLoading">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

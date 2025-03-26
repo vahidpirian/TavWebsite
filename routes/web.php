@@ -341,8 +341,10 @@ Route::prefix('/')->group(function() {
     // Home Routes
     Route::controller(HomeController::class)->group(function() {
         Route::get('/', 'index')->name('home');
+        Route::get('/search', 'search')->name('site.search');
         Route::get('/faq', 'faq')->name('faq');
         Route::get('/{slug}', 'showPage')->name('page');
+
     });
 
 
