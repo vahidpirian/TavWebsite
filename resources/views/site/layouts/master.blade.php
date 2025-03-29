@@ -2,6 +2,7 @@
 <html lang="en" dir="rtl" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
 <head>
     @include('site.layouts.head-tag')
+    <link rel="stylesheet" href="{{ asset('site-assets/css/service-menu.css') }}">
     @yield('head-tag')
 </head>
 <body class="">

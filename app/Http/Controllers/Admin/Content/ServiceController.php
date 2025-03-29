@@ -43,6 +43,7 @@ class ServiceController extends Controller
             $inputs['image'] = $result;
         }
 
+        $inputs['type'] = 'normal';
         Service::create($inputs);
         return redirect()->route('admin.content.service.index')->with('swal-success', 'خدمت جدید با موفقیت ثبت شد');
     }
@@ -75,6 +76,7 @@ class ServiceController extends Controller
             $inputs['image'] = $result;
         }
 
+        $inputs['type'] = 'normal';
         $service->update($inputs);
         return redirect()->route('admin.content.service.index')->with('swal-success', 'خدمت با موفقیت ویرایش شد');
     }

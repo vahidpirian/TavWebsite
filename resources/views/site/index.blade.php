@@ -106,6 +106,38 @@
                 margin-bottom: 20px;
             }
         }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .hero-sub-title {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-btn {
+            margin-top: auto;
+        }
     </style>
 @endsection
 @section('content')
@@ -311,42 +343,42 @@
         </div>
     </div>
 
-    <div class="case-area py-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="site-heading text-center">
-                        <span class="site-title-tagline">نمونه‌ها</span>
-                        <h2 class="site-title">پروژه‌های <span>ویژه</span></h2>
-                        <div class="heading-divider"></div>
-                    </div>
-                </div>
-            </div>
+{{--    <div class="case-area py-120">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-6 mx-auto">--}}
+{{--                    <div class="site-heading text-center">--}}
+{{--                        <span class="site-title-tagline">نمونه‌ها</span>--}}
+{{--                        <h2 class="site-title">پروژه‌های <span>ویژه</span></h2>--}}
+{{--                        <div class="heading-divider"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="row filter-box popup-gallery">
-                @foreach($projects as $project)
-                    <div class="col-md-6 col-lg-4 filter-item cat1 cat2" style="position: absolute; left: 0px; top: 0px;">
-                        <div class="case-item">
-                            <div class="case-img">
-                                <img class="img-fluid" src="{{asset($project->image)}}"
-                                     alt="{{$project->name}}">
-                                <a class="popup-img case-link"
-                                   href="{{asset($project->image)}}"> <i
-                                        class="far fa-plus"></i></a>
-                            </div>
-                            <div class="case-content">
-                                <div class="case-content-info">
-                                    <small>{{$project->name}}</small>
-                                </div>
-                                <a href="{{route('project.show',$project->id)}}" class="case-arrow"><i class="far fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+{{--            <div class="row filter-box popup-gallery">--}}
+{{--                @foreach($projects as $project)--}}
+{{--                    <div class="col-md-6 col-lg-4 filter-item cat1 cat2" style="position: absolute; left: 0px; top: 0px;">--}}
+{{--                        <div class="case-item">--}}
+{{--                            <div class="case-img">--}}
+{{--                                <img class="img-fluid" src="{{asset($project->image)}}"--}}
+{{--                                     alt="{{$project->name}}">--}}
+{{--                                <a class="popup-img case-link"--}}
+{{--                                   href="{{asset($project->image)}}"> <i--}}
+{{--                                        class="far fa-plus"></i></a>--}}
+{{--                            </div>--}}
+{{--                            <div class="case-content">--}}
+{{--                                <div class="case-content-info">--}}
+{{--                                    <small>{{$project->name}}</small>--}}
+{{--                                </div>--}}
+{{--                                <a href="{{route('project.show',$project->id)}}" class="case-arrow"><i class="far fa-arrow-left"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
 
-            </div>
-        </div>
-    </div>
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
     @if($mainVideo)

@@ -94,45 +94,23 @@
                         @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="">نوع منو</label>
-                                <select name="type" id="menuType" class="form-control form-control-sm">
-                                    <option value="normal" @if(old('type', $menu->type) == 'normal') selected @endif>منو عادی</option>
-                                    <option value="service" @if(old('type', $menu->type) == 'service') selected @endif>منو سرویس</option>
-                                </select>
-                            </div>
-                        </section>
-
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="">آیکون منو</label>
-                                <select name="icon" id="iconSelect" class="form-control form-control-sm">
-                                    <option value="">بدون آیکون</option>
-                                    <optgroup label="آیکون‌های عمومی">
-                                        @foreach($icons['normal'] as $icon)
-                                            <option value="{{ $icon['icon'] }}"
-                                                    data-icon="{{ $icon['icon'] }}"
-                                                    data-type="normal"
-                                                    @if(old('icon', $menu->icon) == $icon['icon']) selected @endif>
-                                                {{ $icon['label'] }}
-                                            </option>
-                                        @endforeach
-                                    </optgroup>
-                                    <optgroup label="آیکون‌های سرویس">
-                                        @foreach($icons['service'] as $icon)
-                                            <option value="{{ $icon['value'] }}"
-                                                    data-icon="{{ $icon['icon'] }}"
-                                                    data-type="service"
-                                                    @if(old('icon', $menu->icon) == $icon['value']) selected @endif>
-                                                {{ $icon['label'] }}
-                                            </option>
-                                        @endforeach
-                                    </optgroup>
-                                </select>
-                            </div>
-
-                        </section>
+                    <section class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="">آیکون منو</label>
+                            <select name="icon" id="iconSelect" class="form-control form-control-sm">
+                                <option value="">بدون آیکون</option>
+                                @foreach($icons as $icon)
+                                    <option
+                                        data-icon="{{ $icon['icon'] }}"
+                                        value="{{$icon->icon}}"
+                                        {{old('icon',$menu->icon) == $icon->icon ? 'selected' : ''}}
+                                    >
+                                        <i class="{{$icon->icon}}"></i> -  {{$icon->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
@@ -162,7 +140,7 @@
                                     <option value="{{route('faq')}}" @if(old('page_id', $menu->url) == route('faq')) selected @endif>سوالات متداول</option>
                                     <option value="{{route('contact.index')}}" @if(old('page_id', $menu->url) == route('contact.index')) selected @endif>تماس باما</option>
                                     </optgroup>
-                                    <optgroup label="صحف ها">
+                                    <optgroup label="صحفه ها">
                                     @foreach ($pages as $page)
                                         <option value="{{ route('page',$page->slug) }}" @if(old('page_id', $menu->url) == route('page',$page->slug)) selected @endif>
                                             {{ $page->title }}

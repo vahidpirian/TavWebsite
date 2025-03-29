@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>منو</title>
+<title>منو سرویس</title>
 <script src="{{asset('admin-assets/js/Sortable.min.js')}}"></script>
 @endsection
 
@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> منو</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page"> منو سرویس</li>
     </ol>
   </nav>
 
@@ -26,7 +26,7 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.content.menu.create') }}" class="btn btn-info btn-sm">ایجاد منوی جدید</a>
+                <a href="{{ route('admin.content.service-menu.create') }}" class="btn btn-info btn-sm">ایجاد منوی جدید</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -37,7 +37,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام منو</th>
+                            <th>ساب کلمه بالا</th>
+                            <th>ساب کلمه پایین</th>
                             <th>منوی والد</th>
                             <th> لینک منو</th>
                             <th>وضعیت</th>
@@ -48,19 +49,20 @@
                         @foreach ($menus as $key => $menu)
                         <tr data-id="{{ $menu->id }}">
                             <th>{{ $key + 1 }}</th>
-                            <td>{{ $menu->name }}</td>
+                            <td>{{ $menu->sub_top }}</td>
+                            <td>{{ $menu->sub_bottom }}</td>
                             <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
                             <td>{{ $menu->url }}</td>
                             <td>
                                 <label>
-                                    <input id="{{ $menu->id }}" onchange="changeStatus({{ $menu->id }})" data-url="{{ route('admin.content.menu.status', $menu->id) }}" type="checkbox" @if ($menu->status === 1)
+                                    <input id="{{ $menu->id }}" onchange="changeStatus({{ $menu->id }})" data-url="{{ route('admin.content.service-menu.status', $menu->id) }}" type="checkbox" @if ($menu->status === 1)
                                     checked
                                     @endif>
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.content.menu.edit', $menu->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.content.menu.destroy', $menu->id) }}" method="post">
+                                <a href="{{ route('admin.content.service-menu.edit', $menu->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="{{ route('admin.content.service-menu.destroy', $menu->id) }}" method="post">
                                     @csrf
                                     {{ method_field('delete') }}
                                 <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>

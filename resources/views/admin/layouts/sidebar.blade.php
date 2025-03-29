@@ -22,7 +22,10 @@
 
 
             <section class="sidebar-part-title">بخش محتوی</section>
-
+            <a href="{{ route('admin.content.icon.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>ایکون</span>
+            </a>
             <a href="{{ route('admin.content.category.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>دسته بندی</span>
@@ -40,6 +43,10 @@
             <a href="{{ route('admin.content.menu.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>منو</span>
+            </a>
+            <a href="{{ route('admin.content.service-menu.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>منو سرویس</span>
             </a>
             <a href="{{ route('admin.content.faq.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
