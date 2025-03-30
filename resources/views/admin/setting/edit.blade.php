@@ -305,6 +305,7 @@
                                                                                 <option value="fab fa-twitter" {{ isset($social['icon']) && $social['icon'] == 'fab fa-twitter' ? 'selected' : '' }}>توییتر</option>
                                                                                 <option value="fab fa-facebook" {{ isset($social['icon']) && $social['icon'] == 'fab fa-facebook' ? 'selected' : '' }}>فیسبوک</option>
                                                                                 <option value="fab fa-linkedin" {{ isset($social['icon']) && $social['icon'] == 'fab fa-linkedin' ? 'selected' : '' }}>لینکدین</option>
+                                                                                <option value="fab fa-youtube" {{ isset($social['icon']) && $social['icon'] == 'fab fa-youtube' ? 'selected' : '' }}>لینکدین</option>
                                                                             </optgroup>
                                                                         </select>
                                                                     </div>
@@ -373,6 +374,7 @@
                                 <option value="fab fa-twitter">توییتر</option>
                                 <option value="fab fa-facebook">فیسیبوک</option>
                                 <option value="fab fa-linkedin">لینکدین</option>
+                                <option value="fab fa-youtube">یوتیوب</option>
                             </optgroup>
 
                         </select>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\setting;
 
+use App\Models\Content\Icon;
 use Illuminate\Http\Request;
 use App\Models\Setting\Setting;
 use Database\Seeders\SettingSeeder;
@@ -67,7 +68,8 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        return view('admin.setting.edit', compact('setting'));
+        $icons = Icon::all();
+        return view('admin.setting.edit', compact('setting','icons'));
     }
 
     /**
