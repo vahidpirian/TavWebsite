@@ -50,7 +50,7 @@ class SiteBlogController extends Controller
 
         $latestPosts = Post::where('status', 1)
             ->orderBy('created_at', 'desc')
-            ->take(5)
+            ->take(3)
             ->get();
 
         $categories = PostCategory::where('status', 1)->take(8)->get();

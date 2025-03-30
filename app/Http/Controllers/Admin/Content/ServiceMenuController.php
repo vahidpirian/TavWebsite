@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Content;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Content\ServiceMenuRequest;
 use App\Models\Content\Icon;
-use App\Models\Content\Menu;
 use App\Models\Content\Page;
 use App\Models\Content\Service;
+use App\Models\Content\ServiceMenu;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Content\MenuRequest;
 
-class MenuController extends Controller
+class ServiceMenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::orderBy('sort_order')->simplePaginate(15);
-        return view('admin.content.menu.index', compact('menus'));
+        $menus = ServiceMenu::orderBy('sort_order')->simplePaginate(15);
+        return view('admin.content.service-menu.index', compact('menus'));
     }
 
     /**
@@ -30,12 +30,12 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $menus = Menu::where('parent_id', null)->get();
+        $menus = ServiceMenu::where('parent_id', null)->get();
         $pages = Page::where('status', 1)->get();
         $services = Service::where('status', 1)->get();
         $icons = Icon::all();
 
-        return view('admin.content.menu.create', compact('menus','pages','services','icons'));
+        return view('admin.content.service-menu.create', compact('menus','pages','services','icons'));
     }
 
     /**
@@ -44,11 +44,11 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MenuRequest $request)
+    public function store(ServiceMenuRequest $request)
     {
         $inputs = $request->all();
-        $menu = Menu::create($inputs);
-        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منوی  جدید شما با موفقیت ثبت شد');
+        $menu = ServiceMenu::create($inputs);
+        return redirect()->route('admin.content.service-menu.index')->with('swal-success', 'منوی  جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -68,14 +68,14 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit(ServiceMenu $menu)
     {
-        $parent_menus = Menu::where('parent_id', null)->get()->except($menu->id);
+        $parent_menus = ServiceMenu::where('parent_id', null)->get()->except($menu->id);
         $pages = Page::where('status', 1)->get();
         $services = Service::where('status', 1)->get();
         $icons = Icon::all();
 
-        return view('admin.content.menu.edit', compact('menu' ,'services','icons','pages','parent_menus','pages'));
+        return view('admin.content.service-menu.edit', compact('menu' ,'services','icons','pages','parent_menus','pages'));
     }
 
     /**
@@ -85,11 +85,11 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MenuRequest $request, Menu $menu)
+    public function update(ServiceMenuRequest $request, ServiceMenu $menu)
     {
         $inputs = $request->all();
         $menu->update($inputs);
-        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منوی  شما با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.service-menu.index')->with('swal-success', 'منوی  شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -98,10 +98,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(ServiceMenu $menu)
     {
         $result = $menu->delete();
-        return redirect()->route('admin.content.menu.index')->with('swal-success', ' منو شما با موفقیت حذف شد');
+        return redirect()->route('admin.content.service-menu.index')->with('swal-success', ' منو شما با موفقیت حذف شد');
     }
 
     public function sort(Request $request)
@@ -120,17 +120,17 @@ class MenuController extends Controller
     }
 
 
-    public function status(Menu $menu){
+    public function status(ServiceMenu $menu){
 
         $menu->status = $menu->status == 0 ? 1 : 0;
         $result = $menu->save();
         if($result){
-                if($menu->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
+            if($menu->status == 0){
+                return response()->json(['status' => true, 'checked' => false]);
+            }
+            else{
+                return response()->json(['status' => true, 'checked' => true]);
+            }
         }
         else{
             return response()->json(['status' => false]);

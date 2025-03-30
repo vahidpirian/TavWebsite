@@ -5,10 +5,12 @@ use App\Http\Controllers\Admin\Content\BannerController;
 use App\Http\Controllers\Admin\Content\CategoryController;
 use App\Http\Controllers\Admin\Content\CommentController;
 use App\Http\Controllers\Admin\Content\FAQController;
+use App\Http\Controllers\Admin\Content\IconController;
 use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\Content\PostController;
 use App\Http\Controllers\Admin\Content\ProjectController;
+use App\Http\Controllers\Admin\Content\ServiceMenuController;
 use App\Http\Controllers\Admin\Content\VideoController;
 use App\Http\Controllers\Admin\Notify\SMSController;
 use App\Http\Controllers\Admin\Setting\SettingController;
@@ -75,6 +77,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
             Route::delete('/destroy/{faq}', [FAQController::class, 'destroy'])->name('admin.content.faq.destroy');
             Route::get('/status/{faq}', [FAQController::class, 'status'])->name('admin.content.faq.status');
         });
+
         //menu
         Route::prefix('menu')->group(function () {
             Route::get('/', [MenuController::class, 'index'])->name('admin.content.menu.index');
@@ -85,6 +88,29 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
             Route::delete('/destroy/{menu}', [MenuController::class, 'destroy'])->name('admin.content.menu.destroy');
             Route::post('/sort', [MenuController::class, 'sort'])->name('admin.content.menu.sort');
             Route::get('/status/{menu}', [MenuController::class, 'status'])->name('admin.content.menu.status');
+        });
+
+        //menu
+        Route::prefix('service-menu')->group(function () {
+            Route::get('/', [ServiceMenuController::class, 'index'])->name('admin.content.service-menu.index');
+            Route::get('/create', [ServiceMenuController::class, 'create'])->name('admin.content.service-menu.create');
+            Route::post('/store', [ServiceMenuController::class, 'store'])->name('admin.content.service-menu.store');
+            Route::get('/edit/{menu}', [ServiceMenuController::class, 'edit'])->name('admin.content.service-menu.edit');
+            Route::put('/update/{menu}', [ServiceMenuController::class, 'update'])->name('admin.content.service-menu.update');
+            Route::delete('/destroy/{menu}', [ServiceMenuController::class, 'destroy'])->name('admin.content.service-menu.destroy');
+            Route::post('/sort', [ServiceMenuController::class, 'sort'])->name('admin.content.service-menu.sort');
+            Route::get('/status/{menu}', [ServiceMenuController::class, 'status'])->name('admin.content.service-menu.status');
+        });
+
+        //icon
+        Route::prefix('icon')->group(function () {
+            Route::get('/', [IconController::class, 'index'])->name('admin.content.icon.index');
+            Route::get('/create', [IconController::class, 'create'])->name('admin.content.icon.create');
+            Route::post('/store', [IconController::class, 'store'])->name('admin.content.icon.store');
+            Route::get('/edit/{icon}', [IconController::class, 'edit'])->name('admin.content.icon.edit');
+            Route::put('/update/{icon}', [IconController::class, 'update'])->name('admin.content.icon.update');
+            Route::delete('/destroy/{icon}', [IconController::class, 'destroy'])->name('admin.content.icon.destroy');
+            Route::get('/status/{icon}', [IconController::class, 'status'])->name('admin.content.icon.status');
         });
 
         //page

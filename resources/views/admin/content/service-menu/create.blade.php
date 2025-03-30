@@ -33,7 +33,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">منو</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">منو سرویس</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد منو</li>
     </ol>
   </nav>
@@ -49,20 +49,20 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.content.menu.index') }}" class="btn btn-info btn-sm">بازگشت</a>
+                <a href="{{ route('admin.content.service-menu.index') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 
             <section>
-                <form action="{{ route('admin.content.menu.store') }}" method="post">
+                <form action="{{ route('admin.content.service-menu.store') }}" method="post">
                     @csrf
                 <section class="row">
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">عنوان منو</label>
-                                <input type="text" name="name" class="form-control form-control-sm" value="{{ old('name') }}">
+                                <label for="">ساب کلمه بالا</label>
+                                <input type="text" name="sub_top" class="form-control form-control-sm" value="{{ old('sub_top') }}">
                             </div>
-                            @error('name')
+                            @error('sub_top')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                 <strong>
                                     {{ $message }}
@@ -73,12 +73,26 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
+                                <label for="">ساب کلمه پایین</label>
+                                <input type="text" name="sub_bottom" class="form-control form-control-sm" value="{{ old('sub_bottom') }}">
+                            </div>
+                            @error('name')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="">منو والد</label>
                                 <select name="parent_id" id="" class="form-control form-control-sm">
                                     <option value="">منوی اصلی</option>
                                     @foreach ($menus as $menu)
 
-                                    <option value="{{ $menu->id }}"  @if(old('parent_id') == $menu->id) selected @endif>{{ $menu->name }}</option>
+                                    <option value="{{ $menu->id }}"  @if(old('parent_id') == $menu->id) selected @endif>{{ $menu->sub_top .' ' . $menu->sub_bottom }}</option>
 
                                     @endforeach
 
@@ -93,23 +107,25 @@
                         @enderror
                         </section>
 
-                    <section class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="">آیکون منو</label>
-                            <select name="icon" id="iconSelect" class="form-control form-control-sm">
-                                <option value="">بدون آیکون</option>
-                                @foreach($icons as $icon)
-                                    <option
-                                        data-icon="{{ $icon['icon'] }}"
-                                        value="{{$icon->icon}}"
-                                        {{old('icon') == $icon->icon ? 'selected' : ''}}
-                                    >
-                                        <i class="{{$icon->icon}}"></i> -  {{$icon->name}}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </section>
+
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="">آیکون منو</label>
+                                <select name="icon" id="iconSelect" class="form-control form-control-sm">
+                                    <option value="">بدون آیکون</option>
+                                    @foreach($icons as $icon)
+                                        <option
+                                            data-icon="{{ $icon['icon'] }}"
+                                            value="{{$icon->icon}}"
+                                            {{old('icon') == $icon->icon ? 'selected' : ''}}
+                                        >
+                                            <i class="{{$icon->icon}}"></i> -  {{$icon->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
