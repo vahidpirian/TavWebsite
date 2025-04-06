@@ -37,7 +37,7 @@
         .feature-item {
             padding: 30px 25px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             height: 100%;
             text-align: center;
@@ -46,7 +46,7 @@
 
         .feature-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
@@ -107,36 +107,98 @@
             }
         }
 
+        .hero-wrapper {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
         .hero-content {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
+            max-width: 90%;
         }
 
-        .hero-sub-title {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+        .hero-content .hero-title {
+            font-size: 42px;
+            margin: 15px 0;
+            line-height: 1.3;
         }
 
         .hero-content p {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
-        .hero-btn {
-            margin-top: auto;
+        .hero-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img img {
+            max-width: 100%;
+            height: auto;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1199px) {
+            .hero-content .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-img img {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-wrapper {
+                padding: 120px 0 60px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding-right: 0;
+                margin-bottom: 30px;
+                text-align: center;
+                position: relative;
+                z-index: 10;
+            }
+
+            .hero-content .hero-title {
+                font-size: 34px;
+            }
+
+            .hero-content .hero-btn {
+                justify-content: center;
+            }
+
+            .hero-img {
+                position: relative;
+                z-index: 10;
+            }
+
+            .hero-img img {
+                transform: scale(1);
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-wrapper {
+                padding: 100px 0 40px;
+            }
+
+            .hero-content .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-content .hero-sub-title {
+                font-size: 18px;
+            }
+
+            .hero-img img {
+                max-width: 85%;
+            }
         }
     </style>
 @endsection
@@ -157,7 +219,7 @@
                               {{$setting->main_page_service_summary}}
                             </p>
                             <div class="hero-btn wow animate__ animate__fadeInUp animated">
-                                <a href="{{ route('contact.index') }}" class="theme-btn theme-btn2">تماس با ما</a>
+                                <a href="{{ route('contact.index') }}" class="theme-btn">تماس با ما</a>
 {{--                                <a href="{{ route('about') }}" class="theme-btn">درباره ما</a>--}}
                             </div>
                         </div>

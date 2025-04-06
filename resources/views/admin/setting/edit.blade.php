@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
