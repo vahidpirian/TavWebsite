@@ -89,7 +89,7 @@
                                                         <i class="fas fa-boxes"></i>
                                                     </div>
                                                     <div class="submenu-content">
-                                                        <h5 class="submenu-title">{{$item->sub_top . $item->sub_bottom}}</h5>
+                                                        <h5 class="submenu-title">{{$item->sub_top . ' ' . $item->sub_bottom}}</h5>
                                                     </div>
                                                 </a>
                                             @endforeach

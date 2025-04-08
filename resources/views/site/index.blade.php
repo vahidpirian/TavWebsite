@@ -42,17 +42,19 @@
             height: 100%;
             text-align: center;
             border: 1px solid #eee;
+            background-color: #fff;
         }
 
         .feature-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background-color: #1e99e6;
         }
 
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(90deg, #896eff 0, #5f3bff 51%, #896eff);
+            background-color: #1e99e6;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -68,6 +70,11 @@
 
         .feature-item:hover .feature-icon {
             transform: rotate(360deg);
+            background-color: #fff;
+        }
+
+        .feature-item:hover .feature-icon i {
+            color: #1e99e6;
         }
 
         .feature-content h5 {
@@ -75,6 +82,7 @@
             margin-bottom: 15px;
             font-weight: 600;
             color: #333;
+            transition: all 0.3s ease;
         }
 
         .feature-content p {
@@ -82,10 +90,16 @@
             line-height: 1.6;
             color: #666;
             margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .feature-content h5,
+        .feature-item:hover .feature-content p {
+            color: #fff;
         }
 
         .feature-item.active {
-            background: #896eff;
+            background: #1e99e6;
         }
 
         .feature-item.active .feature-icon {
@@ -93,7 +107,7 @@
         }
 
         .feature-item.active .feature-icon i {
-            color: var(--bs-primary);
+            color: #1e99e6;
         }
 
         .feature-item.active .feature-content h5,
@@ -248,7 +262,10 @@
                             </div>
                             <div class="feature-content">
                                 <h5>واردات تخصصی</h5>
-                                <p>واردات انواع کالاهای تجاری و صنعتی با بهترین کیفیت از معتبرترین تولیدکنندگان جهانی</p>
+                                <p>
+                                    واردات انواع کالاهای تجاری و صنعتی با بهترین کیفیت از
+                                    معتبرترین تولیدکنندگان جهانی
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -259,7 +276,10 @@
                             </div>
                             <div class="feature-content">
                                 <h5>ترخیص کالا</h5>
-                                <p>ترخیص سریع و تخصصی کالا از تمامی گمرکات کشور با کادری مجرب و حرفه‌ای</p>
+                                <p>
+                                    ترخیص سریع و تخصصی کالا از تمامی گمرکات کشور با کادری مجرب
+                                    و حرفه‌ای
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -270,7 +290,10 @@
                             </div>
                             <div class="feature-content">
                                 <h5>صادرات محصولات</h5>
-                                <p>صادرات محصولات ایرانی به بازارهای جهانی با رعایت استانداردهای بین‌المللی</p>
+                                <p>
+                                    صادرات محصولات ایرانی به بازارهای جهانی با رعایت
+                                    استانداردهای بین‌المللی
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -281,7 +304,10 @@
                             </div>
                             <div class="feature-content">
                                 <h5>مشاوره بازرگانی</h5>
-                                <p>ارائه مشاوره تخصصی در زمینه واردات، صادرات و سرمایه‌گذاری بین‌المللی</p>
+                                <p>
+                                    ارائه مشاوره تخصصی در زمینه واردات، صادرات و سرمایه‌گذاری
+                                    بین‌المللی
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -289,6 +315,7 @@
             </div>
         </div>
     </div>
+
     @if($banner)
     <div class="container">
                 <a class="w-100" href="{{ $banner->url }}" title="{{ $banner->title }}">
@@ -327,7 +354,7 @@
                             {{mb_substr($service->summary,0,85).'...'}}
                         </p>
                         <div class="service-arrow">
-                            <a href="{{route('service.show',$service->id)}}" class="service-read-btn">جزئیات بیشتر<i class="far fa-long-arrow-left"></i></a>
+                            <a href="{{route('service.show',$service->id)}}" class="service-read-btn"> ثبت درخواست<i class="far fa-long-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -338,48 +365,76 @@
     </div>
 </div>
 
-<div class="skill-area py-120">
-    <div class="container">
-        <div class="skill-wrapper">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 col-12">
-                    <div class="skill-left">
-                        <div class="skill-img">
-                            <img src="{{asset($images->where('position',2)->first()->image)}}" alt="تصویر ">
+    <div class="skill-area py-120">
+        <div class="container">
+            <div class="skill-wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="skill-right">
+                            <span class="site-title-tagline">چرا تاو 360؟</span>
+                            <h2 class="site-title">
+                                ما به شما <span>خدمات جامع بازرگانی</span> در سطح بین‌المللی
+                                ارائه می‌دهیم
+                            </h2>
+                            <p class="skill-details">
+                                با بیش از یک دهه تجربه در زمینه تجارت بین‌الملل و همکاری با
+                                معتبرترین شرکت‌های جهانی، ما مفتخریم که خدمات جامع بازرگانی
+                                را با بالاترین استانداردها به مشتریان خود ارائه می‌دهیم.
+                            </p>
+                            <div class="skills-section">
+                                <div class="progress-box">
+                                    <h5>رضایت مشتریان <span class="pull-right">۹۵٪</span></h5>
+                                    <div class="progress" data-value="95">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 95%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        سرعت ترخیص کالا <span class="pull-right">۸۸٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="88">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 88%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        پوشش شبکه بین‌المللی <span class="pull-right">۹۲٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="92">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 92%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        موفقیت در پروژه‌ها <span class="pull-right">۹۰٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="90">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 90%"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="skill-right">
-                        <span class="site-title-tagline">چرا تاو 360؟</span>
-                        <h2 class="site-title">ما به شما <span>خدمات جامع بازرگانی</span> در سطح بین‌المللی ارائه می‌دهیم</h2>
-                        <p class="skill-details">
-                            با بیش از یک دهه تجربه در زمینه تجارت بین‌الملل و همکاری با معتبرترین شرکت‌های جهانی، ما مفتخریم که خدمات جامع بازرگانی را با بالاترین استانداردها به مشتریان خود ارائه می‌دهیم.
-                        </p>
-                        <div class="skills-section">
-                            <div class="progress-box">
-                                <h5>رضایت مشتریان <span class="pull-right">۹۵٪</span></h5>
-                                <div class="progress" data-value="95">
-                                    <div class="progress-bar" role="progressbar" style="width: 95%;"></div>
-                                </div>
-                            </div>
-                            <div class="progress-box">
-                                <h5>سرعت ترخیص کالا <span class="pull-right">۸۸٪</span></h5>
-                                <div class="progress" data-value="88">
-                                    <div class="progress-bar" role="progressbar" style="width: 88%;"></div>
-                                </div>
-                            </div>
-                            <div class="progress-box">
-                                <h5>پوشش شبکه بین‌المللی <span class="pull-right">۹۲٪</span></h5>
-                                <div class="progress" data-value="92">
-                                    <div class="progress-bar" role="progressbar" style="width: 92%;"></div>
-                                </div>
-                            </div>
-                            <div class="progress-box">
-                                <h5>موفقیت در پروژه‌ها <span class="pull-right">۹۰٪</span></h5>
-                                <div class="progress" data-value="90">
-                                    <div class="progress-bar" role="progressbar" style="width: 90%;"></div>
-                                </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="skill-left">
+                            <div class="skill-img">
+                                <img src="{{asset($images->where('position',2)->first()->image)}}" alt="تصویر ">
                             </div>
                         </div>
                     </div>
@@ -387,7 +442,8 @@
             </div>
         </div>
     </div>
-</div>
+
+
 
     <div class="counter-area">
         <div class="container">
@@ -496,56 +552,70 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">فرآیند کاری</span>
-                        <h2 class="site-title">چگونه <span>کار می‌کند</span></h2>
+                <span class="site-title-tagline"
+                >فرآیند کاری <span>در تاو 360</span></span
+                >
+                        <h2 class="site-title">چگونه کار می‌کند</h2>
                         <div class="heading-divider"></div>
                         <p>
-                            این یک واقعیت است که خواننده توسط محتوای خواندنی یک صفحه هنگام نگاه به طرح‌بندی آن منحرف
-                            می‌شود.
+                            این یک واقعیت است که خواننده توسط محتوای خواندنی یک صفحه هنگام
+                            نگاه به طرح‌بندی آن منحرف می‌شود.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-between">
                 <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <div class="process-single">
-                        <div class="icon">
-                            <i class="fas fa-comments"></i> <!-- آیکون مشاوره -->
-                            <span>01</span>
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-comments"></i>
+                                <!-- آیکون مشاوره -->
+                                <span>01</span>
+                            </div>
+                            <h4>مشاوره اولیه</h4>
+                            <p>بررسی نیازها و ارائه راهکارهای مناسب</p>
                         </div>
-                        <h4>مشاوره اولیه</h4>
-                        <p>بررسی نیازها و ارائه راهکارهای مناسب</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <div class="process-single">
-                        <div class="icon">
-                            <i class="fas fa-search-dollar"></i> <!-- آیکون سورسینگ و تحقیق قیمت -->
-                            <span>02</span>
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-search-dollar"></i>
+                                <!-- آیکون سورسینگ و تحقیق قیمت -->
+                                <span>02</span>
+                            </div>
+                            <h4>سورسینگ</h4>
+                            <p>یافتن بهترین تامین‌کنندگان و مذاکره</p>
                         </div>
-                        <h4>سورسینگ</h4>
-                        <p>یافتن بهترین تامین‌کنندگان و مذاکره</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <div class="process-single">
-                        <div class="icon">
-                            <i class="fas fa-shipping-fast"></i> <!-- آیکون حمل و نقل سریع -->
-                            <span>03</span>
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-shipping-fast"></i>
+                                <!-- آیکون حمل و نقل سریع -->
+                                <span>03</span>
+                            </div>
+                            <h4>خرید و حمل</h4>
+                            <p>انجام فرآیند خرید و حمل بین‌المللی</p>
                         </div>
-                        <h4>خرید و حمل</h4>
-                        <p>انجام فرآیند خرید و حمل بین‌المللی</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <div class="process-single">
-                        <div class="icon">
-                            <i class="fas fa-clipboard-check"></i> <!-- آیکون ترخیص و تحویل -->
-                            <span>04</span>
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-clipboard-check"></i>
+                                <!-- آیکون ترخیص و تحویل -->
+                                <span>04</span>
+                            </div>
+                            <h4>ترخیص و تحویل</h4>
+                            <p>ترخیص کالا از گمرک و تحویل به مشتری</p>
                         </div>
-                        <h4>ترخیص و تحویل</h4>
-                        <p>ترخیص کالا از گمرک و تحویل به مشتری</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
