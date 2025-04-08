@@ -250,7 +250,11 @@
 {{--            </div>--}}
         </div>
     </div>
-
+    <div class="hero-curve">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+            <path fill="#fff" fill-opacity="1" d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,150L1360,150C1280,150,1120,150,960,140C800,130,640,90,480,90C320,90,160,130,80,140L0,150Z"></path>
+        </svg>
+    </div>
     <div class="feature-area">
         <div class="container">
             <div class="feature-area-wrapper">
