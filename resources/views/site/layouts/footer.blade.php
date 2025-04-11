@@ -1,18 +1,4 @@
-<div class="cta-area">
-    <div class="container">
-        <div class="row">
-            <div class="cta-content">
-                <h5>خدمات تخصصی بازرگانی بین‌المللی</h5>
-                <h2>همراه شما در مسیر تجارت جهانی</h2>
-                <p>با بیش از یک دهه تجربه در زمینه واردات و صادرات، ما شریک تجاری مطمئن شما هستیم.</p>
-                <a href="{{route('contact.index')}}" class="cta-btn">درخواست مشاوره رایگان</a>
-            </div>
-        </div>
-    </div>
-    <div class="cta-shape">
-        <img src="{{asset('app-assets/img/shape-3.png')}}" alt="">
-    </div>
-</div>
+
 <footer class="footer-area">
     <div class="footer-widget">
         <div class="container">
@@ -36,7 +22,7 @@
                             @if(!is_null($setting->socials ))
                                 @foreach($setting->socials as $social)
                                     @if($social['status'] == '1')
-                                        <li><a href="{{$social['link']}}"><i class="{{$social['icon']}}"></i></a></li>
+                                        <li><a href="{{$social['link']}}" target="_blank"><i class="{{$social['icon']}}"></i></a></li>
                                     @endif
 
                                 @endforeach
@@ -72,7 +58,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <p class="copyright-text">
-                        کلیه حقوق برای <span id="date">2025</span> <a href="#"> Tav360 </a> کلیه حقوق محفوظ است.
+                        کلیه حقوق این وبسایت برای گروه
+                        <a href="#"> تجارت آفرینان ورزان </a> محفوظ میباشد.
                     </p>
                 </div>
             </div>

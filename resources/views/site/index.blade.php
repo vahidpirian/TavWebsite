@@ -448,6 +448,26 @@
     </div>
 
 
+    <div class="cta-area">
+        <div class="container">
+            <div class="row">
+                <div class="cta-content">
+                    <h5>خدمات تخصصی بازرگانی بین‌المللی</h5>
+                    <h2 class="cta-title">خدمات بازرگانی<span> تاو 360</span></h2>
+
+                    <p>
+                        با بیش از یک دهه تجربه در زمینه واردات و صادرات، ما شریک تجاری
+                        مطمئن شما هستیم.
+                    </p>
+                    <a href="contact.html" class="cta-btn">درخواست مشاوره رایگان</a>
+                </div>
+            </div>
+        </div>
+        <div class="cta-shape">
+            <img src="{{asset('app-assets/img/shape-3.png')}}" alt="" />
+        </div>
+    </div>
+
 
     <div class="counter-area">
         <div class="container">
@@ -630,7 +650,6 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">وبلاگ ما</span>
                         <h2 class="site-title">اخبار و <span>وبلاگ</span></h2>
                         <div class="heading-divider"></div>
                     </div>
@@ -638,7 +657,7 @@
             </div>
             <div class="row">
                 @foreach($latestPosts as $post)
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="blog-item">
                         <div class="blog-item-img">
                             <img style="width: 100%" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
@@ -648,6 +667,13 @@
                                 <ul>
                                     <li><a href="#"><i class="far fa-user-circle"></i> {{ $post->author->full_name }}</a></li>
                                     <li><a href="#"><i class="far fa-calendar-alt"></i> {{ jdate($post->created_at)->format('%d %B %Y') }}</a></li>
+                                    <li>
+                                        <a href="#"
+                                        ><i class="far fa-clock"></i>مدت زمان مطالعه: {{random_int(2,15)}}
+                                            دقیقه</a
+                                        >
+                                    </li>
+
                                 </ul>
                             </div>
                             <h4 class="blog-title">
