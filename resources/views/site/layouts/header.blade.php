@@ -120,7 +120,6 @@
                         آماده پاسخگویی...
                     </p>
                     <a href="tel:{{$setting->mobile}}" class="phone-number">
-                        <i class="fas fa-phone-alt phone-icon"></i>
                         <span class="number IRANSans">{{str_replace('021-','',$setting->mobile)}}</span>
                         <span class="area-code IRANSans">021</span>
                     </a>
@@ -190,7 +189,7 @@
                 window.pageYOffset || document.documentElement.scrollTop;
 
             // Show/hide fixed header based on scroll direction
-            if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+            if (scrollTop > headerHeight) {
                 // Scrolling down & past header
                 fixedHeaders.classList.add("show");
                 // Add padding only when fixed header is shown
