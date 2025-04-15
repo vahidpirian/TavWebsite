@@ -22,8 +22,8 @@ class ServiceMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sub_top' => 'required|max:10|min:2',
-            'sub_bottom' => 'required|max:10|min:2',
+            'sub_top' => 'required|max:20|min:2',
+            'sub_bottom' => 'required|max:20|min:2',
             'url' => 'nullable|max:1000',
             'status' => 'required|numeric|in:0,1',
             'parent_id' => 'nullable|exists:menus,id',

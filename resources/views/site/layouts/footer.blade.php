@@ -3,7 +3,7 @@
     <div class="footer-widget">
         <div class="container">
             <div class="row footer-widget-wrapper pt-100 pb-70">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="footer-widget-box about-us">
                         <a href="#" class="footer-logo">
                             <img src="{{asset($setting->logo_footer)}}" alt="{{$setting->title}}">
@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="footer-widget-box list">
                         <h4 class="footer-widget-title">پیوندهای سریع</h4>
                         <ul class="footer-list">
@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="footer-widget-box list">
                         <h4 class="footer-widget-title">خدمات ما</h4>
                         <ul class="footer-list">
@@ -50,6 +50,26 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title">نمادهای اعتماد</h4>
+                        <div class="enamad-container">
+                            <div class="enamad-box">
+                                <img
+                                    src="{{asset('app-assets/img/enamad.png')}}"
+                                    alt="نماد اعتماد الکترونیکی"
+                                />
+                            </div>
+                            <div class="footer-box">
+                                <!-- <img
+                                  src="images/setting/2025/03/23/enamad.png"
+                                  alt="نماد اعتماد الکترونیکی"
+                                /> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

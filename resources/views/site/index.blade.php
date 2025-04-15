@@ -227,7 +227,7 @@
                                 {{$setting->main_page_subtitle}}
                             </h6>
                             <h1 class="hero-title">
-                                {{$setting->main_page_title}}
+                                <span>فراتر</span> از <span>مرزها</span>
                             </h1>
                             <p>
                               {{$setting->main_page_service_summary}}
