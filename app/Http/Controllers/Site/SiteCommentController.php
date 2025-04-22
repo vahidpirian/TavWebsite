@@ -15,7 +15,8 @@ class SiteCommentController extends Controller
             'name' => 'nullable|min:5|max:50',
             'email' => 'nullable|email',
             'commentable_id' => 'required',
-            'commentable_type' => 'required'
+            'commentable_type' => 'required',
+            'captcha' => 'required|captcha'
         ]);
 
         $comment = Comment::create([
@@ -29,6 +30,20 @@ class SiteCommentController extends Controller
             'status' => 0
         ]);
 
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد.',
+                'comment' => [
+                    'body' => $comment->body,
+                    'author_name' => $comment->author_name,
+                    'created_at' => jdate($comment->created_at)->format('%B %d، %Y'),
+                ]
+            ]);
+        }
+
         return redirect()->back()->with('success', 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد.');
     }
+
+
 }

@@ -214,6 +214,103 @@
                 max-width: 85%;
             }
         }
+
+        .blog-item {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-item-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+            height: 200px; /* Fixed height for images */
+        }
+
+        .blog-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-item:hover .blog-item-img img {
+            transform: scale(1.1);
+        }
+
+        .blog-item-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-item-meta {
+            margin-bottom: 15px;
+        }
+
+        .blog-item-meta ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .blog-item-meta ul li {
+            display: inline-block;
+            margin-left: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .blog-item-meta ul li:last-child {
+            margin-left: 0;
+        }
+
+        .blog-item-meta ul li i {
+            margin-left: 5px;
+            color: #1e99e6;
+        }
+
+        .blog-title {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-title a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-title a:hover {
+            color: #1e99e6;
+        }
+
+        .blog-item p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+
+        .blog-item .theme-btn:hover {
+            background: #1677b5;
+            transform: translateY(-2px);
+        }
     </style>
 @endsection
 @section('content')
@@ -458,7 +555,7 @@
                         با بیش از یک دهه تجربه در زمینه واردات و صادرات، ما شریک تجاری
                         مطمئن شما هستیم.
                     </p>
-                    <a href="contact.html" class="cta-btn">درخواست مشاوره رایگان</a>
+                    <a href="{{route('contact.index')}}" class="cta-btn">درخواست مشاوره رایگان</a>
                 </div>
             </div>
         </div>
@@ -659,26 +756,35 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="blog-item">
                         <div class="blog-item-img">
-                            <img style="width: 100%" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
+                            <img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                         </div>
                         <div class="blog-item-info">
                             <div class="blog-item-meta">
                                 <ul>
-                                    <li><a href="#"><i class="far fa-user-circle"></i> {{ $post->author->full_name }}</a></li>
-                                    <li><a href="#"><i class="far fa-calendar-alt"></i> {{ jdate($post->created_at)->format('%d %B %Y') }}</a></li>
                                     <li>
-                                        <a href="#"
-                                        ><i class="far fa-clock"></i>مدت زمان مطالعه: {{random_int(2,15)}}
-                                            دقیقه</a
-                                        >
+                                        <a href="{{ route('blog.show', $post->slug) }}">
+                                            <i class="far fa-user-circle"></i>
+                                            {{ $post->author->full_name }}
+                                        </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ route('blog.show', $post->slug) }}">
+                                            <i class="far fa-calendar-alt"></i>
+                                            {{ jdate($post->created_at)->format('%d %B %Y') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <i class="far fa-clock"></i>
+                                            {{ $post->study_time }} دقیقه
+                                        </span>
+                                    </li>
                                 </ul>
                             </div>
                             <h4 class="blog-title">
                                 <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                             </h4>
-                            <p style="min-height: 86px">{{ mb_substr($post->summary,0,85).'...' }}</p>
+                            <p>{{ mb_substr($post->summary, 0, 85).'...' }}</p>
                             <a class="theme-btn" href="{{ route('blog.show', $post->slug) }}">بیشتر بخوانید</a>
                         </div>
                     </div>

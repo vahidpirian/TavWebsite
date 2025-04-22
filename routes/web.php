@@ -318,8 +318,9 @@ Route::prefix('auth')->name('auth.')->group(function () {
         Route::get('/logout', [AuthUserLoginController::class, 'logout'])->name('logout');
     });
 });
-Route::get('/login', [AuthUserLoginController::class, 'login'])->name('login');
 
+
+Route::get('/login', [AuthUserLoginController::class, 'login'])->name('login');
 Route::middleware(['auth'])->prefix('account')->name('account.')->group(function() {
     Route::get('/', [MyAccountController::class, 'index'])->name('dashboard');
     Route::get('/profile', [MyAccountController::class, 'edit'])->name('profile');
@@ -367,6 +368,7 @@ Route::prefix('/')->group(function() {
     // Home Routes
     Route::controller(HomeController::class)->group(function() {
         Route::get('/', 'index')->name('home');
+        Route::get('captcha-refresh',  'refreshCaptcha')->name('captcha.refresh');
         Route::get('/search', 'search')->name('site.search');
         Route::get('/faq', 'faq')->name('faq');
         Route::get('/{slug}', 'showPage')->name('page');

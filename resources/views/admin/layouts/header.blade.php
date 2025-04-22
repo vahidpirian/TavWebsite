@@ -38,39 +38,25 @@
                         </span>
 
                     <section id="header-comment" class="header-comment">
-
-                        <section class="border-bottom px-4">
-                            <input type="text" class="form-control form-control-sm my-4" placeholder="جستجو ...">
-                        </section>
-
                         <section class="header-comment-wrapper">
                             @if(count($unseenComments))
                                 <ul class="list-group rounded px-0">
-
-                                @foreach ($unseenComments as $unseenComment)
-
+                                    @foreach ($unseenComments as $unseenComment)
                                         <li class="list-group-item list-groupt-item-action">
-                                    <section class="media">
-                                        <img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">{{$unseenComment->user ? $unseenComment->user->fullName : $unseenComment->author_name  }}</h5>
-                                                <span>{{ mb_substr($unseenComment->body,0,50).'...' }}<i class="fas fa-circle text-success comment-user-status"></i></span>
+                                            <section class="media">
+                                                <img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="avatar" class="notification-img">
+                                                <section class="media-body pr-1">
+                                                    <h5 class="comment-user mb-1">{{$unseenComment->user ? $unseenComment->user->fullName : $unseenComment->author_name  }}</h5>
+                                                    <p class="comment-text mb-0">{{ mb_substr($unseenComment->body,0,50).'...' }}<i class="fas fa-circle text-success comment-user-status"></i></p>
+                                                </section>
                                             </section>
-                                        </section>
-                                    </section>
-                                </li>
-
+                                        </li>
                                     @endforeach
-
-
-                            </ul>
+                                </ul>
                             @else
-                              <p class="small text-center">  موردی وجود ندارد!</p>
+                                <p class="small text-center">موردی وجود ندارد!</p>
                             @endif
-
                         </section>
-
                     </section>
 
                     </span>

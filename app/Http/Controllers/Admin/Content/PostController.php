@@ -31,7 +31,8 @@ class PostController extends Controller
     public function create()
     {
          $postCategories = PostCategory::all();
-         return view('admin.content.post.create', compact('postCategories'));
+         $posts = Post::where('status', 1)->get();
+         return view('admin.content.post.create', compact('postCategories', 'posts'));
     }
 
     /**
@@ -58,7 +59,19 @@ class PostController extends Controller
          }
          $inputs['author_id'] = auth()->user()->id;
          $post = Post::create($inputs);
-         return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  جدید شما با موفقیت ثبت شد');
+
+         // Handle related posts
+         if ($request->has('related_posts')) {
+             $relatedPosts = $request->input('related_posts');
+             foreach ($relatedPosts as $index => $relatedPostId) {
+                 $post->relatedPosts()->create([
+                     'related_post_id' => $relatedPostId,
+                     'order' => $index
+                 ]);
+             }
+         }
+
+         return redirect()->route('admin.content.post.index')->with('swal-success', 'پست جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -81,7 +94,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
          $postCategories = PostCategory::all();
-         return view('admin.content.post.edit', compact('post', 'postCategories'));
+         $posts = Post::where('status', 1)->where('id', '!=', $post->id)->get();
+         $relatedPosts = $post->relatedPosts()->with('relatedPost')->orderBy('order')->get();
+         return view('admin.content.post.edit', compact('post', 'postCategories', 'posts', 'relatedPosts'));
     }
 
     /**
@@ -109,8 +124,21 @@ class PostController extends Controller
              }
              $inputs['image'] = $result;
          }
+
+         // Handle related posts
+         $post->relatedPosts()->delete();
+         if ($request->has('related_posts')) {
+             $relatedPosts = $request->input('related_posts');
+             foreach ($relatedPosts as $index => $relatedPostId) {
+                 $post->relatedPosts()->create([
+                     'related_post_id' => $relatedPostId,
+                     'order' => $index
+                 ]);
+             }
+         }
+
          $post->update($inputs);
-         return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  شما با موفقیت ویرایش شد');
+         return redirect()->route('admin.content.post.index')->with('swal-success', 'پست شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -122,7 +150,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $result = $post->delete();
-        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  شما با موفقیت حذف شد');
+        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست شما با موفقیت حذف شد');
     }
 
      public function status(Post $post)

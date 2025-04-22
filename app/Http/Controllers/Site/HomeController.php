@@ -76,7 +76,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        
+
         if (strlen($query) < 2) {
             return response()->json([
                 'data' => []
@@ -120,5 +120,10 @@ class HomeController extends Controller
             ->take(10);
 
         return SearchResource::collection($results);
+    }
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha' => captcha_src('numeric')]);
     }
 }

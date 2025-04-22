@@ -1,6 +1,7 @@
 @extends('site.layouts.master')
 @section('head-tag')
     <title>{{$post->title}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .tags-wrapper {
             display: flex;
@@ -130,6 +131,10 @@
             }
         }
 
+        .img-show-post{
+            height: 75px !important;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -173,6 +178,7 @@
                                             <li><i class="far fa-user"></i><a href="#">{{$post->author->full_name}}</a>
                                             </li>
                                             <li><i class="far fa-comments"></i>{{ $comments->count() }} نظر</li>
+                                            <li><i class="far fa-clock"></i>{{ $post->study_time }} دقیقه</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -201,7 +207,7 @@
                                             <div class="comment-item">
                                                 <div class="comment-avatar">
                                                     <div class="avatar-placeholder">
-                                                        {{ substr($comment->user->full_name ?? 'کاربر', 0, 1) }}
+                                                        <i class="fas fa-user"></i>
                                                     </div>
                                                 </div>
                                                 <div class="comment-content">
@@ -209,7 +215,7 @@
                                                         <h5 class="comment-author">{{ $comment->user->full_name ?? 'کاربر' }}</h5>
                                                         <span class="comment-date">
                                                         <i class="far fa-calendar-alt"></i>
-                                                        {{ jdate($comment->created_at)->format('%B %d، %Y') }}
+                                                        {{ jdate($comment->published_at)->format('%B %d، %Y') }}
                                                     </span>
                                                     </div>
                                                     <div class="comment-body">
@@ -221,16 +227,16 @@
                                                             <div class="comment-item reply">
                                                                 <div class="comment-avatar">
                                                                     <div class="avatar-placeholder admin">
-                                                                        {{ substr($reply->user->full_name ?? 'مدیر', 0, 1) }}
+                                                                       <i class="fas fa-user"></i>
                                                                     </div>
                                                                 </div>
                                                                 <div class="comment-content">
                                                                     <div class="comment-header">
                                                                         <h5 class="comment-author admin">{{ $reply->user->full_name ?? 'مدیر' }}</h5>
                                                                         <span class="comment-date">
-                                            <i class="far fa-calendar-alt"></i>
-                                            {{ jdate($reply->created_at)->format('%B %d، %Y') }}
-                                        </span>
+                                                                            <i class="far fa-calendar-alt"></i>
+                                                                            {{ jdate($reply->published_at)->format('%B %d، %Y') }}
+                                                                        </span>
                                                                     </div>
                                                                     <div class="comment-body">
                                                                         {{ $reply->body }}
@@ -244,54 +250,57 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="blog-comments-form">
-                                    <h4>نظر بدهید</h4>
-                                    @if(session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
+                                @if($post->commentable)
+                                    <div class="blog-comments-form">
+                                        <h4>نظر بدهید</h4>
+                                        <div id="comment-alert" style="display: none;" class="alert">
                                         </div>
-                                    @endif
-
-                                    @if($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    <form action="{{ route('comment.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="commentable_id" value="{{ $post->id }}">
-                                        <input type="hidden" name="commentable_type" value="App\Models\Content\Post">
-                                        <div class="row">
-                                            @if(!auth()->check())
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" name="name" class="form-control"
-                                                               placeholder="نام شما*" required>
+                                        <form id="comment-form" action="{{ route('comment.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="commentable_id" value="{{ $post->id }}">
+                                            <input type="hidden" name="commentable_type" value="App\Models\Content\Post">
+                                            <div class="row">
+                                                @if(!auth()->check())
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="name" class="form-control"
+                                                                   placeholder="نام شما*" required>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="email" name="email" class="form-control"
-                                                               placeholder="آدرس ایمیل" required>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" class="form-control"
+                                                                   placeholder="آدرس ایمیل*" required>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            @endif
+                                                @endif
 
-                                            <div class="col-md-12">
-                                                <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
                                                     <textarea class="form-control" name="body" rows="5"
                                                               placeholder="نظر*"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="captcha mb-3">
+                                                        <span id="captcha-img">
+                                                            <img src="{{captcha_src('numeric')}}" alt="captcha">
+                                                        </span>
+                                                            <button type="button" class="btn btn-sm btn-refresh"
+                                                                    id="refresh-captcha">
+                                                                <i class="fas fa-sync-alt"></i>
+                                                            </button>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="captcha"
+                                                               placeholder="کد امنیتی را وارد کنید*" required>
+                                                    </div>
+                                                    <button type="submit" class="theme-btn">نظر ارسال کنید <i
+                                                            class="far fa-paper-plane"></i></button>
                                                 </div>
-                                                <button type="submit" class="theme-btn">نظر ارسال کنید <i
-                                                        class="far fa-paper-plane"></i></button>
                                             </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                        </form>
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -309,22 +318,39 @@
                             </div>
                         </div>
 
+                        @if($latestPosts->count() > 0)
+                            <div class="widget recent-post">
+                                <h5 class="widget-title">پست اخیر</h5>
+                                @foreach($latestPosts as $item)
+                                    <div class="recent-post-single">
+                                        <div class="recent-post-img">
+                                            <img class="img-show-post" src="{{asset($item->image)}}" alt="{{$item->title}}">
+                                        </div>
+                                        <div class="recent-post-bio">
+                                            <h6><a href="{{route('blog.show',$item->slug)}}">{{$item->title}}</a></h6>
+                                            <span><i class="far fa-clock"></i>{{ jdate($item->published_at)->format('%d %B %Y') }}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if($relatedPosts->count() > 0)
                         <div class="widget recent-post">
-                            <h5 class="widget-title">پست اخیر</h5>
+                            <h5 class="widget-title">پست های مرتبط</h5>
                             @foreach($relatedPosts as $item)
                                 <div class="recent-post-single">
                                     <div class="recent-post-img">
-                                        <img src="{{asset($item->image)}}" alt="{{$item->title}}">
+                                        <img class="img-show-post" src="{{asset($item->image)}}" alt="{{$item->title}}">
                                     </div>
                                     <div class="recent-post-bio">
                                         <h6><a href="{{route('blog.show',$item->slug)}}">{{$item->title}}</a></h6>
-                                        <span><i class="far fa-clock"></i>{{ jdate($item->created_at)->format('%d %B %Y') }}</span>
+                                        <span><i class="far fa-clock"></i>{{ jdate($item->published_at)->format('%d %B %Y') }}</span>
                                     </div>
                                 </div>
                             @endforeach
-
-
                         </div>
+                        @endif
 
                     </aside>
                 </div>
@@ -341,4 +367,99 @@
             </div>
         @endif
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Refresh CAPTCHA
+            $('#refresh-captcha').click(function (e) {
+                e.preventDefault();
+                $.get('{{ route("captcha.refresh") }}').done(function (data) {
+                    console.log(data.captcha)
+                    $('#captcha-img img').attr('src', data.captcha);
+                });
+            });
+
+            // Handle form submission
+            $('#comment-form').on('submit', function (e) {
+                e.preventDefault();
+                let form = $(this);
+                let submitBtn = form.find('button[type="submit"]');
+                let alertDiv = $('#comment-alert');
+
+                // Disable button and show loading
+                submitBtn.prop('disabled', true);
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i> در حال ارسال...');
+
+                $.ajax({
+                    url: form.attr('action'),
+                    method: 'POST',
+                    data: form.serialize(),
+                    success: function (response) {
+                        alertDiv.removeClass('alert-danger').addClass('alert-success')
+                            .html(response.message).show();
+                        form.trigger('reset');
+                        // Refresh captcha after successful submission
+                        $('#refresh-captcha').click();
+
+                        // If you want to append the new comment immediately
+                        if (response.comment) {
+                            let newComment = createCommentHTML(response.comment);
+                            $('.blog-comments-wrapper').append(newComment);
+                            // Update comments count
+                            let currentCount = parseInt($('.comments-count').text().match(/\d+/)[0]);
+                            $('.comments-count').text('(' + (currentCount + 1) + ')');
+                        }
+                    },
+                    error: function (xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        let errorMessage = '<ul>';
+                        $.each(errors, function (key, value) {
+                            errorMessage += '<li>' + value + '</li>';
+                        });
+                        errorMessage += '</ul>';
+                        alertDiv.removeClass('alert-success').addClass('alert-danger')
+                            .html(errorMessage).show();
+                        // Refresh captcha on error
+                        $('#refresh-captcha').click();
+                    },
+                    complete: function () {
+                        // Re-enable button and restore original text
+                        submitBtn.prop('disabled', false);
+                        submitBtn.html('نظر ارسال کنید <i class="far fa-paper-plane"></i>');
+                    }
+                });
+            });
+
+            function createCommentHTML(comment) {
+                return `
+            <div class="comment-item">
+                <div class="comment-avatar">
+                    <div class="avatar-placeholder">
+                        ${comment.author_name ? comment.author_name.charAt(0) : 'ک'}
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <h5 class="comment-author">${comment.author_name || 'کاربر'}</h5>
+                        <span class="comment-date">
+                            <i class="far fa-calendar-alt"></i>
+                            ${comment.created_at}
+                        </span>
+                    </div>
+                    <div class="comment-body">
+                        ${comment.body}
+                    </div>
+                </div>
+            </div>
+        `;
+            }
+        });
+    </script>
 @endsection
