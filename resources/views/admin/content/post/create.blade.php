@@ -3,6 +3,74 @@
 @section('head-tag')
 <title>ایجاد پست</title>
 <link rel="stylesheet" href="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin-assets/select2/css/select2.css') }}">
+<style>
+    .image-upload-box {
+        width: 100%;
+        height: 300px;
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .image-upload-box:hover {
+        border-color: #007bff;
+    }
+    .image-upload-box.dragover {
+        border-color: #28a745;
+        background-color: rgba(40, 167, 69, 0.1);
+    }
+    .image-upload-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+    }
+    .image-upload-icon {
+        font-size: 48px;
+        color: #ccc;
+        margin-bottom: 10px;
+    }
+    .image-upload-text {
+        color: #666;
+        font-size: 14px;
+    }
+    .image-preview {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: none;
+    }
+    .image-actions {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: none;
+    }
+    .image-action-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        margin-left: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-action-btn:hover {
+        background: #fff;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -37,8 +105,8 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">عنوان پست</label>
-                                <input type="text" class="form-control form-control-sm" name="title" value="{{ old('title') }}">
+                                <label for="title">عنوان پست</label>
+                                <input type="text" class="form-control form-control-sm" name="title" value="{{ old('title') }}" id="title">
                             </div>
                             @error('title')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -51,8 +119,22 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">انتخاب دسته</label>
-                                <select name="category_id" id="" class="form-control form-control-sm">
+                                <label for="study_time">زمان مطالعه (دقیقه)</label>
+                                <input type="number" class="form-control form-control-sm" name="study_time" value="{{ old('study_time') }}" id="study_time">
+                            </div>
+                            @error('study_time')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-12">
+                            <div class="form-group">
+                                <label for="category_id">انتخاب دسته</label>
+                                <select name="category_id" id="category_id" class="form-control form-control-sm">
                                     <option value="">دسته را انتخاب کنید</option>
                                     @foreach ($postCategories as $postCategory)
                                     <option value="{{ $postCategory->id }}" @if(old('category_id') == $postCategory->id) selected @endif>{{ $postCategory->name }}</option>
@@ -69,24 +151,38 @@
                         @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
+
+                        <section class="col-12 mb-4">
                             <div class="form-group">
-                                <label for="">تصویر </label>
-                                <input type="file" name="image" class="form-control form-control-sm">
+                                <label>تصویر پست</label>
+                                <div class="image-upload-box" id="imageUploadBox">
+                                    <input type="file" name="image" id="image" class="d-none" accept="image/*">
+                                    <div class="image-upload-content" id="uploadContent">
+                                        <i class="fas fa-cloud-upload-alt image-upload-icon"></i>
+                                        <div class="image-upload-text">برای انتخاب تصویر کلیک کنید یا آن را اینجا رها کنید</div>
+                                    </div>
+                                    <img id="imagePreview" class="image-preview">
+                                    <div class="image-actions">
+                                        <button type="button" class="image-action-btn" id="changeImage" title="تغییر تصویر">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                        <button type="button" class="image-action-btn" id="removeImage" title="حذف تصویر">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             @error('image')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
-                                <strong>
-                                    {{ $message }}
-                                </strong>
+                                <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                            @enderror
                         </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="status">وضعیت</label>
-                                <select name="status" id="" class="form-control form-control-sm" id="status">
+                                <select name="status" id="status" class="form-control form-control-sm">
                                     <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
                                     <option value="1" @if(old('status') == 1) selected @endif>فعال</option>
                                 </select>
@@ -104,7 +200,7 @@
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="commentable">امکان درج کامنت</label>
-                                <select name="commentable" id="" class="form-control form-control-sm" id="commentable">
+                                <select name="commentable" id="commentable" class="form-control form-control-sm">
                                     <option value="0" @if(old('commentable') == 0) selected @endif>غیرفعال</option>
                                     <option value="1" @if(old('commentable') == 1) selected @endif>فعال</option>
                                 </select>
@@ -120,9 +216,9 @@
 
 
 
-                        <section class="col-12 col-md-6">
+                        <section class="col-12 col-md-12">
                             <div class="form-group">
-                                <label for="">تاریخ انتشار</label>
+                                <label for="published_at">تاریخ انتشار</label>
                                 <input type="text" name="published_at" id="published_at" class="form-control form-control-sm d-none">
                                 <input type="text" id="published_at_view" class="form-control form-control-sm">
                             </div>
@@ -154,8 +250,26 @@
 
                         <section class="col-12">
                             <div class="form-group">
-                                <label for="">خلاصه پست</label>
-                                <textarea name="summary" class="form-control form-control-sm" rows="6">{{ old('summary') }}</textarea>
+                                <label for="related_posts">پست‌های مرتبط</label>
+                                <select name="related_posts[]" id="related_posts" class="select2 form-control form-control-sm" multiple>
+                                    @foreach($posts as $relatedPost)
+                                    <option value="{{ $relatedPost->id }}">{{ $relatedPost->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('related_posts')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                        @enderror
+                        </section>
+
+                        <section class="col-12">
+                            <div class="form-group">
+                                <label for="summary">خلاصه پست</label>
+                                <textarea name="summary" class="form-control form-control-sm" rows="4" id="summary">{{ old('summary') }}</textarea>
                             </div>
                             @error('summary')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -168,7 +282,7 @@
 
                         <section class="col-12">
                             <div class="form-group">
-                                <label for="">متن پست</label>
+                                <label for="body">متن پست</label>
                                 <textarea name="body" id="body"  class="form-control form-control-sm" rows="6">{{ old('body') }}</textarea>
                             </div>
                             @error('body')
@@ -198,6 +312,7 @@
     <script src="{{ asset('admin-assets/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
     <script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/select2/js/select2.js') }}"></script>
     <script>
         CKEDITOR.replace('body');
     </script>
@@ -206,7 +321,17 @@
             $(document).ready(function () {
                 $('#published_at_view').persianDatepicker({
                     format: 'YYYY/MM/DD',
-                    altField: '#published_at'
+                    altField: '#published_at',
+                    initialValue: false,
+                    autoClose: true,
+                    observer: true,
+                    calendar: {
+                        persian: {
+                            locale: 'fa',
+                            showHint: true,
+                            leapYearMode: 'astronomical'
+                        }
+                    }
                 })
             });
     </script>
@@ -230,6 +355,11 @@
         });
         select_tags.children('option').attr('selected', true).trigger('change');
 
+        // Initialize select2 for related posts
+        $('#related_posts').select2({
+            placeholder: 'لطفا پست‌های مرتبط را انتخاب کنید',
+            allowClear: true
+        });
 
         $('#form').submit(function ( event ){
             if(select_tags.val() !== null && select_tags.val().length > 0){
@@ -238,6 +368,79 @@
             }
         })
     })
+</script>
+
+<script>
+    $(document).ready(function() {
+        const imageUploadBox = $('#imageUploadBox');
+        const imageInput = $('#image');
+        const imagePreview = $('#imagePreview');
+        const uploadContent = $('#uploadContent');
+        const imageActions = $('.image-actions');
+        const changeImageBtn = $('#changeImage');
+        const removeImageBtn = $('#removeImage');
+
+        // Handle click to upload
+        imageUploadBox.on('click', function(e) {
+            if (!$(e.target).closest('.image-action-btn').length) {
+                imageInput[0].click();
+            }
+        });
+
+        // Handle file selection
+        imageInput.on('change', function() {
+            const file = this.files[0];
+            if (file) {
+                handleImage(file);
+            }
+        });
+
+        // Handle drag and drop
+        imageUploadBox.on('dragover', function(e) {
+            e.preventDefault();
+            $(this).addClass('dragover');
+        });
+
+        imageUploadBox.on('dragleave', function(e) {
+            e.preventDefault();
+            $(this).removeClass('dragover');
+        });
+
+        imageUploadBox.on('drop', function(e) {
+            e.preventDefault();
+            $(this).removeClass('dragover');
+            const file = e.originalEvent.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleImage(file);
+            }
+        });
+
+        // Handle image preview
+        function handleImage(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.attr('src', e.target.result).show();
+                uploadContent.hide();
+                imageActions.show();
+            }
+            reader.readAsDataURL(file);
+        }
+
+        // Handle change image
+        changeImageBtn.on('click', function(e) {
+            e.stopPropagation();
+            imageInput[0].click();
+        });
+
+        // Handle remove image
+        removeImageBtn.on('click', function(e) {
+            e.stopPropagation();
+            imagePreview.hide();
+            uploadContent.show();
+            imageActions.hide();
+            imageInput.val('');
+        });
+    });
 </script>
 
 @endsection

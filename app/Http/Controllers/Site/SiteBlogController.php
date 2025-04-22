@@ -41,12 +41,16 @@ class SiteBlogController extends Controller
             ->where('status', 1)
             ->firstOrFail();
 
-        // Get related posts based on category
-        $relatedPosts = Post::where('category_id', $post->category_id)
-            ->where('id', '!=', $post->id)
-            ->where('status', 1)
+        // Get related posts using the relationship
+        $relatedPosts = $post->relatedPosts()
+            ->whereHas('relatedPost', function($query) {
+                $query->where('status', 1);
+            })
+            ->with('relatedPost')
+            ->orderBy('order')
             ->take(3)
-            ->get();
+            ->get()
+            ->pluck('relatedPost');
 
         $latestPosts = Post::where('status', 1)
             ->orderBy('created_at', 'desc')

@@ -23,7 +23,7 @@ class Post extends Model
     }
 
     protected $casts = ['image' => 'array'];
-    protected $fillable = ['title', 'summary', 'slug', 'image', 'status', 'tags', 'body', 'published_at', 'author_id', 'category_id', 'commentable'];
+    protected $fillable = ['title', 'summary', 'study_time','slug', 'image', 'status', 'tags', 'body', 'published_at', 'author_id', 'category_id', 'commentable'];
 
     public function author(): BelongsTo
     {
@@ -40,5 +40,13 @@ class Post extends Model
         return $this->morphMany('App\Models\Content\Comment', 'commentable');
     }
 
+    public function relatedPosts()
+    {
+        return $this->hasMany(RelatedPost::class, 'post_id')->orderBy('order');
+    }
 
+    public function relatedToPosts()
+    {
+        return $this->hasMany(RelatedPost::class, 'related_post_id')->orderBy('order');
+    }
 }

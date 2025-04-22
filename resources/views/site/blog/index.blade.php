@@ -1,22 +1,13 @@
 @extends('site.layouts.master')
 @section('head-tag')
     <title>وبلاگ</title>
+    <style>
+        .post-img{
+            height: 260px !important;
+        }
+    </style>
 @endsection
 @section('content')
-{{--        <div class="site-breadcrumb">--}}
-{{--            <div class="container">--}}
-{{--                <ul class="breadcrumb-menu">--}}
-{{--                    <li><a href="{{route('home')}}"><i class="far fa-home"></i> صفحه اصلی--}}
-{{--                        </a></li>--}}
-{{--                    <li class="active">وبلاگ ما</li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--            <div class="breadcrumb-shape">--}}
-{{--                <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-
         <div class="blog-area py-120">
             <div class="container">
                 <div class="row">
@@ -39,16 +30,16 @@
                 @endif
                 <div class="row">
                     @foreach($posts as $post)
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 mt-2">
                         <div class="blog-item">
                             <div class="blog-item-img">
-                                <img style="width: 100%" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
+                                <img class="post-img" style="width: 100%" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                             </div>
                             <div class="blog-item-info">
                                 <div class="blog-item-meta">
                                     <ul>
                                         <li><a href="#"><i class="far fa-user-circle"></i> {{ $post->author->full_name }}</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ jdate($post->created_at)->format('%d %B %Y') }}</a></li>
+                                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ jdate($post->published_at)->format('%d %B %Y') }}</a></li>
                                     </ul>
                                 </div>
                                 <h4 class="blog-title">
