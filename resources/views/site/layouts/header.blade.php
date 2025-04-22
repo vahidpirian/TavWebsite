@@ -177,10 +177,10 @@
         const topHeaderDesktop = document.querySelector(".top-header-desktop");
         const topHeader = document.querySelector(".top-header");
         let lastScrollTop = 0;
-        let headerHeight = headerWrapper.offsetHeight;
+        let headerHeight = topHeader.offsetHeight;
 
         // Clone headers for fixed version
-        const fixedHeaders = headerWrapper.cloneNode(true);
+        const fixedHeaders = topHeader.cloneNode(true);
         fixedHeaders.classList.add("header-fixed");
         document.body.appendChild(fixedHeaders);
 

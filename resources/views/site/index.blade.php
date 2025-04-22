@@ -334,8 +334,7 @@
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="site-heading text-center">
-                    <span class="site-title-tagline">خدمات تخصصی</span>
-                    <h2 class="site-title">خدمات <span>بازرگانی تاو 360</span></h2>
+                    <h2>همراه شما در مسیر تجارت جهانی</h2>
                     <div class="heading-divider"></div>
                     <p>
                         ارائه خدمات جامع در زمینه واردات، صادرات و امور بازرگانی با بهترین کیفیت و مناسب‌ترین قیمت
