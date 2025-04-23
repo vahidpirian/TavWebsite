@@ -22,29 +22,14 @@
 
                             @endforeach
 
-                            <li><a href="{{route('login')}}">ورود/ثبت نام</a></li>
                         </ul>
                     </nav>
                 </div>
 
-                <div class="contact-search">
-                    <div class="search-box">
-                        <div class="search-container">
-                            <input
-                                type="text"
-                                id="liveSearch"
-                                placeholder="جستجو..."
-                                autocomplete="off"
-                            />
-                            <button type="button"><i class="fas fa-search"></i></button>
-
-                            <div class="search-results" id="searchResults">
-                                <div class="search-loading" id="searchLoading">
-                                    <div class="spinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <a href="{{route('login')}}" class="auth-button">
+                        ورود / ثبت نام<i class="fas fa-user"></i
+                        ></a>
                 </div>
             </div>
         </div>
@@ -83,15 +68,15 @@
                                     </a>
                                     <div class="submenu-container">
                                         <div class="submenu-wrapper">
-                                            @foreach($menu->children as $item)
-                                                <a href="{{$item->url}}" class="submenu-item">
-                                                    <div class="submenu-icon">
-                                                        <i class="fas fa-boxes"></i>
-                                                    </div>
-                                                    <div class="submenu-content">
-                                                        <h5 class="submenu-title">{{$item->sub_top . ' ' . $item->sub_bottom}}</h5>
-                                                    </div>
-                                                </a>
+                                            @foreach($menu->children()->limit(4)->get() as $parentChild)
+                                                <div class="submenu-column">
+                                                    <h5 class="submenu-title">{{$parentChild->sub_top . ' '. $parentChild->sub_bottom}}</h5>
+                                                    @foreach($parentChild->children as $child)
+                                                        <a href="{{$child->url}}" class="submenu-item">{{$child->sub_top . ' '. $child->sub_bottom}}</a>
+                                                    @endforeach
+
+                                                </div>
+
                                             @endforeach
                                         </div>
                                     </div>

@@ -30,7 +30,7 @@ class ServiceMenuController extends Controller
      */
     public function create()
     {
-        $menus = ServiceMenu::where('parent_id', null)->get();
+        $menus = ServiceMenu::all();
         $pages = Page::where('status', 1)->get();
         $services = Service::where('status', 1)->get();
         $icons = Icon::all();
@@ -70,7 +70,7 @@ class ServiceMenuController extends Controller
      */
     public function edit(ServiceMenu $menu)
     {
-        $parent_menus = ServiceMenu::where('parent_id', null)->get()->except($menu->id);
+        $parent_menus = ServiceMenu::all()->except($menu->id);
         $pages = Page::where('status', 1)->get();
         $services = Service::where('status', 1)->get();
         $icons = Icon::all();

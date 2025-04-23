@@ -87,12 +87,13 @@
                             </section>
 
                             <section class="col-12 col-md-6">
+
                                 <div class="form-group">
                                     <label for="">منو والد</label>
                                     <select name="parent_id" id="" class="form-control form-control-sm">
                                         <option value="">منوی اصلی</option>
-                                        @foreach ($parent_menus as $menu)
-                                            <option value="{{ $menu->id }}"  @if(old('parent_id',$menu->parent_id) == $menu->id) selected @endif>{{ $menu->sub_top . ' ' . $menu->sub_bottom }}</option>
+                                        @foreach ($parent_menus as $parent_menu)
+                                            <option value="{{ $parent_menu->id }}"  @if(old('parent_id',$menu->parent_id) == $parent_menu->id) selected @endif>{{ $menu->sub_top . ' ' . $menu->sub_bottom }}</option>
                                         @endforeach
 
                                     </select>

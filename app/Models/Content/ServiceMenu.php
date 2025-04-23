@@ -22,6 +22,7 @@ class ServiceMenu extends Model
         'status'
     ];
 
+
     public function parent()
     {
         return $this->belongsTo($this, 'parent_id')->with('parent');
@@ -30,5 +31,10 @@ class ServiceMenu extends Model
     public function children()
     {
         return $this->hasMany($this, 'parent_id')->with('children');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->sub_top . ' ' . $this->sub_bottom;
     }
 }
