@@ -318,7 +318,7 @@
         <div class="hero-wrapper">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-lg-6">
+                    <div class="col-md-5 col-lg-5">
                         <div class="hero-content">
                             <h6 class="hero-sub-title">
                                 {{$setting->main_page_subtitle}}
@@ -335,9 +335,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6">
+                    <div class="col-md-7 col-lg-7">
                         <div class="hero-img">
-                            <img height="500px" src="{{ asset($images->image) }}" alt="">
+                            <img src="{{ asset($images->image) }}" alt="تاو 360 - خدمات بازرگانی">
                         </div>
                     </div>
                 </div>
