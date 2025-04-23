@@ -958,7 +958,28 @@ label {
     background: #1e99e3;
     color: #fff;
 }
+.auth-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #1e99e6;
+    color: #1e99e6;
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+.auth-button i {
+    margin-right: 5px;
+}
 
+.auth-button:hover {
+    background-color: #1e99e6;
+    color: #fff;
+    text-decoration: none;
+}
 @keyframes slide-down {
     0% {
         transform: translateY(-100%);
@@ -1124,8 +1145,16 @@ button.navbar-toggler:focus {
     margin-top: 5px;
 }
 
+.hero-section {
+    position: relative;
+    overflow: visible;
+}
+
 .hero-wrapper {
-    padding: 70px 0;
+    position: relative;
+    z-index: 1;
+    padding: 80px 0 120px;
+    overflow: visible;
 }
 
 .hero-wrapper::before {
@@ -1339,7 +1368,7 @@ button.navbar-toggler:focus {
     }
 
     .hero-wrapper {
-        padding: 60px 0 40px;
+        padding: 90px 0 40px;
         overflow: visible;
     }
 
@@ -1476,31 +1505,25 @@ button.navbar-toggler:focus {
 
 .feature-area {
     position: relative;
-    z-index: 1;
-    background: transparent;
-    padding: 0px 50px 50px 50px;
+    z-index: 3;
+    background-color: #f9f9f9;
+    padding: 20px 50px 50px 50px;
 }
+
 .hero-curve {
     position: relative;
     z-index: 2;
-    margin-top: -100px;
+    margin-top: -180px;
     pointer-events: none;
     overflow: hidden;
+    background-color: #f9f9f9;
 }
 
 .hero-curve svg {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     filter: drop-shadow(0px -2px 4px rgba(0, 0, 0, 0.03));
-}
-
-.feature-area {
-    position: relative;
-    margin-top: -100px;
-    padding-top: 100px;
-    z-index: 1;
-    background-color: #f9f9f9;
 }
 
 .feature-area-wrapper {
@@ -1568,13 +1591,53 @@ button.navbar-toggler:focus {
     color: #fff;
 }
 
+@media (max-width: 1500px) {
+    .hero-curve {
+        margin-top: -160px;
+    }
+    .contact-search {
+        margin-top: -55px;
+    }
+    .hero-wrapper {
+        padding: 80px 0 100px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .hero-curve {
+        margin-top: -140px;
+    }
+    .contact-search {
+        margin-top: -50px;
+    }
+    .hero-wrapper {
+        padding: 80px 0 90px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-curve {
+        margin-top: -120px;
+    }
+    .contact-search {
+        margin-top: -45px;
+    }
+    .hero-wrapper {
+        padding: 70px 0 80px;
+    }
+}
+
 @media (max-width: 991px) {
     .feature-area {
         margin-top: -40px;
         padding: 100px 30px 30px 30px;
     }
     .hero-curve {
-        margin-top: -10px;
+        display: hidden;
+    }
+
+    .search-container button {
+        left: 30px;
     }
 }
 
@@ -1583,9 +1646,20 @@ button.navbar-toggler:focus {
         margin-top: -50px;
         padding: 50px 15px 30px 15px;
     }
-
     .hero-curve {
         margin-top: -60px;
+    }
+    .search-container input {
+        height: 55px;
+        font-size: 14px;
+    }
+    .search-container button {
+        width: 30px;
+        height: 30px;
+        left: 20px;
+    }
+    .search-container button i {
+        font-size: 16px;
     }
 }
 
@@ -1594,9 +1668,26 @@ button.navbar-toggler:focus {
       margin-top: 0px;
       padding: 10px 5px 10px 5px;
     } */
-
     .hero-curve {
-        display: none;
+        display: block;
+        margin-top: -50px;
+    }
+    .contact-search {
+        margin-top: -130px;
+        padding: 0 15px;
+    }
+    .search-container input {
+        height: 50px;
+        font-size: 13px;
+        padding: 0 15px;
+    }
+    .search-container button {
+        width: 28px;
+        height: 28px;
+        left: 15px;
+    }
+    .search-container button i {
+        font-size: 16px;
     }
 }
 
@@ -4196,8 +4287,15 @@ html[dir="rtl"] .me-auto {
 }
 
 .header-logo {
-    height: 42px;
-    width: 160px;
+    height: 45px;
+    width: 200px;
+}
+
+@media (max-width: 1200px) {
+    .header-logo {
+        height: 43px;
+        width: 140px;
+    }
 }
 
 .navbar-toggler {
@@ -4398,7 +4496,7 @@ html[dir="rtl"] .me-auto {
 
 .top-header-content,
 .top-header-nav {
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .menu-nav-top nav ul {
@@ -4406,13 +4504,13 @@ html[dir="rtl"] .me-auto {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 25px;
+    gap: 10px;
 }
 
 .menu-nav-top nav ul li a {
     color: #59606e;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     transition: color 0.2s ease;
     position: relative;
@@ -4440,7 +4538,7 @@ html[dir="rtl"] .me-auto {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 25px;
+    gap: 20px;
 }
 
 .menu-nav-top nav ul li.has-dropdown > a {
@@ -4574,7 +4672,7 @@ html[dir="rtl"] .me-auto {
 .top-header-content {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 10px;
 }
 
 .brand {
@@ -4592,74 +4690,6 @@ html[dir="rtl"] .me-auto {
     color: #1e3a8a;
     font-family: "yekan", sans-serif;
     font-size: 18px;
-}
-
-.service-menu {
-    flex-grow: 1;
-}
-
-.service-menu ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 25px;
-    font-family: Yekan;
-    height: 100%;
-}
-
-.service-menu ul li a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: #8c919c;
-    font-size: 14px;
-    gap: 8px;
-    transition: all 0.3s ease;
-    height: 100%;
-}
-
-.service-menu .icon-box {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8fafc;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.service-menu .icon-box i {
-    font-size: 20px;
-    color: #8c919c;
-    transition: all 0.3s ease;
-}
-
-.service-menu ul li a:hover {
-    color: #1e99e3;
-}
-
-.service-menu ul li a:hover .icon-box i {
-    color: #1e99e3;
-}
-
-.service-menu ul li a.active {
-    color: #1e99e3;
-}
-
-.service-menu ul li a.active .icon-box i {
-    color: #1e99e3;
-}
-
-.service-menu .menu-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 }
 
 .mobile-menu-toggle {
@@ -4847,23 +4877,42 @@ html[dir="rtl"] .me-auto {
     }
 }
 
-.search-box {
-    flex: 0 0 160px;
+.contact-search {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent;
+    z-index: 25;
+    margin-top: -50px;
+    padding: 0 15px;
 }
 
+.search-box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.search-container button i {
+    font-size: 18px;
+    color: #fff;
+}
 .search-container {
-    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .search-container input {
-    background-color: #f9f9f9;
+    flex: 1;
+    height: 75px;
+    font-size: 16px;
+    background-color: #ffffff;
     border: 1px solid #eee;
     border-radius: 8px;
-    padding: 8px 40px 8px 15px;
+    padding: 0 30px 0 75px;
     font-family: "peyda", "Kalameh", Sans-serif;
     transition: all 0.3s ease;
-    background-color: #f4f5f7;
-    font-size: 14px;
     width: 100%; /* Ensure input takes full width of container */
 }
 .search-container input:focus {
@@ -4874,12 +4923,12 @@ html[dir="rtl"] .me-auto {
 
 .search-container button {
     position: absolute;
-    left: 10px;
+    left: 40px;
     top: 50%;
     background-color: #59606e;
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -4899,11 +4948,12 @@ html[dir="rtl"] .me-auto {
     border: 1px solid #ddd;
     border-top: none; /* Avoid double border */
     border-radius: 0 0 5px 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     display: none;
     z-index: 1000;
     max-height: 400px;
     overflow-y: auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .search-result-item {

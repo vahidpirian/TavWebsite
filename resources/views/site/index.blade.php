@@ -342,14 +342,37 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="hero-shape">--}}
-{{--                <img src="{{asset('app-assets/img/shape-1.png')}}" alt="">--}}
-{{--            </div>--}}
         </div>
     </div>
+
+    <div class="contact-search">
+        <div class="search-box">
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="liveSearch"
+                    placeholder="جستجو..."
+                    autocomplete="off"
+                />
+                <button type="button"><i class="fas fa-search"></i></button>
+                <div class="search-results" id="searchResults">
+                    <div class="search-loading" id="searchLoading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="hero-curve">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
-            <path fill="#fff" fill-opacity="1" d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,150L1360,150C1280,150,1120,150,960,140C800,130,640,90,480,90C320,90,160,130,80,140L0,150Z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+            <rect width="100%" height="100%" fill="#f9f9f9" />
+            <path
+                fill="#fff"
+                fill-opacity="1"
+                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
+            ></path>
         </svg>
     </div>
     <div class="feature-area">
@@ -759,28 +782,6 @@
                             <img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                         </div>
                         <div class="blog-item-info">
-                            <div class="blog-item-meta">
-                                <ul>
-                                    <li>
-                                        <a href="{{ route('blog.show', $post->slug) }}">
-                                            <i class="far fa-user-circle"></i>
-                                            {{ $post->author->full_name }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('blog.show', $post->slug) }}">
-                                            <i class="far fa-calendar-alt"></i>
-                                            {{ jdate($post->created_at)->format('%d %B %Y') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            <i class="far fa-clock"></i>
-                                            {{ $post->study_time }} دقیقه
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
                             <h4 class="blog-title">
                                 <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                             </h4>

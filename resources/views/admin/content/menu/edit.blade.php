@@ -79,7 +79,7 @@
                                     <option value="">منوی اصلی</option>
                                     @foreach ($parent_menus as $parent_menu)
 
-                                    <option value="{{ $parent_menu->id }}"  @if(old('parent_id', $menu->parent_id) == $parent_menu->id) selected @endif>{{ $parent_menu->name }}</option>
+                                    <option value="{{ $parent_menu->id }}"  @if(old('parent_id', $menu->parent_id) == $parent_menu->id) selected @endif>{{ $parent_menu->full_name }}</option>
 
                                     @endforeach
 

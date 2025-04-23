@@ -51,7 +51,7 @@
                             <th>{{ $key + 1 }}</th>
                             <td>{{ $menu->sub_top }}</td>
                             <td>{{ $menu->sub_bottom }}</td>
-                            <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
+                            <td>{{ $menu->parent_id ? $menu->parent->full_name : 'منوی اصلی' }}</td>
                             <td>{{ $menu->url }}</td>
                             <td>
                                 <label>
