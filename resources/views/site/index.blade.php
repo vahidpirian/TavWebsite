@@ -1,317 +1,7 @@
 @extends('site.layouts.master')
 @section('head-tag')
     <title>{{$setting->title}}</title>
-    <style>
-        .video-container {
-            background: #000;
-            width: 100%;
-            position: relative;
-        }
-
-        #closeButton {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        #closeButton:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
-        }
-
-        .video-wrapper {
-            position: relative;
-        }
-        .feature-item {
-            padding: 30px 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            text-align: center;
-            border: 1px solid #eee;
-            background-color: #fff;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            background-color: #1e99e6;
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #1e99e6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-icon i {
-            font-size: 35px;
-            color: #fff;
-        }
-
-        .feature-item:hover .feature-icon {
-            transform: rotate(360deg);
-            background-color: #fff;
-        }
-
-        .feature-item:hover .feature-icon i {
-            color: #1e99e6;
-        }
-
-        .feature-content h5 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-
-        .feature-content p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #666;
-            margin: 0;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover .feature-content h5,
-        .feature-item:hover .feature-content p {
-            color: #fff;
-        }
-
-        .feature-item.active {
-            background: #1e99e6;
-        }
-
-        .feature-item.active .feature-icon {
-            background: #fff;
-        }
-
-        .feature-item.active .feature-icon i {
-            color: #1e99e6;
-        }
-
-        .feature-item.active .feature-content h5,
-        .feature-item.active .feature-content p {
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .feature-item {
-                margin-bottom: 20px;
-            }
-        }
-
-        .hero-wrapper {
-            padding: 80px 0;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 90%;
-        }
-
-        .hero-content .hero-title {
-            font-size: 42px;
-            margin: 15px 0;
-            line-height: 1.3;
-        }
-
-        .hero-content p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .hero-img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img img {
-            max-width: 100%;
-            height: auto;
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 1199px) {
-            .hero-content .hero-title {
-                font-size: 38px;
-            }
-
-            .hero-img img {
-                transform: scale(1.05);
-            }
-        }
-
-        @media (max-width: 991px) {
-            .hero-wrapper {
-                padding: 120px 0 60px;
-            }
-
-            .hero-content {
-                max-width: 100%;
-                padding-right: 0;
-                margin-bottom: 30px;
-                text-align: center;
-                position: relative;
-                z-index: 10;
-            }
-
-            .hero-content .hero-title {
-                font-size: 34px;
-            }
-
-            .hero-content .hero-btn {
-                justify-content: center;
-            }
-
-            .hero-img {
-                position: relative;
-                z-index: 10;
-            }
-
-            .hero-img img {
-                transform: scale(1);
-                max-width: 90%;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .hero-wrapper {
-                padding: 100px 0 40px;
-            }
-
-            .hero-content .hero-title {
-                font-size: 28px;
-            }
-
-            .hero-content .hero-sub-title {
-                font-size: 18px;
-            }
-
-            .hero-img img {
-                max-width: 85%;
-            }
-        }
-
-        .blog-item {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .blog-item-img {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px 10px 0 0;
-            height: 200px; /* Fixed height for images */
-        }
-
-        .blog-item-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-item:hover .blog-item-img img {
-            transform: scale(1.1);
-        }
-
-        .blog-item-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-item-meta {
-            margin-bottom: 15px;
-        }
-
-        .blog-item-meta ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .blog-item-meta ul li {
-            display: inline-block;
-            margin-left: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .blog-item-meta ul li:last-child {
-            margin-left: 0;
-        }
-
-        .blog-item-meta ul li i {
-            margin-left: 5px;
-            color: #1e99e6;
-        }
-
-        .blog-title {
-            margin-bottom: 15px;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .blog-title a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .blog-title a:hover {
-            color: #1e99e6;
-        }
-
-        .blog-item p {
-            color: #666;
-            margin-bottom: 20px;
-            flex-grow: 1;
-            line-height: 1.6;
-        }
-
-
-        .blog-item .theme-btn:hover {
-            background: #1677b5;
-            transform: translateY(-2px);
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('app-assets/css/main_page.css?v='.hash('sha256','1.0'))}}">
 @endsection
 @section('content')
     <div class="hero-section">
@@ -346,8 +36,6 @@
     </div>
 
 
-
-
     <div class="hero-curve">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
             <rect width="100%" height="100%" fill="#f9f9f9" />
@@ -359,16 +47,19 @@
         </svg>
     </div>
 
-    <div class="contact-search mt-4">
-        <div class="search-box">
-            <div class="search-container">
+
+    <div class="contact-search">
+        <div class="search-box mx-auto">
+            <div class="search-container mx-auto">
                 <input
                     type="text"
                     id="liveSearch"
                     placeholder="جستجو..."
                     autocomplete="off"
                 />
-                <button type="button"><i class="fas fa-search"></i></button>
+                <button type="button" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
                 <div class="search-results" id="searchResults">
                     <div class="search-loading" id="searchLoading">
                         <div class="spinner"></div>
@@ -377,6 +68,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="feature-area">
         <div class="container">

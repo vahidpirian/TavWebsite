@@ -1510,14 +1510,7 @@ button.navbar-toggler:focus {
     padding: 20px 50px 50px 50px;
 }
 
-.hero-curve {
-    position: relative;
-    z-index: 2;
-    margin-top: -180px;
-    pointer-events: none;
-    overflow: hidden;
-    background-color: #f9f9f9;
-}
+
 
 .hero-curve svg {
     display: block;
@@ -1595,9 +1588,6 @@ button.navbar-toggler:focus {
     .hero-curve {
         margin-top: -160px;
     }
-    .contact-search {
-        margin-top: -55px;
-    }
     .hero-wrapper {
         padding: 80px 0 100px;
     }
@@ -1607,9 +1597,7 @@ button.navbar-toggler:focus {
     .hero-curve {
         margin-top: -140px;
     }
-    .contact-search {
-        margin-top: -50px;
-    }
+
     .hero-wrapper {
         padding: 80px 0 90px;
     }
@@ -1617,10 +1605,10 @@ button.navbar-toggler:focus {
 
 @media (max-width: 1200px) {
     .hero-curve {
-        margin-top: -120px;
+        margin-top: -40px;
     }
-    .contact-search {
-        margin-top: -45px;
+    .search-box{
+        margin-bottom: 10px !important;
     }
     .hero-wrapper {
         padding: 70px 0 80px;
@@ -1633,7 +1621,7 @@ button.navbar-toggler:focus {
         padding: 100px 30px 30px 30px;
     }
     .hero-curve {
-        display: hidden;
+        margin-top: -10px;
     }
 
     .search-container button {
@@ -1647,7 +1635,7 @@ button.navbar-toggler:focus {
         padding: 50px 15px 30px 15px;
     }
     .hero-curve {
-        margin-top: -60px;
+        margin-top: -5px;
     }
     .search-container input {
         height: 55px;
@@ -1670,10 +1658,8 @@ button.navbar-toggler:focus {
     } */
     .hero-curve {
         display: block;
-        margin-top: -50px;
     }
     .contact-search {
-        margin-top: -130px;
         padding: 0 15px;
     }
     .search-container input {
@@ -4877,67 +4863,6 @@ html[dir="rtl"] .me-auto {
     }
 }
 
-.contact-search {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    background-color: transparent;
-    z-index: 25;
-    margin-top: -50px;
-    padding: 0 15px;
-}
-
-.search-box {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #ffffff;
-}
-
-.search-container button i {
-    font-size: 18px;
-    color: #fff;
-}
-.search-container {
-    display: flex;
-    align-items: center;
-}
-
-.search-container input {
-    flex: 1;
-    height: 60px;
-    font-size: 16px;
-    background-color: #ffffff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 0 30px 0 75px;
-    font-family: "peyda", "Kalameh", Sans-serif;
-    transition: all 0.3s ease;
-    width: 100%; /* Ensure input takes full width of container */
-}
-.search-container input:focus {
-    border-color: #ddd;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-    outline: none;
-}
-
-.search-container button {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    background-color: #59606e;
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-    border: none; /* Remove default border */
-    cursor: pointer; /* Add pointer cursor */
-}
 
 .search-results {
     position: absolute;
