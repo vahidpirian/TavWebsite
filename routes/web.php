@@ -38,6 +38,7 @@ use App\Http\Controllers\Auth\User\AuthUserRegisterController;
 use App\Http\Controllers\Site\MyAccount\MyAccountController;
 use App\Http\Controllers\Site\MyAccount\MyAccountTicketController as MyAccountTicketController;
 use App\Http\Controllers\Admin\Content\ServiceSupportController;
+use App\Http\Controllers\Admin\Setting\SettingFooterController;
 
 
 Route::prefix('admin')->middleware(['is_admin'])->group(function () {
@@ -308,6 +309,11 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
         Route::get('/edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
         Route::put('/update/{setting}', [SettingController::class, 'update'])->name('admin.setting.update');
         Route::delete('/destroy/{setting}', [SettingController::class, 'destroy'])->name('admin.setting.destroy');
+
+        // Setting Footer Routes
+        Route::get('/footer', [SettingFooterController::class, 'index'])->name('admin.setting.footer.index');
+        Route::get('/footer/edit', [SettingFooterController::class, 'edit'])->name('admin.setting.footer.edit');
+        Route::put('/footer/update', [SettingFooterController::class, 'update'])->name('admin.setting.footer.update');
     });
 
     // contact routes

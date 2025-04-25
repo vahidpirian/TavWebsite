@@ -5207,3 +5207,6 @@ html[dir="rtl"] .me-auto {
         font-size: 14px;
     }
 }
+.footer-box a img{
+    height: 200px;
+}

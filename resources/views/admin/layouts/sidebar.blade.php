@@ -146,6 +146,10 @@
                 <i class="fas fa-bars"></i>
                 <span>تنظیمات</span>
             </a>
+            <a href="{{ route('admin.setting.footer.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>فوتر</span>
+            </a>
 
         </section>
     </section>
