@@ -459,81 +459,59 @@
         </div>
     </div>
 
+    @foreach($serviceSupports as $key => $serviceSupport)
     <div class="sections py-120">
         <div class="container">
             <div class="row gap-5 align-items-center">
+                @if($key % 2 == 0)
                 <div class="col-sm image-container">
                     <figure class="image-frame">
                         <img
                             class="img-fluid"
-                            src="{{asset('images/images/2025/03/23/1742761041.png')}}"
-                            alt="خدمات ما"
+                            src="{{ asset($serviceSupport->image) }}"
+                            alt="{{ $serviceSupport->title }}"
                         />
                     </figure>
                 </div>
                 <div class="col-sm">
                     <div class="text-section">
-                        <div class="small-text">آنچه می‌توانید انتظار داشته باشید</div>
-                        <h4>خدمات جامع واردات و صادرات کالا</h4>
+                        <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                        <h4>{{ $serviceSupport->title }}</h4>
                     </div>
                     <div class="content">
-                        <p>
-                            ما با کیفیت خدمات و تلاش مستمر برای دستیابی به بهترین نتایج،
-                            توانمندی‌های خود را با اهداف مشتریان همسو می‌کنیم تا تأثیر
-                            مثبت و پایداری ایجاد کنیم.
-                        </p>
-                        <p>
-                            هسته اصلی شرکت ما توسط ارزش‌های ثابت ما - اخلاق، ایمنی، کیفیت
-                            و مردم، و همچنین تعهدات ما: وقت‌شناسی، صداقت، احترام، همکاری و
-                            اعتماد نگه داشته می‌شود.
-                        </p>
+                        {!! $serviceSupport->description !!}
                     </div>
                     <div class="button-section">
-                        <a class="btn">بیشتر بخوانید</a>
+                        <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Second Section: Text on Left, Image on Right -->
-    <div class="sections py-120">
-        <div class="container">
-            <div class="row gap-5 align-items-center">
+                @else
                 <div class="col-sm">
                     <div class="text-section">
-                        <div class="small-text">پشتیبانی حرفه‌ای</div>
-                        <h4>همراهی در تمام مراحل واردات و ترخیص</h4>
+                        <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                        <h4>{{ $serviceSupport->title }}</h4>
                     </div>
                     <div class="content">
-                        <p>
-                            تیم متخصص ما با بیش از یک دهه تجربه در زمینه واردات، صادرات و
-                            ترخیص کالا، شما را در تمام مراحل همراهی می‌کند تا فرآیندی بدون
-                            دغدغه را تجربه کنید.
-                        </p>
-                        <p>
-                            ما با شبکه گسترده بین‌المللی و آشنایی کامل با قوانین گمرکی،
-                            بهترین راهکارها را برای کسب و کار شما ارائه می‌دهیم تا در
-                            کوتاه‌ترین زمان و با بهترین هزینه به اهداف تجاری خود برسید.
-                        </p>
+                        {!! $serviceSupport->description !!}
                     </div>
                     <div class="button-section">
-                        <a class="btn">درخواست مشاوره</a>
+                        <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
                     </div>
                 </div>
-                <div class="col-sm-6 image-container">
+                <div class="col-sm image-container">
                     <figure class="image-frame">
                         <img
                             class="img-fluid"
-                            src="{{asset('images/images/2025/03/22/1742645104.png')}}"
-                            alt="پشتیبانی حرفه‌ای"
+                            src="{{ asset($serviceSupport->image) }}"
+                            alt="{{ $serviceSupport->title }}"
                         />
                     </figure>
                 </div>
+                @endif
             </div>
         </div>
     </div>
-
+    @endforeach
 
     <div class="blog-area py-120">
         <div class="container">

@@ -1,30 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>منو</title>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<style>
-    .select2-container .select2-selection--single {
-        height: 38px;
-    }
-    .select2-selection__rendered {
-        line-height: 36px !important;
-    }
-    .select2-selection__arrow {
-        height: 36px !important;
-    }
-    /* استایل برای نمایش آیکون در select2 */
-    .icon-select-option {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .icon-select-option i {
-        font-size: 16px;
-        width: 20px;
-        text-align: center;
-    }
-</style>
+<title>پشتیبانی سرویس</title>
+<link href="{{ asset('admin-assets/quill/quill.snow.css') }}" rel="stylesheet">
+<link href="{{ asset('admin-assets/quill/editor-fa.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -33,8 +12,8 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">منو سرویس</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد منو</li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">پشتیبانی سرویس</a></li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد پشتیبانی سرویس</li>
     </ol>
   </nav>
 
@@ -44,87 +23,73 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                  ایجاد منو
+                  ایجاد پشتیبانی سرویس
                 </h5>
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.content.service-menu.index') }}" class="btn btn-info btn-sm">بازگشت</a>
+                <a href="{{ route('admin.content.service-support.index') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 
             <section>
-                <form action="{{ route('admin.content.service-menu.store') }}" method="post">
+                <form action="{{ route('admin.content.service-support.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                <section class="row">
-
+                    <section class="row">
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">ساب کلمه بالا</label>
-                                <input type="text" name="sub_top" class="form-control form-control-sm" value="{{ old('sub_top') }}">
+                                <label for="">عنوان خلاصه</label>
+                                <input type="text" name="small_title" class="form-control form-control-sm" value="{{ old('small_title') }}">
                             </div>
-                            @error('sub_top')
+                            @error('small_title')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                 <strong>
                                     {{ $message }}
                                 </strong>
                             </span>
-                        @enderror
-                        </section>
-
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="">ساب کلمه پایین</label>
-                                <input type="text" name="sub_bottom" class="form-control form-control-sm" value="{{ old('sub_bottom') }}">
-                            </div>
-                            @error('name')
-                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
-                                    <strong>
-                                        {{ $message }}
-                                    </strong>
-                                </span>
                             @enderror
                         </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">منو والد</label>
-                                <select name="parent_id" id="" class="form-control form-control-sm">
-                                    <option value="">منوی اصلی</option>
-                                    @foreach ($menus as $menu)
-
-                                    <option value="{{ $menu->id }}"  @if(old('parent_id',request('parent_id')) == $menu->id) selected @endif>{{ $menu->sub_top .' ' . $menu->sub_bottom }}</option>
-
-                                    @endforeach
-
-                                </select>
+                                <label for="">عنوان</label>
+                                <input type="text" name="title" class="form-control form-control-sm" value="{{ old('title') }}">
                             </div>
-                            @error('parent_id')
+                            @error('title')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                 <strong>
                                     {{ $message }}
                                 </strong>
                             </span>
-                        @enderror
+                            @enderror
                         </section>
 
-
+                        <section class="col-12">
+                            <div class="form-group">
+                                <label for="">توضیحات</label>
+                                <div id="editor" style="height: 300px;">{{ old('description') }}</div>
+                                <input type="hidden" name="description" id="description">
+                            </div>
+                            @error('description')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">آیکون منو</label>
-                                <select name="icon" id="iconSelect" class="form-control form-control-sm">
-                                    <option value="">بدون آیکون</option>
-                                    @foreach($icons as $icon)
-                                        <option
-                                            data-icon="{{ $icon['icon'] }}"
-                                            value="{{$icon->icon}}"
-                                            {{old('icon') == $icon->icon ? 'selected' : ''}}
-                                        >
-                                            <i class="{{$icon->icon}}"></i> -  {{$icon->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <label for="">متن دکمه</label>
+                                <input type="text" name="button_text" class="form-control form-control-sm" value="{{ old('button_text') }}">
                             </div>
+                            @error('button_text')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
                         </section>
 
                         <section class="col-12 col-md-6">
@@ -188,6 +153,20 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
+                                <label for="">تصویر</label>
+                                <input type="file" name="image" class="form-control form-control-sm">
+                            </div>
+                            @error('image')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="status">وضعیت</label>
                                 <select name="status" id="" class="form-control form-control-sm" id="status">
                                     <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
@@ -200,9 +179,8 @@
                                     {{ $message }}
                                 </strong>
                             </span>
-                        @enderror
+                            @enderror
                         </section>
-
 
                         <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>
@@ -218,45 +196,10 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('admin-assets/quill/quill.js') }}"></script>
+
 <script>
 $(document).ready(function() {
-    // راه‌اندازی select2
-    $('#iconSelect').select2({
-        placeholder: 'یک آیکون انتخاب کنید...',
-        dir: 'rtl',
-        language: 'fa',
-        templateResult: formatIconOption,
-        templateSelection: formatIconOption
-    });
-
-    // فرمت‌بندی نمایش آیکون‌ها در select2
-    function formatIconOption(option) {
-        if (!option.id) {
-            return option.text;
-        }
-
-        var icon = $(option.element).data('icon');
-        if (!icon) {
-            return option.text;
-        }
-
-        var $option = $(
-            '<span class="icon-select-option">' +
-                '<i class="' + icon + '"></i>' +
-                '<span>' + option.text + '</span>' +
-            '</span>'
-        );
-
-        return $option;
-    }
-
-
-    // اجرای اولیه برای نمایش آیکون انتخاب شده
-    if ($('#iconSelect').val()) {
-        $('#iconSelect').trigger('change');
-    }
-
     // تغییر نمایش فیلدها بر اساس نوع لینک
     $('#urlType').on('change', function() {
         var urlType = $(this).val();
@@ -285,6 +228,38 @@ $(document).ready(function() {
 
     // اجرای اولیه برای تنظیم حالت صحیح نمایش
     $('#urlType').trigger('change');
+
+    // Initialize Quill editor
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'font': [] }, { 'size': [] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'script': 'super' }, { 'script': 'sub' }],
+                [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+                [{ 'direction': 'rtl' }, { 'align': [] }],
+                ['link', 'formula'],
+                ['clean']
+            ],
+            formula: true,
+            imageResize: {
+                displaySize: true
+            }
+        },
+    });
+
+    // Set initial content if there's any
+    @if(old('description'))
+        quill.root.innerHTML = `{!! old('description') !!}`;
+    @endif
+
+    // Update hidden input before form submission
+    $('form').on('submit', function() {
+        $('#description').val(quill.root.innerHTML);
+    });
 });
 </script>
 @endsection

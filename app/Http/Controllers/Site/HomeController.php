@@ -13,6 +13,7 @@ use App\Models\Content\Page;
 use App\Models\Content\Post;
 use App\Models\Content\Project;
 use App\Models\Content\Service;
+use App\Models\Content\ServiceSupport;
 use App\Models\Content\Video;
 use App\Models\Setting\Setting;
 use Illuminate\Http\Request;
@@ -46,6 +47,10 @@ class HomeController extends Controller
 
         $banner = Banner::where('position', 0)->first();
 
+        $serviceSupports = ServiceSupport::where('status', 1)
+            ->orderBy('order', 'asc')
+            ->get();
+
         return view('site.index', compact(
             'images',
             'services',
@@ -54,7 +59,8 @@ class HomeController extends Controller
             'latestPosts',
             'mainVideo',
             'setting',
-            'banner'
+            'banner',
+            'serviceSupports',
         ));
     }
 
