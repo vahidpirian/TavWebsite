@@ -11,6 +11,6 @@
 <link rel="stylesheet" href="{{asset('app-assets/css/animate.min.css')}}">
 <link rel="stylesheet" href="{{asset('app-assets/css/magnific-popup.min.css')}}">
 <link rel="stylesheet" href="{{asset('app-assets/css/owl.carousel.min.css')}}">
-<link rel="stylesheet" href="{{asset('app-assets/css/style.css?v='.hash('sha256','1.5'))}}">
-<link rel="stylesheet" href="{{ asset('site-assets/css/service-menu.css?v='.hash('sha256','1.3'))}}">
+<link rel="stylesheet" href="{{asset('app-assets/css/style.css?v='.hash('sha256','1.6'))}}">
+<link rel="stylesheet" href="{{ asset('site-assets/css/service-menu.css?v='.hash('sha256','1.4'))}}">
 

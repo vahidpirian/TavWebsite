@@ -345,7 +345,21 @@
         </div>
     </div>
 
-    <div class="contact-search">
+
+
+
+    <div class="hero-curve">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+            <rect width="100%" height="100%" fill="#f9f9f9" />
+            <path
+                fill="#fff"
+                fill-opacity="1"
+                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
+            ></path>
+        </svg>
+    </div>
+
+    <div class="contact-search mt-4">
         <div class="search-box">
             <div class="search-container">
                 <input
@@ -364,17 +378,6 @@
         </div>
     </div>
 
-
-    <div class="hero-curve">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-            <rect width="100%" height="100%" fill="#f9f9f9" />
-            <path
-                fill="#fff"
-                fill-opacity="1"
-                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
-            ></path>
-        </svg>
-    </div>
     <div class="feature-area">
         <div class="container">
             <div class="feature-area-wrapper">
@@ -763,6 +766,82 @@
             </div>
         </div>
     </div>
+
+    <div class="sections py-120">
+        <div class="container">
+            <div class="row gap-5 align-items-center">
+                <div class="col-sm image-container">
+                    <figure class="image-frame">
+                        <img
+                            class="img-fluid"
+                            src="{{asset('images/images/2025/03/23/1742761041.png')}}"
+                            alt="خدمات ما"
+                        />
+                    </figure>
+                </div>
+                <div class="col-sm">
+                    <div class="text-section">
+                        <div class="small-text">آنچه می‌توانید انتظار داشته باشید</div>
+                        <h4>خدمات جامع واردات و صادرات کالا</h4>
+                    </div>
+                    <div class="content">
+                        <p>
+                            ما با کیفیت خدمات و تلاش مستمر برای دستیابی به بهترین نتایج،
+                            توانمندی‌های خود را با اهداف مشتریان همسو می‌کنیم تا تأثیر
+                            مثبت و پایداری ایجاد کنیم.
+                        </p>
+                        <p>
+                            هسته اصلی شرکت ما توسط ارزش‌های ثابت ما - اخلاق، ایمنی، کیفیت
+                            و مردم، و همچنین تعهدات ما: وقت‌شناسی، صداقت، احترام، همکاری و
+                            اعتماد نگه داشته می‌شود.
+                        </p>
+                    </div>
+                    <div class="button-section">
+                        <a class="btn">بیشتر بخوانید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Section: Text on Left, Image on Right -->
+    <div class="sections py-120">
+        <div class="container">
+            <div class="row gap-5 align-items-center">
+                <div class="col-sm">
+                    <div class="text-section">
+                        <div class="small-text">پشتیبانی حرفه‌ای</div>
+                        <h4>همراهی در تمام مراحل واردات و ترخیص</h4>
+                    </div>
+                    <div class="content">
+                        <p>
+                            تیم متخصص ما با بیش از یک دهه تجربه در زمینه واردات، صادرات و
+                            ترخیص کالا، شما را در تمام مراحل همراهی می‌کند تا فرآیندی بدون
+                            دغدغه را تجربه کنید.
+                        </p>
+                        <p>
+                            ما با شبکه گسترده بین‌المللی و آشنایی کامل با قوانین گمرکی،
+                            بهترین راهکارها را برای کسب و کار شما ارائه می‌دهیم تا در
+                            کوتاه‌ترین زمان و با بهترین هزینه به اهداف تجاری خود برسید.
+                        </p>
+                    </div>
+                    <div class="button-section">
+                        <a class="btn">درخواست مشاوره</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 image-container">
+                    <figure class="image-frame">
+                        <img
+                            class="img-fluid"
+                            src="{{asset('images/images/2025/03/22/1742645104.png')}}"
+                            alt="پشتیبانی حرفه‌ای"
+                        />
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="blog-area py-120">
         <div class="container">
