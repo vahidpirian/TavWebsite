@@ -3816,9 +3816,9 @@ body.rtl-mode .price-wrapper {
 }
 
 /* .enamad-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-} */
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  } */
 
 .enamad-box img {
     max-width: 100%;
@@ -4882,7 +4882,7 @@ html[dir="rtl"] .me-auto {
     position: relative;
     background-color: transparent;
     z-index: 25;
-    margin-top: -50px;
+    margin-top: -20px;
     padding: 0 15px;
 }
 
