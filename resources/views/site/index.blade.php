@@ -348,18 +348,8 @@
 
 
 
-    <div class="hero-curve">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-            <rect width="100%" height="100%" fill="#f9f9f9" />
-            <path
-                fill="#fff"
-                fill-opacity="1"
-                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
-            ></path>
-        </svg>
-    </div>
 
-    <div class="contact-search mt-4">
+    <div class="contact-search">
         <div class="search-box">
             <div class="search-container">
                 <input
@@ -377,6 +367,18 @@
             </div>
         </div>
     </div>
+
+    <div class="hero-curve">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+            <rect width="100%" height="100%" fill="#f9f9f9" />
+            <path
+                fill="#fff"
+                fill-opacity="1"
+                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
+            ></path>
+        </svg>
+    </div>
+
 
     <div class="feature-area">
         <div class="container">
