@@ -5,6 +5,102 @@
         .post-img{
             height: 260px !important;
         }
+        .blog-item {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-item-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+            height: 200px; /* Fixed height for images */
+        }
+
+        .blog-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-item:hover .blog-item-img img {
+            transform: scale(1.1);
+        }
+
+        .blog-item-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-item-meta {
+            margin-bottom: 15px;
+        }
+
+        .blog-item-meta ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .blog-item-meta ul li {
+            display: inline-block;
+            margin-left: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .blog-item-meta ul li:last-child {
+            margin-left: 0;
+        }
+
+        .blog-item-meta ul li i {
+            margin-left: 5px;
+            color: #1e99e6;
+        }
+
+        .blog-title {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-title a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-title a:hover {
+            color: #1e99e6;
+        }
+
+        .blog-item p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+
+        .blog-item .theme-btn:hover {
+            background: #1677b5;
+            transform: translateY(-2px);
+        }
     </style>
 @endsection
 @section('content')
