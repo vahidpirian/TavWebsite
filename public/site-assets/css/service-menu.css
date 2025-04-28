@@ -222,7 +222,7 @@
     padding-bottom: 8px;
     margin-bottom: 12px;
     border-bottom: 2px solid #f0f2f5;
-    font-family: "Kalameh", sans-serif;
+    font-family: Yekan;
     position: relative;
 }
 
@@ -253,7 +253,7 @@
     padding-bottom: 8px;
     margin-bottom: 12px;
     border-bottom: 2px solid #f0f2f5;
-    font-family: "Kalameh", sans-serif;
+    font-family: Yekan;
     position: relative;
     display: flex;
     justify-content: flex-end;
