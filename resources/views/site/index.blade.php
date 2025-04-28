@@ -337,11 +337,9 @@
                     </div>
                     <div class="col-md-7 col-lg-7">
                         <div class="hero-img">
-                        <img
-                    src="{{asset($images->image)}}"
-                    alt="تاو 360 - خدمات بازرگانی"
-                    class="img-fluid"
-                  />
+
+                        <img src="{{ asset($images->image) }}" alt="تاو 360 - خدمات بازرگانی">
+
                         </div>
                     </div>
                 </div>
