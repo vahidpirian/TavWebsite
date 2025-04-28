@@ -150,7 +150,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{ $posts->links() }}
+                        {{ $posts->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
                 @if($banners && $banners->where('position',8)->first())
