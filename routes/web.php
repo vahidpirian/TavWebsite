@@ -37,6 +37,8 @@ use App\Http\Controllers\Auth\User\AuthUserLoginController;
 use App\Http\Controllers\Auth\User\AuthUserRegisterController;
 use App\Http\Controllers\Site\MyAccount\MyAccountController;
 use App\Http\Controllers\Site\MyAccount\MyAccountTicketController as MyAccountTicketController;
+use App\Http\Controllers\Admin\Content\ServiceSupportController;
+use App\Http\Controllers\Admin\Setting\SettingFooterController;
 
 
 Route::prefix('admin')->middleware(['is_admin'])->group(function () {
@@ -188,8 +190,6 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
             Route::delete('/destroy/{image}', 'destroy')->name('admin.content.image.destroy');
         });
 
-        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('admin.content.ckeditor.upload');
-
         Route::prefix('company-statistic')->controller(CompanyStatisticController::class)->group(function() {
             Route::get('/', 'index')->name('admin.content.company-statistic.index');
             Route::get('/create', 'create')->name('admin.content.company-statistic.create');
@@ -198,6 +198,25 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
             Route::put('/update/{companyStatistic}', 'update')->name('admin.content.company-statistic.update');
             Route::delete('/destroy/{companyStatistic}', 'destroy')->name('admin.content.company-statistic.destroy');
         });
+
+        //service-support
+        Route::prefix('service-supports')->controller(ServiceSupportController::class)->group(function() {
+            Route::get('/', 'index')->name('admin.content.service-support.index');
+            Route::get('/create',  'create')->name('admin.content.service-support.create');
+            Route::post('/store', 'store')->name('admin.content.service-support.store');
+            Route::get('/edit/{serviceSupport}',  'edit')->name('admin.content.service-support.edit');
+            Route::put('/update/{serviceSupport}',  'update')->name('admin.content.service-support.update');
+            Route::delete('/destroy/{serviceSupport}', 'destroy')->name('admin.content.service-support.destroy');
+            Route::post('/sort', 'sort')->name('admin.content.service-support.sort');
+            Route::get('/status/{serviceSupport}',  'status')->name('admin.content.service-support.status');
+        });
+
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('admin.content.ckeditor.upload');
+
+
+
+
+        Route::get('service-support/{serviceSupport}/status', [ServiceSupportController::class, 'status'])->name('service-support.status');
 
     });
 
@@ -290,6 +309,11 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
         Route::get('/edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
         Route::put('/update/{setting}', [SettingController::class, 'update'])->name('admin.setting.update');
         Route::delete('/destroy/{setting}', [SettingController::class, 'destroy'])->name('admin.setting.destroy');
+
+        // Setting Footer Routes
+        Route::get('/footer', [SettingFooterController::class, 'index'])->name('admin.setting.footer.index');
+        Route::get('/footer/edit', [SettingFooterController::class, 'edit'])->name('admin.setting.footer.edit');
+        Route::put('/footer/update', [SettingFooterController::class, 'update'])->name('admin.setting.footer.update');
     });
 
     // contact routes

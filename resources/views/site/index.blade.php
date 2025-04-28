@@ -214,6 +214,103 @@
           max-width: 85%;
         }
       }
+
+      .blog-item {
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
+          margin-bottom: 30px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .blog-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .blog-item-img {
+          position: relative;
+          overflow: hidden;
+          border-radius: 10px 10px 0 0;
+          height: 200px; /* Fixed height for images */
+      }
+
+      .blog-item-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+      }
+
+      .blog-item:hover .blog-item-img img {
+          transform: scale(1.1);
+      }
+
+      .blog-item-info {
+          padding: 20px;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .blog-item-meta {
+          margin-bottom: 15px;
+      }
+
+      .blog-item-meta ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+      }
+
+      .blog-item-meta ul li {
+          display: inline-block;
+          margin-left: 15px;
+          font-size: 14px;
+          color: #666;
+      }
+
+      .blog-item-meta ul li:last-child {
+          margin-left: 0;
+      }
+
+      .blog-item-meta ul li i {
+          margin-left: 5px;
+          color: #1e99e6;
+      }
+
+      .blog-title {
+          margin-bottom: 15px;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.4;
+      }
+
+      .blog-title a {
+          color: #333;
+          text-decoration: none;
+          transition: color 0.3s ease;
+      }
+
+      .blog-title a:hover {
+          color: #1e99e6;
+      }
+
+      .blog-item p {
+          color: #666;
+          margin-bottom: 20px;
+          flex-grow: 1;
+          line-height: 1.6;
+      }
+
+
+      .blog-item .theme-btn:hover {
+          background: #1677b5;
+          transform: translateY(-2px);
+      }
     </style>
 @endsection
 @section('content')
@@ -240,7 +337,9 @@
                     </div>
                     <div class="col-md-7 col-lg-7">
                         <div class="hero-img">
+
                         <img src="{{ asset($images->image) }}" alt="تاو 360 - خدمات بازرگانی">
+
                         </div>
                     </div>
                 </div>
@@ -672,81 +771,59 @@
         </div>
     </div>
 
-    <div class="sections py-120">
-        <div class="container">
-            <div class="row gap-5 align-items-center">
-                <div class="col-sm image-container">
-                    <figure class="image-frame">
-                        <img
-                            class="img-fluid"
-                            src="{{asset('images/images/2025/03/23/1742761041.png')}}"
-                            alt="خدمات ما"
-                        />
-                    </figure>
-                </div>
-                <div class="col-sm">
-                    <div class="text-section">
-                        <div class="small-text">آنچه می‌توانید انتظار داشته باشید</div>
-                        <h4>خدمات جامع واردات و صادرات کالا</h4>
-                    </div>
-                    <div class="content">
-                        <p>
-                            ما با کیفیت خدمات و تلاش مستمر برای دستیابی به بهترین نتایج،
-                            توانمندی‌های خود را با اهداف مشتریان همسو می‌کنیم تا تأثیر
-                            مثبت و پایداری ایجاد کنیم.
-                        </p>
-                        <p>
-                            هسته اصلی شرکت ما توسط ارزش‌های ثابت ما - اخلاق، ایمنی، کیفیت
-                            و مردم، و همچنین تعهدات ما: وقت‌شناسی، صداقت، احترام، همکاری و
-                            اعتماد نگه داشته می‌شود.
-                        </p>
-                    </div>
-                    <div class="button-section">
-                        <a class="btn">بیشتر بخوانید</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Second Section: Text on Left, Image on Right -->
-    <div class="sections py-120">
-        <div class="container">
-            <div class="row gap-5 align-items-center">
-                <div class="col-sm">
-                    <div class="text-section">
-                        <div class="small-text">پشتیبانی حرفه‌ای</div>
-                        <h4>همراهی در تمام مراحل واردات و ترخیص</h4>
-                    </div>
-                    <div class="content">
-                        <p>
-                            تیم متخصص ما با بیش از یک دهه تجربه در زمینه واردات، صادرات و
-                            ترخیص کالا، شما را در تمام مراحل همراهی می‌کند تا فرآیندی بدون
-                            دغدغه را تجربه کنید.
-                        </p>
-                        <p>
-                            ما با شبکه گسترده بین‌المللی و آشنایی کامل با قوانین گمرکی،
-                            بهترین راهکارها را برای کسب و کار شما ارائه می‌دهیم تا در
-                            کوتاه‌ترین زمان و با بهترین هزینه به اهداف تجاری خود برسید.
-                        </p>
-                    </div>
-                    <div class="button-section">
-                        <a class="btn">درخواست مشاوره</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 image-container">
-                    <figure class="image-frame">
-                        <img
-                            class="img-fluid"
-                            src="{{asset('images/images/2025/03/22/1742645104.png')}}"
-                            alt="پشتیبانی حرفه‌ای"
-                        />
-                    </figure>
+    @foreach($serviceSupports as $key => $serviceSupport)
+        <div class="sections py-120">
+            <div class="container">
+                <div class="row gap-5 align-items-center">
+                    @if($key % 2 == 0)
+                        <div class="col-sm image-container">
+                            <figure class="image-frame">
+                                <img
+                                    class="img-fluid"
+                                    src="{{ asset($serviceSupport->image) }}"
+                                    alt="{{ $serviceSupport->title }}"
+                                />
+                            </figure>
+                        </div>
+                        <div class="col-sm">
+                            <div class="text-section">
+                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                                <h4>{{ $serviceSupport->title }}</h4>
+                            </div>
+                            <div class="content">
+                                {!! $serviceSupport->description !!}
+                            </div>
+                            <div class="button-section">
+                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-sm">
+                            <div class="text-section">
+                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                                <h4>{{ $serviceSupport->title }}</h4>
+                            </div>
+                            <div class="content">
+                                {!! $serviceSupport->description !!}
+                            </div>
+                            <div class="button-section">
+                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm image-container">
+                            <figure class="image-frame">
+                                <img
+                                    class="img-fluid"
+                                    src="{{ asset($serviceSupport->image) }}"
+                                    alt="{{ $serviceSupport->title }}"
+                                />
+                            </figure>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
-
+    @endforeach
 
     <div class="blog-area py-120">
         <div class="container">
