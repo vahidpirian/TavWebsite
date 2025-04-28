@@ -63,7 +63,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{ $projects->links() }}
+                        {{ $projects->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
                 @if($banners && $banners->where('position',7)->first())

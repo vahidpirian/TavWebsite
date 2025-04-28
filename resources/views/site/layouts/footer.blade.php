@@ -53,16 +53,11 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-6 col-lg-3">
                     <div class="footer-widget-box list">
                         <h4 class="footer-widget-title">{{$setting_footer && $setting_footer->title_enamad ?  $setting_footer->title_enamad : 'نمادهای اعتماد'  }}</h4>
                         <div class="enamad-container">
-                            <div class="enamad-box">
-                                <img
-                                    src="{{asset('app-assets/img/enamad.png')}}"
-                                    alt="نماد اعتماد الکترونیکی"
-                                />
-                            </div>
                             @if($setting_footer && $setting_footer->enamads)
                                 @foreach($setting_footer->enamads ?? [] as $enamad)
                                     <div class="footer-box" >
@@ -73,10 +68,8 @@
                                             />
                                         </a>
                                     </div>
-
                                 @endforeach
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -89,12 +82,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center copyright-text">
-                        @if($setting_footer && $setting_footer->text_copyright)
-                            {!! $setting_footer->text_copyright !!}
-                        @else
-                            کلیه حقوق این وبسایت برای گروه
-                            <a href="#"> تجارت آفرینان ورزان </a> محفوظ میباشد.
-                        @endif
+                    @if($setting_footer && $setting_footer->text_copyright)
+                        {!! $setting_footer->text_copyright !!}
+                    @else
+                        کلیه حقوق این وبسایت برای گروه
+                        <a href="#"> تجارت آفرینان ورزان </a> محفوظ میباشد.
+                    @endif
                 </div>
             </div>
         </div>

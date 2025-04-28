@@ -5281,3 +5281,7 @@ html[dir="rtl"] .me-auto {
         font-size: 14px;
     }
 }
+
+.footer-box a img{
+    max-height: 200px;
+}
