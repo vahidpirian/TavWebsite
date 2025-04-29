@@ -345,40 +345,33 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-    <div class="contact-search">
-        <div class="search-box">
-            <div class="search-container">
-                <input
-                    type="text"
-                    id="liveSearch"
-                    placeholder="جستجو..."
-                    autocomplete="off"
-                />
-                <button type="button"><i class="fas fa-search"></i></button>
-                <div class="search-results" id="searchResults">
-                    <div class="search-loading" id="searchLoading">
-                        <div class="spinner"></div>
-                    </div>
-                </div>
+        <div class="hero-search-container">
+          <div class="search-box">
+            <input
+              type="text"
+              id="liveSearch"
+              placeholder="جستجو..."
+              autocomplete="off"
+            />
+            <button type="button"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults">
+              <div class="search-loading" id="searchLoading">
+                <div class="spinner"></div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div class="hero-curve">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+        <div class="hero-curve">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
             <rect width="100%" height="100%" fill="#f9f9f9" />
             <path
-                fill="#fff"
-                fill-opacity="1"
-                d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
+              fill="#fff"
+              fill-opacity="1"
+              d="M0,0L80,0C160,0,320,0,480,0C640,0,800,0,960,0C1120,0,1280,0,1360,0L1440,0L1440,200L1360,200C1280,200,1120,200,960,180C800,160,640,120,480,120C320,120,160,160,80,180L0,200Z"
             ></path>
-        </svg>
+          </svg>
+        </div>
     </div>
 
 
@@ -456,41 +449,61 @@
                 </a>
         </div>
     @endif
-    <div class="service-area bg py-120">
+    <div class="service-area bg">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div class="site-heading text-center">
-                    <h2>همراه شما در مسیر تجارت جهانی</h2>
-                    <div class="heading-divider"></div>
-                    <p>
-                        ارائه خدمات جامع در زمینه واردات، صادرات و امور بازرگانی با بهترین کیفیت و مناسب‌ترین قیمت
-                    </p>
+    @foreach($serviceSupports as $key => $serviceSupport)
+        <div class="py-120">
+            <div class="container">
+                <div class="row gap-5 align-items-center">
+                    @if($key % 2 == 0)
+                        <div class="col-sm image-container">
+                            <figure class="image-frame">
+                                <img
+                                    class="img-fluid"
+                                    src="{{ asset($serviceSupport->image) }}"
+                                    alt="{{ $serviceSupport->title }}"
+                                />
+                            </figure>
+                        </div>
+                        <div class="col-sm">
+                            <div class="text-section">
+                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                                <h4>{{ $serviceSupport->title }}</h4>
+                            </div>
+                            <div class="content">
+                                {!! $serviceSupport->description !!}
+                            </div>
+                            <div class="button-section">
+                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-sm">
+                            <div class="text-section">
+                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
+                                <h4>{{ $serviceSupport->title }}</h4>
+                            </div>
+                            <div class="content">
+                                {!! $serviceSupport->description !!}
+                            </div>
+                            <div class="button-section">
+                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm image-container">
+                            <figure class="image-frame">
+                                <img
+                                    class="img-fluid"
+                                    src="{{ asset($serviceSupport->image) }}"
+                                    alt="{{ $serviceSupport->title }}"
+                                />
+                            </figure>
+                        </div>
+                    @endif
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            @foreach($services as $service)
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-item h295px">
-                        <div class="service-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="service-title">
-                            <a href="#">{{$service->title}}</a>
-                        </h3>
-                        <p class="service-text">
-                            {{mb_substr($service->summary,0,85).'...'}}
-                        </p>
-                        <div class="service-arrow">
-                            <a href="{{route('service.show',$service->id)}}" class="service-read-btn"> ثبت درخواست<i class="far fa-long-arrow-left"></i></a>
-                        </div>
                     </div>
                 </div>
             @endforeach
-
-
         </div>
     </div>
 </div>
