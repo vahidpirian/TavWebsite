@@ -1153,7 +1153,7 @@ button.navbar-toggler:focus {
 .hero-wrapper {
     position: relative;
     z-index: 1;
-    padding: 80px 0 120px;
+    padding: 80px 0 0px;
     overflow: visible;
 }
 
@@ -1507,13 +1507,13 @@ button.navbar-toggler:focus {
     position: relative;
     z-index: 3;
     background-color: #f9f9f9;
-    padding: 20px 50px 50px 50px;
+    padding: 55px;
 }
 
 .hero-curve {
     position: relative;
     z-index: 2;
-    margin-top: -180px;
+    margin-top: -70px;
     pointer-events: none;
     overflow: hidden;
     background-color: #f9f9f9;
@@ -1589,30 +1589,6 @@ button.navbar-toggler:focus {
 .feature-item:hover p,
 .feature-item:hover h5 {
     color: #fff;
-}
-
-@media (max-width: 1500px) {
-    .hero-curve {
-        margin-top: -160px;
-    }
-    .contact-search {
-        margin-top: -55px;
-    }
-    .hero-wrapper {
-        padding: 80px 0 100px;
-    }
-}
-
-@media (max-width: 1400px) {
-    .hero-curve {
-        margin-top: -140px;
-    }
-    .contact-search {
-        margin-top: -50px;
-    }
-    .hero-wrapper {
-        padding: 80px 0 90px;
-    }
 }
 
 @media (max-width: 1200px) {
@@ -4879,10 +4855,8 @@ html[dir="rtl"] .me-auto {
 .contact-search {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
     background-color: transparent;
     z-index: 25;
-    margin-top: -20px;
     padding: 0 15px;
 }
 
@@ -4890,6 +4864,8 @@ html[dir="rtl"] .me-auto {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
     background-color: #ffffff;
 }
 
@@ -4898,13 +4874,18 @@ html[dir="rtl"] .me-auto {
     color: #fff;
 }
 .search-container {
-    display: flex;
-    align-items: center;
+    position: relative; /* Change to relative */
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Optional: set a max width */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    margin: 0 auto; /* Center container horizontally */
+    padding: 0 15px; /* Optional: add some padding */
 }
 
 .search-container input {
     flex: 1;
-    height: 60px;
+    height: 50px;
     font-size: 16px;
     background-color: #ffffff;
     border: 1px solid #eee;
@@ -4926,8 +4907,8 @@ html[dir="rtl"] .me-auto {
     top: 50%;
     background-color: #59606e;
     color: white;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -4989,6 +4970,77 @@ html[dir="rtl"] .me-auto {
     font-weight: 500;
     color: #fff;
     margin-right: 5px; /* Added margin */
+}
+
+.hero-search-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10; /* Must be higher than the z-index of hero-curve */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateY(50%);
+}
+
+.hero-search-container .search-box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 1200px; /* Adjust width as needed */
+    width: 100%;
+    margin-bottom: 110px;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.hero-search-container input {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0 30px 0 75px;
+    font-family: "peyda", "Kalameh", Sans-serif;
+    transition: all 0.3s ease;
+}
+
+.hero-search-container button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    background-color: #59606e;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-search-container button i {
+    font-size: 18px;
+    color: #fff;
+}
+/* Media queries to adjust positioning on smaller screens */
+@media (max-width: 991px) {
+    .hero-search-container {
+        position: relative;
+        transform: translateY(0);
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .hero-curve {
+        display: none;
+    }
 }
 
 .badge-primary {
@@ -5061,7 +5113,7 @@ html[dir="rtl"] .me-auto {
     left: 0;
     width: 50px;
     height: 50px;
-    background-color: #ff9a00; /* Orange color */
+    background-color: #1e99e3; /* Orange color */
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
@@ -5071,7 +5123,7 @@ html[dir="rtl"] .me-auto {
     right: 0;
     width: 50px;
     height: 50px;
-    background-color: #ff9a00; /* Orange color */
+    background-color: #1e99e3; /* Orange color */
     clip-path: polygon(100% 100%, 0 100%, 100% 0);
 }
 
@@ -5116,7 +5168,7 @@ html[dir="rtl"] .me-auto {
 }
 
 .text-section .small-text {
-    color: #ff9a00;
+    color: #1e99e3;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 15px;
@@ -5151,13 +5203,13 @@ html[dir="rtl"] .me-auto {
 .button-section .btn {
     display: inline-block;
     padding: 12px 28px;
-    background-color: #fca100;
+    background-color: #f9f9f9;
     font-size: 16px;
-    color: #f9f9f9;
+    color: #1e99e3;
     font-weight: 500;
     border-radius: 8px;
     text-decoration: none;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #1e99e3;
     -webkit-transition: all 0.3s ease-in-out;
     box-shadow: 0 3px 24px rgb(0 0 0/10%);
     transition: all 0.3s ease-in-out;
@@ -5168,8 +5220,8 @@ html[dir="rtl"] .me-auto {
 }
 
 .button-section .btn:hover {
-    background: #f9f9f9;
-    color: #fca100;
+    color: #f9f9f9;
+    background-color: #1e99e3;
 }
 
 @media (max-width: 767px) {
@@ -5282,6 +5334,161 @@ html[dir="rtl"] .me-auto {
     }
 }
 
-.footer-box a img{
-    max-height: 200px;
+.hero-search-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateY(50%);
+    padding: 0 15px;
+}
+
+.hero-search-container .search-box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.hero-search-container input {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0 30px 0 75px;
+    font-family: "peyda", "Kalameh", Sans-serif;
+    transition: all 0.3s ease;
+}
+
+.hero-search-container button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    background-color: #59606e;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-search-container button i {
+    font-size: 18px;
+    color: #fff;
+}
+
+@media (max-width: 1500px) {
+    .hero-curve {
+        margin-top: -100px;
+    }
+
+    .hero-search-container {
+        transform: translateY(60%);
+    }
+
+    .hero-wrapper {
+        padding: 80px 0 70px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .hero-curve {
+        margin-top: -70px;
+    }
+
+    .hero-search-container {
+        transform: translateY(60%);
+    }
+
+    .hero-wrapper {
+        padding: 80px 0 60px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-curve {
+        margin-top: -60px;
+    }
+
+    .hero-search-container {
+        transform: translateY(70%);
+    }
+
+    .hero-wrapper {
+        padding: 70px 0 50px;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-curve {
+        display: none;
+    }
+
+    .hero-search-container {
+        position: relative;
+        transform: none;
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+
+    .hero-search-container .search-box {
+        margin-bottom: 0;
+    }
+
+    .hero-wrapper {
+        padding: 70px 0 30px;
+    }
+
+    .feature-area {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-search-container {
+        margin-top: -20px;
+    }
+
+    .hero-search-container input {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .hero-search-container button {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-search-container {
+        margin-top: -15px;
+    }
+
+    .hero-search-container input {
+        height: 40px;
+        font-size: 13px;
+        padding: 0 20px 0 60px;
+    }
+
+    .hero-search-container button {
+        left: 15px;
+        width: 26px;
+        height: 26px;
+    }
 }
