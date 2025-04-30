@@ -437,6 +437,10 @@ label {
     padding: 120px 0;
 }
 
+.py-60 {
+    padding: 60px 0;
+}
+
 .pt-120 {
     padding-top: 120px;
 }
@@ -1153,7 +1157,7 @@ button.navbar-toggler:focus {
 .hero-wrapper {
     position: relative;
     z-index: 1;
-    padding: 80px 0 0px;
+    padding: 60px 0px 0px;
     overflow: visible;
 }
 
@@ -1796,8 +1800,8 @@ button.navbar-toggler:focus {
 }
 
 .cta-area {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -2460,7 +2464,6 @@ button.navbar-toggler:focus {
 
 .blog-item {
     height: 100%;
-    margin-bottom: 25px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 40px 5px rgb(0 0 0/5%);
@@ -5097,38 +5100,37 @@ html[dir="rtl"] .me-auto {
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    padding: 10px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 }
 
-.image-frame::before,
-.image-frame::after {
+/* .image-frame::before,
+  .image-frame::after {
     content: "";
     position: absolute;
     z-index: 1;
-}
-
-/* Top-left corner element */
-.image-frame::before {
+  }
+  
+  .image-frame::before {
     top: 0;
     left: 0;
     width: 50px;
     height: 50px;
-    background-color: #1e99e3; /* Orange color */
+    background-color: #1e99e3;
     clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-
-/* Bottom-right corner element */
-.image-frame::after {
+  }
+  
+  .image-frame::after {
     bottom: 0;
     right: 0;
     width: 50px;
     height: 50px;
-    background-color: #1e99e3; /* Orange color */
+    background-color: #1e99e3;
     clip-path: polygon(100% 100%, 0 100%, 100% 0);
-}
+  } */
 
 /* Diagonal stripe pattern */
-.image-container::before {
+/* .image-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -5136,16 +5138,16 @@ html[dir="rtl"] .me-auto {
     width: 25px;
     height: 100%;
     background: repeating-linear-gradient(
-        45deg,
-        #eeeeee 0px,
-        #eeeeee 5px,
-        #ffffff 5px,
-        #ffffff 10px
+      45deg,
+      #eeeeee 0px,
+      #eeeeee 5px,
+      #ffffff 5px,
+      #ffffff 10px
     );
     z-index: 0;
-}
-
-.image-container::after {
+  }
+  
+  .image-container::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -5153,14 +5155,14 @@ html[dir="rtl"] .me-auto {
     width: 100%;
     height: 25px;
     background: repeating-linear-gradient(
-        45deg,
-        #eeeeee 0px,
-        #eeeeee 5px,
-        #ffffff 5px,
-        #ffffff 10px
+      45deg,
+      #eeeeee 0px,
+      #eeeeee 5px,
+      #ffffff 5px,
+      #ffffff 10px
     );
     z-index: 0;
-}
+  } */
 
 /* Text section styling */
 .text-section {

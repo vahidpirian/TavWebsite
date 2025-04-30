@@ -122,7 +122,7 @@
       }
 
       .hero-wrapper {
-        padding: 80px 0;
+        padding: 30px 0;
         overflow: hidden;
       }
 
@@ -452,7 +452,7 @@
     <div class="service-area bg">
     <div class="container">
     @foreach($serviceSupports as $key => $serviceSupport)
-        <div class="py-120">
+        <div class="py-60">
             <div class="container">
                 <div class="row gap-5 align-items-center">
                     @if($key % 2 == 0)
@@ -508,7 +508,7 @@
     </div>
 </div>
 
-    <div class="skill-area py-120">
+    <div class="skill-area py-60">
         <div class="container">
             <div class="skill-wrapper">
                 <div class="row g-5 align-items-center">
@@ -624,7 +624,7 @@
         </div>
     </div>
 
-{{--    <div class="case-area py-120">--}}
+{{--    <div class="case-area py-60">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
 {{--                <div class="col-lg-6 mx-auto">--}}
@@ -710,7 +710,7 @@
     @endif
 
 
-    <div class="process-area py-120">
+    <div class="process-area py-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mx-auto">
@@ -728,7 +728,7 @@
                 </div>
             </div>
             <div class="row justify-content-between">
-                <div class="col-lg-3 col-md-6 text-center mb-30">
+                <div class="col-lg-3 col-md-6 text-center">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -741,7 +741,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center mb-30">
+                <div class="col-lg-3 col-md-6 text-center">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -754,7 +754,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center mb-30">
+                <div class="col-lg-3 col-md-6 text-center">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -767,7 +767,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center mb-30">
+                <div class="col-lg-3 col-md-6 text-center">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -784,61 +784,8 @@
         </div>
     </div>
 
-    @foreach($serviceSupports as $key => $serviceSupport)
-        <div class="sections py-120">
-            <div class="container">
-                <div class="row gap-5 align-items-center">
-                    @if($key % 2 == 0)
-                        <div class="col-sm image-container">
-                            <figure class="image-frame">
-                                <img
-                                    class="img-fluid"
-                                    src="{{ asset($serviceSupport->image) }}"
-                                    alt="{{ $serviceSupport->title }}"
-                                />
-                            </figure>
-                        </div>
-                        <div class="col-sm">
-                            <div class="text-section">
-                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
-                                <h4>{{ $serviceSupport->title }}</h4>
-                            </div>
-                            <div class="content">
-                                {!! $serviceSupport->description !!}
-                            </div>
-                            <div class="button-section">
-                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
-                            </div>
-                        </div>
-                    @else
-                        <div class="col-sm">
-                            <div class="text-section">
-                                <div class="small-text">{{ $serviceSupport->small_title }}</div>
-                                <h4>{{ $serviceSupport->title }}</h4>
-                            </div>
-                            <div class="content">
-                                {!! $serviceSupport->description !!}
-                            </div>
-                            <div class="button-section">
-                                <a href="{{ $serviceSupport->url }}" class="btn">{{ $serviceSupport->button_text }}</a>
-                            </div>
-                        </div>
-                        <div class="col-sm image-container">
-                            <figure class="image-frame">
-                                <img
-                                    class="img-fluid"
-                                    src="{{ asset($serviceSupport->image) }}"
-                                    alt="{{ $serviceSupport->title }}"
-                                />
-                            </figure>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    @endforeach
 
-    <div class="blog-area py-120">
+    <div class="blog-area py-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mx-auto">
