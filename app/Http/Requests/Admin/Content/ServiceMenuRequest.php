@@ -26,7 +26,7 @@ class ServiceMenuRequest extends FormRequest
             'sub_bottom' => 'required|max:20|min:2',
             'url' => 'nullable|max:1000',
             'status' => 'required|numeric|in:0,1',
-            'parent_id' => 'nullable|exists:menus,id',
+          //  'parent_id' => 'nullable|exists:service_menus,id',
         ];
     }
 }
