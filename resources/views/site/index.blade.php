@@ -351,7 +351,7 @@
               type="text"
               id="liveSearch"
               placeholder="جستجو..."
-              autocomplete="off"
+              autocomplete="on"
             />
             <button type="button"><i class="fas fa-search"></i></button>
             <div class="search-results" id="searchResults">
@@ -452,7 +452,7 @@
     <div class="service-area bg">
     <div class="container">
     @foreach($serviceSupports as $key => $serviceSupport)
-        <div class="py-60">
+        <div class="py-30">
             <div class="container">
                 <div class="row gap-5 align-items-center">
                     @if($key % 2 == 0)
@@ -710,7 +710,7 @@
     @endif
 
 
-    <div class="process-area py-60">
+    <div class="process-area pt-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mx-auto">
@@ -728,7 +728,7 @@
                 </div>
             </div>
             <div class="row justify-content-between">
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-3 col-md-6 text-center mb-30">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -741,7 +741,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-3 col-md-6 text-center mb-30">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">
@@ -754,7 +754,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-3 col-md-6 text-center mb-30">
                     <a href="#" class="process-link">
                         <div class="process-single">
                             <div class="icon">

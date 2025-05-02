@@ -1,7 +1,7 @@
 <footer class="footer-area">
     <div class="footer-widget">
         <div class="container">
-            <div class="row footer-widget-wrapper pt-100 pb-70">
+            <div class="row footer-widget-wrapper py-60">
                 <div class="col-md-6 col-lg-3">
                     <div class="footer-widget-box about-us">
                         <a href="#" class="footer-logo">
