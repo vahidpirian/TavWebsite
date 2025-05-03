@@ -4861,16 +4861,24 @@ html[dir="rtl"] .me-auto {
 }
 
 .contact-search {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateY(50%);
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 55px;
     background-color: transparent;
     z-index: 25;
     padding: 0 15px;
 }
 
-.search-box {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
+.contact-search .search-box {
     overflow: hidden;
     max-width: 1200px;
     width: 100%;
@@ -4882,13 +4890,11 @@ html[dir="rtl"] .me-auto {
     color: #fff;
 }
 .search-container {
-    position: relative; /* Change to relative */
-    width: 100%; /* Full width */
-    max-width: 1200px; /* Optional: set a max width */
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    margin: 0 auto; /* Center container horizontally */
-    padding: 0 15px; /* Optional: add some padding */
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .search-container input {
@@ -4897,11 +4903,11 @@ html[dir="rtl"] .me-auto {
     font-size: 16px;
     background-color: #ffffff;
     border: 1px solid #eee;
-    border-radius: 8px;
+    border-radius: 10px 10px 0px 0px;
     padding: 0 30px 0 75px;
     font-family: "peyda", "Kalameh", Sans-serif;
     transition: all 0.3s ease;
-    width: 100%; /* Ensure input takes full width of container */
+    width: 100%;
 }
 .search-container input:focus {
     border-color: #ddd;
@@ -4934,12 +4940,13 @@ html[dir="rtl"] .me-auto {
     left: 0;
     background: #fff;
     border: 1px solid #ddd;
-    border-top: none; /* Avoid double border */
-    border-radius: 0 0 5px 5px;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     display: none;
     z-index: 1000;
-    max-height: 400px;
+    max-height: 415px;
+    margin: 0px 15px;
     overflow-y: auto;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
@@ -4995,7 +5002,7 @@ html[dir="rtl"] .me-auto {
 .hero-search-container .search-box {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
-    overflow: hidden;
+
     max-width: 1200px; /* Adjust width as needed */
     width: 100%;
     margin-bottom: 110px;
@@ -5052,7 +5059,7 @@ html[dir="rtl"] .me-auto {
 }
 
 .badge-primary {
-    background-color: #3490dc;
+    background-color: #1e99e3;
 }
 
 .badge-success {
@@ -5401,8 +5408,10 @@ html[dir="rtl"] .me-auto {
         margin-top: -100px;
     }
 
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         transform: translateY(60%);
+        margin-bottom: 50px;
     }
 
     .hero-wrapper {
@@ -5415,8 +5424,10 @@ html[dir="rtl"] .me-auto {
         margin-top: -70px;
     }
 
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         transform: translateY(60%);
+        margin-bottom: 45px;
     }
 
     .hero-wrapper {
@@ -5429,8 +5440,10 @@ html[dir="rtl"] .me-auto {
         margin-top: -60px;
     }
 
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         transform: translateY(70%);
+        margin-bottom: 40px;
     }
 
     .hero-wrapper {
@@ -5443,14 +5456,16 @@ html[dir="rtl"] .me-auto {
         display: none;
     }
 
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         position: relative;
         transform: none;
         margin-top: -30px;
         margin-bottom: 30px;
     }
 
-    .hero-search-container .search-box {
+    .hero-search-container .search-box,
+    .contact-search .search-box {
         margin-bottom: 0;
     }
 
@@ -5464,35 +5479,45 @@ html[dir="rtl"] .me-auto {
 }
 
 @media (max-width: 767px) {
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         margin-top: -20px;
     }
 
-    .hero-search-container input {
+    .hero-search-container input,
+    .contact-search input,
+    .search-container input {
         height: 45px;
         font-size: 14px;
     }
 
-    .hero-search-container button {
+    .hero-search-container button,
+    .contact-search button,
+    .search-container button {
         width: 28px;
         height: 28px;
     }
 }
 
 @media (max-width: 576px) {
-    .hero-search-container {
+    .hero-search-container,
+    .contact-search {
         margin-top: -15px;
     }
 
-    .hero-search-container input {
+    .hero-search-container input,
+    .contact-search input,
+    .search-container input {
         height: 40px;
         font-size: 13px;
         padding: 0 20px 0 60px;
     }
 
-    .hero-search-container button {
-        left: 15px;
-        width: 26px;
-        height: 26px;
+    .hero-search-container button,
+    .contact-search button,
+    .search-container button {
+        left: 25px;
+        width: 24px;
+        height: 24px;
     }
 }
