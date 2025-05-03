@@ -80,10 +80,12 @@
                     const resultHtml = `
                 <div class="search-result-item" onclick="window.location.href='${item.url}'">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <div class="result-title">${item.title}</div>
+                      <div class="d-flex flex-column">
+                          <div class="result-title">${item.title}</div>
+                        <div class="result-description text-muted">${item.description}</div>
+                      </div>
                         <span class="search-badge ${item.type_class}">${item.type}</span>
                     </div>
-                    <div class="result-description text-muted">${item.description}</div>
                 </div>
             `;
                     searchResults.append(resultHtml);

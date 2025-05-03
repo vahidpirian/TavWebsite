@@ -345,8 +345,9 @@
                 </div>
             </div>
         </div>
-        <div class="hero-search-container">
+        <div class="contact-search">
           <div class="search-box">
+          <div class="search-container">
             <input
               type="text"
               id="liveSearch"
@@ -359,6 +360,7 @@
                 <div class="spinner"></div>
               </div>
             </div>
+    </div>
           </div>
         </div>
 
