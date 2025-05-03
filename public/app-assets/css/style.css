@@ -4903,7 +4903,7 @@ html[dir="rtl"] .me-auto {
     font-size: 16px;
     background-color: #ffffff;
     border: 1px solid #eee;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px;
     padding: 0 30px 0 75px;
     font-family: "peyda", "Kalameh", Sans-serif;
     transition: all 0.3s ease;
@@ -4929,8 +4929,8 @@ html[dir="rtl"] .me-auto {
     justify-content: center;
     transform: translateY(-50%);
     transition: all 0.3s ease;
-    border: none; /* Remove default border */
-    cursor: pointer; /* Add pointer cursor */
+    border: none;
+    cursor: pointer;
 }
 
 .search-results {
