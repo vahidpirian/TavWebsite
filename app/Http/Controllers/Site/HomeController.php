@@ -35,7 +35,7 @@ class HomeController extends Controller
 
         $latestPosts = Post::where('status', 1)
             ->orderBy('created_at', 'desc')
-            ->take(3)
+            ->take(4)
             ->where('published_at','<',now())
             ->get();
 
