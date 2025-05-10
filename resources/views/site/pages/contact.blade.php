@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>تماس مستقیم</h5>
-                                    <p>{{$setting->mobile}}</p>
+                                    <p><a href="tel:{{$setting->mobile}}">{{$setting->mobile}}</a></p>
                                 </div>
                             </div>
                             <div class="contact-info">
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>ایمیل ما</h5>
-                                    <p>{{$setting->email}}</p>
+                                    <p><a href="mailto:{{$setting->email}}">{{$setting->email}}</a></p>
                                 </div>
                             </div>
                             <div class="contact-info">
@@ -126,11 +126,9 @@
                                             @if($social['status'] == '1')
                                                 <li><a href="{{$social['link']}}"><i class="{{$social['icon']}}"></i></a></li>
                                             @endif
-
                                         @endforeach
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>
