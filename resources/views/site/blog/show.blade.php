@@ -138,7 +138,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="site-breadcrumb">
+    <!-- <div class="site-breadcrumb">
         <div class="container">
             <h2 class="breadcrumb-title">وبلاگ</h2>
             <ul class="breadcrumb-menu">
@@ -149,7 +149,7 @@
         <div class="breadcrumb-shape">
             <img src="{{asset('app-assets/img/shape-4.svg')}}" alt="">
         </div>
-    </div>
+    </div> -->
 
 
     <div class="blog-single-area pt-120 pb-120">
@@ -306,8 +306,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <aside class="sidebar">
-
+                    <aside class="fixed" id="sidebar">
                         <div class="widget category">
                             <h5 class="widget-title">دسته</h5>
                             <div class="category-list">
@@ -351,7 +350,6 @@
                             @endforeach
                         </div>
                         @endif
-
                     </aside>
                 </div>
             </div>
@@ -460,6 +458,59 @@
             </div>
         `;
             }
+            function setupFixedSidebar() {
+        const sidebar = $('#sidebar');
+        const sidebarParent = sidebar.parent();
+        const footer = $('footer');
+        const sidebarOffset = sidebarParent.offset().top;
+
+        function adjustSidebar() {
+            if ($(window).width() > 991) {
+                const scrollPos = $(window).scrollTop();
+                const sidebarHeight = sidebar.outerHeight();
+                const footerOffset = footer.length ? footer.offset().top : $(document).height();
+                const sidebarWidth = sidebarParent.width();
+                const maxFixedScroll = footerOffset - sidebarHeight -230;
+
+                if (scrollPos > maxFixedScroll) {
+                    const topValue = 90 - (scrollPos - maxFixedScroll);
+                    sidebar.css({
+                        'position': 'fixed',
+                        'top': topValue + 'px',
+                        'width': sidebarWidth + 'px'
+                    });
+                } else if (scrollPos > sidebarOffset - 90) {
+                    sidebar.css({
+                        'position': 'fixed',
+                        'top': '90px',
+                        'width': sidebarWidth + 'px'
+                    });
+                } else {
+                    sidebar.css({
+                        'position': 'static',
+                        'width': 'auto',
+                        'top': 'auto'
+                    });
+                }
+            } else {
+                sidebar.css({
+                    'position': 'relative',
+                });
+            }
+        }
+
+        adjustSidebar();
+
+        $(window).on('scroll', function () {
+            if ($(window).width() > 991) {
+                adjustSidebar();
+            }
         });
+
+        $(window).on('resize', adjustSidebar);
+    }
+
+    setupFixedSidebar();
+});
     </script>
 @endsection
