@@ -444,6 +444,9 @@ label {
 .py-30 {
     padding: 30px 0;
 }
+.py-40 {
+    padding: 40px 0;
+}
 
 .pt-120 {
     padding-top: 120px;
@@ -3480,28 +3483,52 @@ button.navbar-toggler:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
 }
 
 .pagination .page-link {
-    border: none;
-    background: #1f2471;
-    color: #fff;
-    margin: 0 10px;
-    border-radius: 8px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    line-height: 28px;
-    text-align: center;
-    transition: all 0.5s ease-in-out;
+    padding: 0;
+    line-height: 1;
+    border: 1px solid #1e99e3;
+    background-color: #ffffff;
+    color: #343131;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-.pagination .page-link:hover,
+.pagination .page-link:hover {
+    background-color: #1e99e3;
+    color: #ffffff;
+}
+
 .pagination .page-item.active .page-link {
-    background: #896eff;
+    background-color: #1e99e3;
+    color: #ffffff;
+    cursor: default;
+    transform: none;
 }
 
+.pagination .page-item.disabled .page-link {
+    background-color: #f1f1f1;
+    border-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+}
 body.rtl-mode {
     direction: rtl;
 }
@@ -3542,7 +3569,7 @@ body.rtl-mode .price-wrapper {
 }
 
 .login-form .login-header h3 {
-    color: #896eff;
+    color: #1e99e3;
     margin-bottom: 5px;
     font-weight: 800;
 }
@@ -3561,7 +3588,7 @@ body.rtl-mode .price-wrapper {
 }
 
 .login-form .login-footer a:hover {
-    color: #603cff;
+    color: #1e99e3;
 }
 
 .login-form .form-group {
