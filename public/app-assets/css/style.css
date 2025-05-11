@@ -2695,7 +2695,7 @@ button.navbar-toggler:focus {
 
 .blog-comments-form {
     padding: 30px;
-    background: #f8f9ff;
+    background: #f9f9f9;
     border-radius: 8px;
 }
 
@@ -2754,14 +2754,14 @@ button.navbar-toggler:focus {
 }
 
 .widget {
-    background: #f8f9ff;
+    background: #f9f9f9;
     padding: 30px;
     border-radius: 8px;
     margin-bottom: 30px;
 }
 
 .widget .widget-title {
-    color: #1f2471;
+    color: #343131;
     padding-bottom: 10px;
     margin-bottom: 30px;
     position: relative;
@@ -2771,7 +2771,7 @@ button.navbar-toggler:focus {
     position: absolute;
     content: "";
     width: 12px;
-    border-bottom: 3px solid #896eff;
+    border-bottom: 3px solid #1e99e6;
     bottom: 0;
     right: 0;
 }
@@ -2780,7 +2780,7 @@ button.navbar-toggler:focus {
     position: absolute;
     content: "";
     width: 25px;
-    border-bottom: 3px solid #896eff;
+    border-bottom: 3px solid #1e99e6;
     bottom: 0;
     right: 18px;
 }
@@ -2796,7 +2796,7 @@ button.navbar-toggler:focus {
 }
 
 .widget .search-form .form-control:focus {
-    border-color: #896eff;
+    border-color: #1e99e6;
 }
 
 .widget .search-form button {
@@ -2812,7 +2812,7 @@ button.navbar-toggler:focus {
 .widget .category-list a {
     display: block;
     padding: 10px 0;
-    color: #1f2471;
+    color: #343131;
     border-bottom: 1px solid #ced4da;
     transition: all 0.5s ease-in-out;
 }
@@ -2824,12 +2824,12 @@ button.navbar-toggler:focus {
 
 .widget .category-list a:hover {
     padding-right: 10px;
-    color: #896eff;
+    color: #1e99e6;
 }
 
 .widget .category-list a i {
     margin-left: 5px;
-    color: #896eff;
+    color: #1e99e6;
 }
 
 .widget .category-list a span {
@@ -2858,7 +2858,7 @@ button.navbar-toggler:focus {
 
 .widget .recent-post-bio span {
     font-size: 14px;
-    color: #6340ff;
+    color: #1e99e6;
 }
 
 .widget .recent-post-bio span i {
@@ -2866,11 +2866,11 @@ button.navbar-toggler:focus {
 }
 
 .widget .recent-post-bio h6 a {
-    color: #1f2471;
+    color: #343131;
 }
 
 .widget .recent-post-bio h6 a:hover {
-    color: #896eff;
+    color: #1e99e6;
 }
 
 .widget .social-share-link a {
@@ -2878,15 +2878,15 @@ button.navbar-toggler:focus {
     height: 35px;
     line-height: 32px;
     border-radius: 50px;
-    border: 2px solid #896eff;
-    color: #896eff;
+    border: 2px solid #1e99e6;
+    color: #1e99e6;
     text-align: center;
     margin-right: 5px;
     transition: all 0.5s ease-in-out;
 }
 
 .widget .social-share-link a:hover {
-    background: #896eff;
+    background: #1e99e6;
     color: #fff;
 }
 
@@ -4969,7 +4969,7 @@ html[dir="rtl"] .me-auto {
 
 .search-container button {
     position: absolute;
-    left: 40px;
+    left: 30px;
     top: 50%;
     background-color: #59606e;
     color: white;
