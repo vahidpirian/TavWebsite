@@ -135,6 +135,10 @@
             height: 75px !important;
         }
 
+        .img-show-post img{
+            max-width: none !important;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -152,7 +156,7 @@
     </div> -->
 
 
-    <div class="blog-single-area pt-120 pb-120">
+    <div class="blog-single-area py-40">
         @if($banners && $banners->where('position',11)->first())
             <div class="container">
                 <a class="w-100" href="{{ $banners->where('position',11)->first()->url }}"
@@ -317,6 +321,23 @@
                             </div>
                         </div>
 
+                        @if($relatedPosts->count() > 0)
+                        <div class="widget recent-post">
+                            <h5 class="widget-title">پست های مرتبط</h5>
+                            @foreach($relatedPosts as $item)
+                                <div class="recent-post-single">
+                                    <div class="recent-post-img">
+                                        <img class="img-show-post" src="{{asset($item->image)}}" alt="{{$item->title}}">
+                                    </div>
+                                    <div class="recent-post-bio">
+                                        <h6><a href="{{route('blog.show',$item->slug)}}">{{$item->title}}</a></h6>
+                                        <span><i class="far fa-clock"></i>{{ jdate($item->published_at)->format('%d %B %Y') }}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        @endif
+
                         @if($latestPosts->count() > 0)
                             <div class="widget recent-post">
                                 <h5 class="widget-title">پست اخیر</h5>
@@ -334,22 +355,7 @@
                             </div>
                         @endif
 
-                        @if($relatedPosts->count() > 0)
-                        <div class="widget recent-post">
-                            <h5 class="widget-title">پست های مرتبط</h5>
-                            @foreach($relatedPosts as $item)
-                                <div class="recent-post-single">
-                                    <div class="recent-post-img">
-                                        <img class="img-show-post" src="{{asset($item->image)}}" alt="{{$item->title}}">
-                                    </div>
-                                    <div class="recent-post-bio">
-                                        <h6><a href="{{route('blog.show',$item->slug)}}">{{$item->title}}</a></h6>
-                                        <span><i class="far fa-clock"></i>{{ jdate($item->published_at)->format('%d %B %Y') }}</span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        @endif
+               
                     </aside>
                 </div>
             </div>
