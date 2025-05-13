@@ -510,79 +510,75 @@
     </div>
 </div>
 
-    <div class="skill-area py-60">
+<div class="process-area py-30">
         <div class="container">
-            <div class="skill-wrapper">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 col-12">
-                        <div class="skill-right">
-                            <span class="site-title-tagline">چرا تاو 360؟</span>
-                            <h2 class="site-title">
-                                ما به شما <span>خدمات جامع بازرگانی</span> در سطح بین‌المللی
-                                ارائه می‌دهیم
-                            </h2>
-                            <p class="skill-details">
-                                با بیش از یک دهه تجربه در زمینه تجارت بین‌الملل و همکاری با
-                                معتبرترین شرکت‌های جهانی، ما مفتخریم که خدمات جامع بازرگانی
-                                را با بالاترین استانداردها به مشتریان خود ارائه می‌دهیم.
-                            </p>
-                            <div class="skills-section">
-                                <div class="progress-box">
-                                    <h5>رضایت مشتریان <span class="pull-right">۹۵٪</span></h5>
-                                    <div class="progress" data-value="95">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 95%"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        سرعت ترخیص کالا <span class="pull-right">۸۸٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="88">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 88%"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        پوشش شبکه بین‌المللی <span class="pull-right">۹۲٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="92">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 92%"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        موفقیت در پروژه‌ها <span class="pull-right">۹۰٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="90">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 90%"
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div class="site-heading text-center">
+                <span class="site-title-tagline"
+                >فرآیند کاری <span>در تاو 360</span></span
+                >
+                        <h2 class="site-title">چگونه کار می‌کند</h2>
+                        <div class="heading-divider"></div>
+                        <p>
+                            این یک واقعیت است که خواننده توسط محتوای خواندنی یک صفحه هنگام
+                            نگاه به طرح‌بندی آن منحرف می‌شود.
+                        </p>
                     </div>
-                    <div class="col-lg-6 col-12">
-                        <div class="skill-left">
-                            <div class="skill-img">
-                                <img src="{{asset($images->where('position',2)->first()->image)}}" alt="تصویر ">
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-lg-3 col-md-6 text-center mb-30">
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-comments"></i>
+                                <!-- آیکون مشاوره -->
+                                <span>01</span>
                             </div>
+                            <h4>مشاوره اولیه</h4>
+                            <p>بررسی نیازها و ارائه راهکارهای مناسب</p>
                         </div>
-                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-30">
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-search-dollar"></i>
+                                <!-- آیکون سورسینگ و تحقیق قیمت -->
+                                <span>02</span>
+                            </div>
+                            <h4>سورسینگ</h4>
+                            <p>یافتن بهترین تامین‌کنندگان و مذاکره</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-30">
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-shipping-fast"></i>
+                                <!-- آیکون حمل و نقل سریع -->
+                                <span>03</span>
+                            </div>
+                            <h4>خرید و حمل</h4>
+                            <p>انجام فرآیند خرید و حمل بین‌المللی</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <a href="#" class="process-link">
+                        <div class="process-single">
+                            <div class="icon">
+                                <i class="fas fa-clipboard-check"></i>
+                                <!-- آیکون ترخیص و تحویل -->
+                                <span>04</span>
+                            </div>
+                            <h4>ترخیص و تحویل</h4>
+                            <p>ترخیص کالا از گمرک و تحویل به مشتری</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -710,81 +706,84 @@
     </div>
 </div>
     @endif
-
-
-    <div class="process-area pt-60">
+    <div class="skill-area py-60">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="site-heading text-center">
-                <span class="site-title-tagline"
-                >فرآیند کاری <span>در تاو 360</span></span
-                >
-                        <h2 class="site-title">چگونه کار می‌کند</h2>
-                        <div class="heading-divider"></div>
-                        <p>
-                            این یک واقعیت است که خواننده توسط محتوای خواندنی یک صفحه هنگام
-                            نگاه به طرح‌بندی آن منحرف می‌شود.
-                        </p>
+            <div class="skill-wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="skill-right">
+                            <span class="site-title-tagline">چرا تاو 360؟</span>
+                            <h2 class="site-title">
+                                ما به شما <span>خدمات جامع بازرگانی</span> در سطح بین‌المللی
+                                ارائه می‌دهیم
+                            </h2>
+                            <p class="skill-details">
+                                با بیش از یک دهه تجربه در زمینه تجارت بین‌الملل و همکاری با
+                                معتبرترین شرکت‌های جهانی، ما مفتخریم که خدمات جامع بازرگانی
+                                را با بالاترین استانداردها به مشتریان خود ارائه می‌دهیم.
+                            </p>
+                            <div class="skills-section">
+                                <div class="progress-box">
+                                    <h5>رضایت مشتریان <span class="pull-right">۹۵٪</span></h5>
+                                    <div class="progress" data-value="95">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 95%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        سرعت ترخیص کالا <span class="pull-right">۸۸٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="88">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 88%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        پوشش شبکه بین‌المللی <span class="pull-right">۹۲٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="92">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 92%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>
+                                        موفقیت در پروژه‌ها <span class="pull-right">۹۰٪</span>
+                                    </h5>
+                                    <div class="progress" data-value="90">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 90%"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row justify-content-between">
-                <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <a href="#" class="process-link">
-                        <div class="process-single">
-                            <div class="icon">
-                                <i class="fas fa-comments"></i>
-                                <!-- آیکون مشاوره -->
-                                <span>01</span>
+                    <div class="col-lg-6 col-12">
+                        <div class="skill-left">
+                            <div class="skill-img">
+                                <img src="{{asset($images->where('position',2)->first()->image)}}" alt="تصویر ">
                             </div>
-                            <h4>مشاوره اولیه</h4>
-                            <p>بررسی نیازها و ارائه راهکارهای مناسب</p>
                         </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <a href="#" class="process-link">
-                        <div class="process-single">
-                            <div class="icon">
-                                <i class="fas fa-search-dollar"></i>
-                                <!-- آیکون سورسینگ و تحقیق قیمت -->
-                                <span>02</span>
-                            </div>
-                            <h4>سورسینگ</h4>
-                            <p>یافتن بهترین تامین‌کنندگان و مذاکره</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center mb-30">
-                    <a href="#" class="process-link">
-                        <div class="process-single">
-                            <div class="icon">
-                                <i class="fas fa-shipping-fast"></i>
-                                <!-- آیکون حمل و نقل سریع -->
-                                <span>03</span>
-                            </div>
-                            <h4>خرید و حمل</h4>
-                            <p>انجام فرآیند خرید و حمل بین‌المللی</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <a href="#" class="process-link">
-                        <div class="process-single">
-                            <div class="icon">
-                                <i class="fas fa-clipboard-check"></i>
-                                <!-- آیکون ترخیص و تحویل -->
-                                <span>04</span>
-                            </div>
-                            <h4>ترخیص و تحویل</h4>
-                            <p>ترخیص کالا از گمرک و تحویل به مشتری</p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <div class="blog-area py-60">
