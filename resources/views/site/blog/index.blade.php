@@ -104,7 +104,7 @@
     </style>
 @endsection
 @section('content')
-        <div class="blog-area py-120">
+        <div class="blog-area py-40">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mx-auto">
