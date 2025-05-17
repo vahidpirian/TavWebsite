@@ -19,7 +19,7 @@ class ServiceMenuController extends Controller
      */
     public function index()
     {
-        $menus = ServiceMenu::orderBy('sort_order')->simplePaginate(15);
+        $menus = ServiceMenu::orderBy('sort_order')->simplePaginate(10);
         return view('admin.content.service-menu.index', compact('menus'));
     }
 

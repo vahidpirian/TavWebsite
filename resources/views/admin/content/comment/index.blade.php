@@ -74,6 +74,14 @@
                                 @else
                                 <a href="{{ route('admin.content.comment.approved', $comment->id)}}" class="btn btn-success btn-sm text-white" type="submit"><i class="fa fa-check"></i>تایید</a>
                                 @endif
+
+                                <form class="d-inline" action="{{ route('admin.content.comment.destroy', $comment->id) }}" method="post">
+                                    @csrf
+                                    {{ method_field('delete') }}
+                                    <button class="btn btn-outline-danger btn-sm delete" type="submit" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
 
                         </tr>
@@ -82,7 +90,7 @@
                     </tbody>
                 </table>
             </section>
-
+            {{$comments->links()}}
         </section>
     </section>
 </section>
@@ -124,6 +132,7 @@
         }
     </script>
 
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection
 

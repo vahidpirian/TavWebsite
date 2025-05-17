@@ -85,26 +85,24 @@
                 <table class="table menu-table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>ساب کلمه بالا</th>
-                            <th>ساب کلمه پایین</th>
-                            <th>منوی والد</th>
-                            <th>لینک منو</th>
-                            <th>وضعیت</th>
-                            <th>عملیات</th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">ساب کلمه بالا</th>
+                            <th class="text-center">ساب کلمه پایین</th>
+                            <th class="text-center">منوی والد</th>
+                            <th class="text-center">لینک منو</th>
+                            <th class="text-center">وضعیت</th>
+                            <th class="text-center">عملیات</th>
                         </tr>
                     </thead>
                     <tbody id="sortable-table">
                         @foreach($menus as $key => $menu)
                         <tr data-id="{{ $menu->id }}">
-                            <th>{{ $key + 1 }}</th>
-                            <td>
-                                <div class="menu-hierarchy">
+                            <th class="text-center">{{ $key + 1 }}</th>
+                            <td class="text-center">
                                     {{ $menu->sub_top }}
-                                </div>
                             </td>
-                            <td>{{ $menu->sub_bottom }}</td>
-                            <td>
+                            <td class="text-center">{{ $menu->sub_bottom }}</td>
+                            <td class="text-center">
                                 @if($menu->parent_id)
                                     <span class="badge bg-info text-white parent-badge">
                                         <i class="fas fa-level-up-alt"></i> {{ $menu->parent->full_name }}
@@ -113,10 +111,14 @@
                                     <span class="badge bg-secondary text-white parent-badge">منوی اصلی</span>
                                 @endif
                             </td>
-                            <td class="menu-url" title="{{ $menu->url }}">
-                                <i class="fas fa-link text-muted"></i> {{ $menu->url }}
+                            <td class="text-center">
+                                @if($menu->url)
+                                    <a class="link-primary" href="{{$menu->url}}">لینک پیوند</a>
+                                @else
+                                    <span class="badge badge-primary">ندارد</span>
+                                @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <label>
                                     <input id="{{ $menu->id }}" onchange="changeStatus({{ $menu->id }})" data-url="{{ route('admin.content.service-menu.status', $menu->id) }}" type="checkbox" @if ($menu->status == 1)
                                         checked
@@ -148,7 +150,7 @@
                     </tbody>
                 </table>
             </section>
-
+            {{$menus->links()}}
         </section>
     </section>
 </section>

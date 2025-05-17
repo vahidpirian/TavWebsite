@@ -129,7 +129,6 @@
                                     @if(old('url_type', $menu->url_type) == 'page') type="hidden" @else type="text" @endif>
 
                                 <select name="page_id" id="pageSelect" class="form-control form-control-sm"
-                                    @if(old('url_type', $menu->url_type) != 'page') disabled @endif
                                     style="display: @if(old('url_type', $menu->url_type) != 'page') none @endif">
                                     <option value="">انتخاب صفحه</option>
                                     <optgroup label="ثابت ها">

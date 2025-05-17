@@ -10,7 +10,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::orderBy('created_at', 'desc')->paginate(15);
+        $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.contact.index', compact('contacts'));
     }
 
@@ -18,4 +18,11 @@ class ContactController extends Controller
     {
         return view('admin.contact.show', compact('contact'));
     }
-} 
+
+    public function destroy(Contact $contact)
+    {
+        $contact->delete();
+
+        return redirect()->route('admin.contact.index')->with('swal-success','پیام مورد نظر با موفقیت حذف شد');
+    }
+}

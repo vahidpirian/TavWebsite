@@ -24,7 +24,8 @@ class SiteContactController extends Controller
             'name' => 'required|min:3|max:50',
             'mobile' => 'required|numeric',
             'subject' => 'required|min:5|max:100',
-            'message' => 'required|min:10|max:1000'
+            'message' => 'required|min:10|max:1000',
+            'captcha' => 'required|captcha'
         ]);
 
         Contact::create($validated);
