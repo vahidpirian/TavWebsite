@@ -19,7 +19,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::orderBy('sort_order')->simplePaginate(15);
+        $menus = Menu::orderBy('sort_order')->simplePaginate(10);
         return view('admin.content.menu.index', compact('menus'));
     }
 

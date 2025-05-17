@@ -36,22 +36,28 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>نام منو</th>
-                            <th>منوی والد</th>
-                            <th> لینک منو</th>
-                            <th>وضعیت</th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">نام منو</th>
+                            <th class="text-center">منوی والد</th>
+                            <th class="text-center"> لینک منو</th>
+                            <th class="text-center">وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody id="sortable-table">
                         @foreach ($menus as $key => $menu)
                         <tr data-id="{{ $menu->id }}">
-                            <th>{{ $key + 1 }}</th>
-                            <td>{{ $menu->name }}</td>
-                            <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
-                            <td>{{ $menu->url }}</td>
-                            <td>
+                            <th class="text-center">{{ $key + 1 }}</th>
+                            <td class="text-center">{{ $menu->name }}</td>
+                            <td class="text-center">{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
+                            <td class="text-center">
+                                @if($menu->url)
+                                    <a class="link-primary" href="{{$menu->url}}">لینک پیوند</a>
+                                @else
+                                    <span class="badge badge-primary">ندارد</span>
+                                @endif
+                            </td>
+                            <td class="text-center">
                                 <label>
                                     <input id="{{ $menu->id }}" onchange="changeStatus({{ $menu->id }})" data-url="{{ route('admin.content.menu.status', $menu->id) }}" type="checkbox" @if ($menu->status === 1)
                                     checked
@@ -71,7 +77,7 @@
                     </tbody>
                 </table>
             </section>
-
+            {{$menus->links()}}
         </section>
     </section>
 </section>

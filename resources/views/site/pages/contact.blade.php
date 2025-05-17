@@ -1,5 +1,7 @@
 @extends('site.layouts.master')
-
+@section('head-tag')
+    <title>تماس باما</title>
+@endsection
 @section('content')
 {{--    <div class="site-breadcrumb">--}}
 {{--        <div class="container">--}}
@@ -73,6 +75,22 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <div class="captcha mb-3">
+                                                        <span id="captcha-img">
+                                                            <img src="{{captcha_src('numeric')}}" alt="captcha">
+                                                        </span>
+                                        <button type="button" class="btn btn-sm btn-refresh"
+                                                id="refresh-captcha">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" name="captcha"
+                                           placeholder="کد امنیتی را وارد کنید*" required>
+                                    @error('captcha')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="theme-btn">ارسال پیام<i class="far fa-paper-plane"></i></button>
                             </form>
                         </div>
@@ -136,4 +154,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        // Refresh CAPTCHA
+        $('#refresh-captcha').click(function (e) {
+            e.preventDefault();
+            $.get('{{ route("captcha.refresh") }}').done(function (data) {
+                console.log(data.captcha)
+                $('#captcha-img img').attr('src', data.captcha);
+            });
+        });
+    </script>
 @endsection

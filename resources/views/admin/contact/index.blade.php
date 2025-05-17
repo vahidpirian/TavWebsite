@@ -42,13 +42,26 @@
                                 <a href="{{ route('admin.contact.show', $contact->id) }}" class="btn btn-info btn-sm">
                                     <i class="fa fa-eye"></i> مشاهده
                                 </a>
+
+
+                                <form class="d-inline" action="{{ route('admin.contact.destroy', $contact->id) }}" method="post">
+                                    @csrf
+                                    {{ method_field('delete') }}
+                                    <button class="btn btn-outline-danger btn-sm delete" type="submit" title="حذف">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </section>
+            {{$contacts->links()}}
         </section>
     </section>
 </section>
+@endsection
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 @endsection

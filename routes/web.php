@@ -320,6 +320,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
     Route::prefix('contact')->controller(ContactController::class)->group(function() {
         Route::get('/', 'index')->name('admin.contact.index');
         Route::get('/show/{contact}', 'show')->name('admin.contact.show');
+        Route::delete('/destroy/{contact}',  'destroy')->name('admin.contact.destroy');
     });
 
 });

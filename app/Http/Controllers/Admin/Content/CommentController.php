@@ -21,7 +21,7 @@ class CommentController extends Controller
             $unSeenComment->seen = 1;
             $result = $unSeenComment->save();
         }
-        $comments = Comment::orderBy('created_at', 'desc')->where('commentable_type', 'App\Models\Content\Post')->simplePaginate(15);
+        $comments = Comment::orderBy('created_at', 'desc')->where('commentable_type', 'App\Models\Content\Post')->simplePaginate(10);
         return view('admin.content.comment.index', compact('comments'));
 
     }
@@ -87,9 +87,11 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+       $comment->delete();
+
+       return redirect()->route('admin.content.comment.index')->with('swal-success','نظر مورد نظر با موفقیت حذف شد');
     }
 
 

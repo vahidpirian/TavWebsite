@@ -1,5 +1,7 @@
 @extends('site.layouts.master')
-
+@section('head-tag')
+    <title>سوالات متداول</title>
+@endsection
 @section('content')
     <main class="main">
 

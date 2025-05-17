@@ -1,5 +1,7 @@
 @extends('site.layouts.master')
-
+@section('head-tag')
+    <title>تماس باما</title>
+@endsection
 @section('content')
 {{--    <div class="site-breadcrumb">--}}
 {{--        <div class="container">--}}
