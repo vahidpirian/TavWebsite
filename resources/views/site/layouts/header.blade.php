@@ -157,36 +157,54 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const headerWrapper = document.querySelector(".header-wrapper");
-        const topHeaderDesktop = document.querySelector(".top-header-desktop");
-        const topHeader = document.querySelector(".top-header");
-        let lastScrollTop = 0;
-        let headerHeight = topHeader.offsetHeight;
 
-        // Clone headers for fixed version
-        const fixedHeaders = topHeader.cloneNode(true);
-        fixedHeaders.classList.add("header-fixed");
-        document.body.appendChild(fixedHeaders);
+document.addEventListener("DOMContentLoaded", function () {
+    const topHeader = document.querySelector(".top-header");
+    const headerDesktop = document.querySelector(".top-header-desktop");
+    let headerHeight = 0;
+    
+    if (topHeader) {
+        headerHeight += topHeader.offsetHeight;
+    }
+    if (headerDesktop) {
+        headerHeight += headerDesktop.offsetHeight;
+    }
+    
+    // Create a clone of the header for the fixed version
+    const fixedHeader = document.createElement('div');
+    fixedHeader.classList.add('header-fixed');
+    fixedHeader.innerHTML = topHeader.outerHTML;
+    document.body.appendChild(fixedHeader);
+    
+    // Calculate the actual header height
+    const actualHeaderHeight = headerHeight;
+    
+    let lastScrollTop = 0;
+    let ticking = false;
 
-        window.addEventListener("scroll", function () {
-            const scrollTop =
-                window.pageYOffset || document.documentElement.scrollTop;
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > actualHeaderHeight) {
+            // Show fixed header with smooth transition
+            fixedHeader.classList.add('show');
+        } else {
+            // Hide fixed header
+            fixedHeader.classList.remove('show');
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+    }
 
-            // Show/hide fixed header based on scroll direction
-            if (scrollTop > headerHeight) {
-                // Scrolling down & past header
-                fixedHeaders.classList.add("show");
-                // Add padding only when fixed header is shown
-                document.body.style.paddingTop = headerHeight + "px";
-            } else {
-                // Scrolling up or at top
-                fixedHeaders.classList.remove("show");
-                // Remove padding when fixed header is hidden
-                document.body.style.paddingTop = "0";
-            }
-
-            lastScrollTop = scrollTop;
-        });
+    // Use requestAnimationFrame for better performance
+    window.addEventListener("scroll", function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleScroll();
+            });
+            ticking = true;
+        }
     });
+});
 </script>
