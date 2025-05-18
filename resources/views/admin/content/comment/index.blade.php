@@ -57,7 +57,7 @@
                             <td>{{ $comment->author_id }}</td>
                             <td>{{ $comment->user->fullName ?? $comment->author_name }}</td>
                             <td>{{ $comment->commentable_id }}</td>
-                            <td>{{ $comment->commentable->title }}</td>
+                            <td>{{ $comment->commentable?->title ?? '-' }}</td>
                             <td>{{ $comment->approved == 1 ? 'تایید شده ' : 'تایید نشده'}} </td>
 {{--                            <td>--}}
 {{--                                <label>--}}
