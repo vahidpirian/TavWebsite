@@ -456,11 +456,10 @@
     transition: all 0.3s ease;
 }
 
-/* Ensure the header-fixed version also displays the submenu correctly */
 .header-fixed .menu-item.has-submenu .submenu-container {
     top: calc(100% + 1px);
 }
-/* Fixed header styles */
+
 .header-fixed {
     position: fixed;
     top: 0;
@@ -479,17 +478,14 @@
     opacity: 1;
 }
 
-/* Hide the top header in the fixed version to show only main header */
 .header-fixed .top-header-desktop {
     display: none;
 }
 
-/* Ensure submenu positioning is correct */
 .header-fixed .menu-item.has-submenu .submenu-container {
     top: 100%;
 }
 
-/* Normal header styles remain unchanged */
 .header-wrapper {
     position: relative;
     z-index: 100;
