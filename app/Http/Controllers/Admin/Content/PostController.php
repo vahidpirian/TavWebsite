@@ -149,7 +149,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $result = $post->delete();
+        foreach ($post->comments as $comment) {
+            $comment->delete();
+        }
+
+        $post->delete();
         return redirect()->route('admin.content.post.index')->with('swal-success', 'پست شما با موفقیت حذف شد');
     }
 
