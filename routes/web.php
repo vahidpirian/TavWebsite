@@ -364,6 +364,18 @@ Route::prefix('/')->group(function() {
         Route::post('/contact', 'store')->name('store');
     });
 
+    //Form routes 
+    Route::get('/import-request', function () {
+        return view('site.pages.import-request');
+    })->name('import.request');
+
+    Route::get('/clearance-request', function () {
+        return view('site.pages.clearance-request');
+    })->name('clearance.request');
+
+    Route::get('/inspection-request', function () {
+        return view('site.pages.inspection-request');
+    })->name('inspection.request');
 
     // Blog Routes
     Route::controller(SiteBlogController::class)->prefix('blog')->name('blog.')->group(function() {

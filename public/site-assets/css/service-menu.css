@@ -456,7 +456,37 @@
     transition: all 0.3s ease;
 }
 
-/* Ensure the header-fixed version also displays the submenu correctly */
 .header-fixed .menu-item.has-submenu .submenu-container {
     top: calc(100% + 1px);
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+}
+
+.header-fixed.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.header-fixed .top-header-desktop {
+    display: none;
+}
+
+.header-fixed .menu-item.has-submenu .submenu-container {
+    top: 100%;
+}
+
+.header-wrapper {
+    position: relative;
+    z-index: 100;
 }
