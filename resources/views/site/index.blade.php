@@ -784,7 +784,73 @@
         </div>
     </div>
 
-
+    <div class="faq-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="faq-left">
+                        <div class="site-heading mb-3 text-center">
+                            <h2 class="site-title"><span> واردات</span> در چهار مرحله
+                           </h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="accordion w-100" id="homeFaqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faqHeading1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                                    <span><i class="far fa-file-alt"></i></span>چگونه می‌توانم سفارش واردات ثبت کنم؟
+                                </button>
+                            </h2>
+                            <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#homeFaqAccordion">
+                                <div class="accordion-body">
+                                    برای ثبت سفارش واردات، کافی است از طریق فرم تماس با ما یا شماره‌های درج شده با کارشناسان ما ارتباط برقرار کنید تا راهنمایی‌های لازم را دریافت نمایید.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faqHeading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                    <span><i class="far fa-file-alt"></i></span>آیا خدمات مشاوره رایگان ارائه می‌دهید؟
+                                </button>
+                            </h2>
+                            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#homeFaqAccordion">
+                                <div class="accordion-body">
+                                    بله، مشاوره اولیه در زمینه واردات، صادرات و ترخیص کالا به صورت رایگان توسط تیم ما ارائه می‌شود.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faqHeading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                    <span><i class="far fa-file-alt"></i></span>مدت زمان ترخیص کالا چقدر است؟
+                                </button>
+                            </h2>
+                            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#homeFaqAccordion">
+                                <div class="accordion-body">
+                                    مدت زمان ترخیص کالا بسته به نوع کالا و گمرک مقصد متفاوت است، اما تیم ما تلاش می‌کند در کوتاه‌ترین زمان ممکن فرآیند ترخیص را انجام دهد.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faqHeading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                                    <span><i class="far fa-file-alt"></i></span>آیا امکان پیگیری وضعیت سفارش وجود دارد؟
+                                </button>
+                            </h2>
+                            <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#homeFaqAccordion">
+                                <div class="accordion-body">
+                                    بله، پس از ثبت سفارش، می‌توانید در هر مرحله از طریق کارشناسان ما وضعیت سفارش خود را پیگیری نمایید.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="blog-area py-60">
         <div class="container">
