@@ -2,6 +2,11 @@
 
 @section('head-tag')
 <title>سوالات متداول</title>
+    <style>
+        .text-lg{
+            font-size: 13px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -34,22 +39,26 @@
             <section class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>#</th>
                             <th>پرسش</th>
                             <th>خلاصه پاسخ</th>
+                            <th>نمایش در صحفه اصلی</th>
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach ($faqs as $key => $faq)
 
                         <tr>
-                            <th>{{ $key += 1 }}</th>
-                            <td>{{ $faq->question }}</td>
-                            <td>{!! mb_substr($faq->answer,0,95) !!}</td>
-                            <td>
+                            <th class="text-center">{{ $key += 1 }}</th>
+                            <td class="text-center">{{ $faq->question }}</td>
+                            <td class="text-center">{!! mb_substr($faq->answer,0,95) !!}</td>
+                            <td class="text-center">
+                                <span class="text-lg badge {{$faq->is_show_on_home ? 'badge-success' : 'badge-primary'}}">{{$faq->is_show_on_home ? 'فعال' : 'غیرفعال'}}</span>
+                            </td>
+                            <td class="text-center">
                                 <label>
                                     <input id="{{ $faq->id }}" onchange="changeStatus({{ $faq->id }})" data-url="{{ route('admin.content.faq.status', $faq->id) }}" type="checkbox" @if ($faq->status === 1)
                                     checked

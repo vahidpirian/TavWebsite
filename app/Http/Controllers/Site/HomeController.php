@@ -51,6 +51,8 @@ class HomeController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
+        $faqs = Faq::where('is_show_on_home',1)->where('status', 1)->get();
+
         return view('site.index', compact(
             'images',
             'services',
@@ -61,12 +63,13 @@ class HomeController extends Controller
             'setting',
             'banner',
             'serviceSupports',
+            'faqs'
         ));
     }
 
     public function faq()
     {
-        $faqs = Faq::where('status', 1)->latest()->get();
+        $faqs = Faq::where('is_show_on_home',0)->where('status', 1)->latest()->get();
         $banner = Banner::where('position',15)->first();
         return view('site.pages.faq', compact('faqs','banner'));
     }

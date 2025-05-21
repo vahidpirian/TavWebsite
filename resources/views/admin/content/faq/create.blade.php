@@ -83,6 +83,23 @@
 
                         <section class="col-12">
                             <div class="form-group">
+                                <label for="is_show_on_home">نمایش در صحفه اصلی</label>
+                                <select name="is_show_on_home" id="is_show_on_home" class="form-control form-control-sm">
+                                    <option value="0" @if(old('is_show_on_home') == 0) selected @endif>غیرفعال</option>
+                                    <option value="1" @if(old('is_show_on_home') == 1) selected @endif>فعال</option>
+                                </select>
+                            </div>
+                            @error('status')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12">
+                            <div class="form-group">
                                 <label for="status">وضعیت</label>
                                 <select name="status" id="" class="form-control form-control-sm" id="status">
                                     <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
