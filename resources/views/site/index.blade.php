@@ -606,22 +606,6 @@
     </div>
 
 
-    <div class="counter-area">
-        <div class="container">
-            <div class="row">
-                @foreach($statistics as $statistic)
-                <div class="col-lg-3 col-sm-6">
-                    <div class="counter-box">
-                        <div class="icon"><i class="fas fa-chart-line"></i></div>
-                        <span class="counter" data-count="+" data-to="{{ $statistic->number }}" data-speed="3000">{{ $statistic->number }}</span>
-                        <h6 class="title">{{ $statistic->title }}</h6>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
 {{--    <div class="case-area py-60">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
@@ -723,52 +707,18 @@
                                 را با بالاترین استانداردها به مشتریان خود ارائه می‌دهیم.
                             </p>
                             <div class="skills-section">
-                                <div class="progress-box">
-                                    <h5>رضایت مشتریان <span class="pull-right">۹۵٪</span></h5>
-                                    <div class="progress" data-value="95">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 95%"
-                                        ></div>
+                                @foreach($statistics as $statistic)
+                                    <div class="progress-box">
+                                        <h5>{{$statistic->title}} <span class="pull-right">{{$statistic->number}}٪</span></h5>
+                                        <div class="progress" data-value="{{$statistic->number}}">
+                                            <div
+                                                class="progress-bar"
+                                                role="progressbar"
+                                                style="width: {{$statistic->number}}%"
+                                            ></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        سرعت ترخیص کالا <span class="pull-right">۸۸٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="88">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 88%"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        پوشش شبکه بین‌المللی <span class="pull-right">۹۲٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="92">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 92%"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="progress-box">
-                                    <h5>
-                                        موفقیت در پروژه‌ها <span class="pull-right">۹۰٪</span>
-                                    </h5>
-                                    <div class="progress" data-value="90">
-                                        <div
-                                            class="progress-bar"
-                                            role="progressbar"
-                                            style="width: 90%"
-                                        ></div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

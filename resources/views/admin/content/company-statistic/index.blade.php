@@ -31,7 +31,7 @@
                         <tr>
                             <th>#</th>
                             <th>عنوان</th>
-                            <th>تعداد</th>
+                            <th>درصد</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
@@ -57,4 +57,7 @@
         </section>
     </section>
 </section>
-@endsection 
+@endsection
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+@endsection

@@ -41,7 +41,7 @@
                         </section>
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="number">تعداد</label>
+                                <label for="number">درصد</label>
                                 <input type="number" class="form-control form-control-sm" name="number" id="number" value="{{ old('number') }}">
                             </div>
                             @error('number')
@@ -59,4 +59,4 @@
         </section>
     </section>
 </section>
-@endsection 
+@endsection
