@@ -21,5 +21,5 @@ class Faq extends Model
         ];
     }
 
-    protected $fillable = ['question', 'answer', 'slug', 'status', 'tags'];
+    protected $fillable = ['question', 'answer', 'slug', 'status', 'tags','is_show_on_home'];
 }
